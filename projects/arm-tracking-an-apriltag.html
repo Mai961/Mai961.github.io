@@ -3,11 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Arm tracking an AprilTag | Mai</title>
-<meta name="description" content="AprilTag fixes give the field pose that places the arm’s field-fixed goal.">
+<title>Localizing the arm’s field-fixed goal | Mai</title>
+<meta name="description" content="AprilTag fixes tell the robot where it stands, so the arm’s goal can be fixed on the field.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -24,8 +25,7 @@
   </div>
 </header>
 <main id="main" class="wrap project">
-  <h1>Arm tracking an AprilTag</h1>
-  <!-- TODO(user): confirm the arm tracks the tag pose -->
+  <h1>Localizing the arm&#8217;s field-fixed goal</h1>
   <figure class="clip">
     <div class="media frame" style="background-image: url(../media/posters/arm-tracking-an-apriltag.jpg), url(../media/posters/placeholder.svg)">
       <video controls muted loop playsinline preload="none" poster="../media/posters/arm-tracking-an-apriltag.jpg">
@@ -33,20 +33,20 @@
         <p>This browser cannot play the clip here. <a href="../media/clips/arm-tracking-an-apriltag.mp4">Open the MP4 file</a>.</p>
       </video>
     </div>
-    <figcaption>Clip: the robot arm tracking an AprilTag.</figcaption>
+    <figcaption>Clip: the robot locating itself from AprilTags, then reaching a goal fixed on the field.</figcaption>
   </figure>
   <div class="prose">
   <section>
     <h2>Problem</h2>
-    <p>The arm&#8217;s goals are poses fixed on the field, while the whole-body solver works in the robot&#8217;s own frame, so the robot has to know where it stands. AprilTags, printed squares at known places on the field, give that pose, but a single flat tag has a two-way pose ambiguity.</p>
+    <p>The arm&#8217;s goals are poses fixed on the field, while the whole-body solver works in the robot&#8217;s own frame. So the robot has to know where it stands. AprilTags, printed squares at known places on the field, give that pose, but a single flat tag has a two-way pose ambiguity.</p>
   </section>
   <section>
     <h2>What I built</h2>
-    <p>The localizer that turns tag sightings into a field pose, and the whole-body controller that uses it. The localizer started from a teammate&#8217;s port of an existing package; I developed its pooled multi-tag solve, the weighted refine and the covariance. The whole-body node reads the robot&#8217;s field pose, which the field EKF builds from those fixes, directly over ROS 2.</p>
+    <p>The localizer that turns tag sightings into a field pose, and the whole-body controller that uses it. The localizer started from a teammate&#8217;s port of an existing package; I developed its pooled multi-tag solve, the weighted refine and the covariance. The whole-body node reads the robot&#8217;s field pose, which the field EKF (extended Kalman filter) builds from those fixes, directly over ROS 2.</p>
   </section>
   <section>
     <h2>How it works</h2>
-    <p>With two or more tags in view, the localizer pools all their corners into one solve, each weighted by its tag&#8217;s apparent edge length squared, so small, distant tags fade out smoothly. OpenCV&#8217;s SQPnP seeds the pose, and a weighted Levenberg-Marquardt refine improves it. The covariance comes from a numeric Jacobian; if the geometry is not observable, the pose is withheld instead of inventing a covariance. The field EKF weights each fix by that covariance. When the arm enters TASK, the whole-body node converts the field-fixed goal into the solver&#8217;s frame through the chassis pose measured at that moment, and each QP step moves the end of the arm toward it within joint and speed limits. Freezing the field-fixed goal at TASK entry was tested in simulation; hardware validation was still pending.</p>
+    <p>The localizer is described on the <a href="vision-replay-camera-stream.html">camera-stream page</a>; here it matters only that each fix carries a covariance the EKF can weight. The phases run DRIVE, APPROACH, TASK and RETRACT. APPROACH aims the arm, then waits until it reaches the goal&#8217;s aim posture. It also waits until a fresh field pose shows the chassis at its staging pose. When the arm enters TASK, the whole-body node converts the field-fixed goal into the solver&#8217;s frame through the chassis pose measured at that moment. Each QP step then moves the end of the arm toward it within joint and speed limits. Freezing the field-fixed goal at TASK entry was tested in simulation; hardware validation was still pending.</p>
   </section>
   <section>
     <h2>Links</h2>
@@ -63,24 +63,5 @@
     <p>&copy; 2026 Zile Liao</p>
   </div>
 </footer>
-<script>
-(function () {
-  var v = document.querySelector(".clip video");
-  if (!v || !("IntersectionObserver" in window)) return;
-  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  var visible = false;
-  var io = new IntersectionObserver(function (entries) {
-    visible = entries[entries.length - 1].isIntersecting;
-    if (visible) {
-      var p = v.play();
-      if (p && p.catch) p.catch(function () {});
-    } else {
-      v.pause();
-    }
-  }, { threshold: 0.5 });
-  v.addEventListener("pause", function () { if (visible) io.disconnect(); });
-  io.observe(v);
-})();
-</script>
 </body>
 </html>

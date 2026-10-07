@@ -14,7 +14,8 @@ visitors once that repository is public.
 - Length: 10–25 s. Anything longer goes to an unlisted YouTube video instead of this repository,
   linked from the project page's Links section.
 - `-movflags +faststart` so the clip starts before it has fully downloaded; `-map_metadata -1`
-  strips the source's metadata (phone GPS, device name, creation time).
+  and `-map_chapters -1` strip the source's metadata and chapter titles (phone GPS, device name,
+  creation time).
 - Poster: one JPEG frame from the clip, same size as the clip, ideally under 150 KB.
 
 Each block below has its two commands with the paths filled in. Replace `INPUT.mp4` with the source
@@ -24,10 +25,18 @@ keeps a 25 s clip under 8 MB at either size; check with `ls -l` anyway. For a sc
 the window chrome first by putting `crop=W:H:X:Y,` at the start of the `-vf` filter (width, height,
 and the top-left corner of the area to keep, in source pixels).
 
+To hide a team number, a logo or a face, put `drawbox=x=X:y=Y:w=W:h=H:color=black:t=fill,` at the
+start of the `-vf` filter (the box's top-left corner and size, in source pixels, before `scale`). It
+blacks out that rectangle for the whole clip, so it suits a fixed camera. Otherwise use `crop=` to
+frame the number out, or pick another take.
+
 ## Privacy checklist (every clip and poster)
 
-- [ ] No faces of minors. When in doubt, crop, blur, or pick another take.
-- [ ] No readable team number: bumpers, banners, shirts, laptop stickers.
+- [ ] No identifiable faces without consent (minors never). When in doubt, crop, blur, or pick
+      another take.
+- [ ] No readable team number: bumpers, banners, shirts, laptop stickers, including other robots'
+      numbers.
+- [ ] No team name, logo or mascot (shirts, banners, robot panels).
 - [ ] No event names, venue signage or sponsor banners in frame.
 - [ ] Screen recordings: no hostnames, IP addresses, usernames, window titles, terminal prompts
       or file paths. Crop the window chrome; render bag replays without the window around them.
@@ -48,7 +57,7 @@ and the top-left corner of the area to keep, in source pixels).
 - Privacy: bumpers and the background are the usual leaks here (team number, event signage, people).
 
 ```sh
-ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -movflags +faststart media/clips/shoot-on-the-move.mp4
+ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -map_chapters -1 -movflags +faststart media/clips/shoot-on-the-move.mp4
 ffmpeg -ss 2 -i media/clips/shoot-on-the-move.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/shoot-on-the-move.jpg
 ```
 
@@ -56,17 +65,18 @@ ffmpeg -ss 2 -i media/clips/shoot-on-the-move.mp4 -frames:v 1 -update 1 -q:v 3 m
 - [ ] poster
 - [ ] privacy checklist
 
-### 2. Arm placing objects
+### 2. Whole-body arm control
 
 - Page: `projects/arm-placing-objects.html`
 - Clip: `media/clips/arm-placing-objects.mp4`
 - Poster: `media/posters/arm-placing-objects.jpg`
 - Target length: 10–25 s
-- Shows: the robot arm placing objects. One or two full cycles: drive in, approach, place, retract.
+- Shows: the robot driving to its staging pose, then the arm reaching a pose fixed on the field.
+  One or two full cycles: drive in, approach, reach the field-fixed pose, retract.
 - Privacy: bumpers, people in the background.
 
 ```sh
-ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -movflags +faststart media/clips/arm-placing-objects.mp4
+ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -map_chapters -1 -movflags +faststart media/clips/arm-placing-objects.mp4
 ffmpeg -ss 2 -i media/clips/arm-placing-objects.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/arm-placing-objects.jpg
 ```
 
@@ -74,19 +84,20 @@ ffmpeg -ss 2 -i media/clips/arm-placing-objects.mp4 -frames:v 1 -update 1 -q:v 3
 - [ ] poster
 - [ ] privacy checklist
 
-### 3. Arm tracking an AprilTag
+### 3. Localizing the arm's field-fixed goal
 
 - Page: `projects/arm-tracking-an-apriltag.html`
 - Clip: `media/clips/arm-tracking-an-apriltag.mp4`
 - Poster: `media/posters/arm-tracking-an-apriltag.jpg`
 - Target length: 10–25 s
-- Shows: the robot arm tracking an AprilTag: the tag (or the robot) moves, and the arm follows.
-  The page carries a `TODO(user)` comment: confirm that the arm tracks the tag pose, and adjust the
-  page text to what the clip shows.
+- Shows: the robot approaches, the tags give its field pose, and the arm reaches a goal fixed on
+  the field. The user intends to record the arm tracking a moving tag; when that clip exists,
+  rename this page back to 'Arm tracking an AprilTag' AFTER the showcase wholebody README describes
+  the mechanism.
 - Privacy: bumpers, people holding the tag (faces), the room around the bench.
 
 ```sh
-ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -movflags +faststart media/clips/arm-tracking-an-apriltag.mp4
+ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -map_chapters -1 -movflags +faststart media/clips/arm-tracking-an-apriltag.mp4
 ffmpeg -ss 2 -i media/clips/arm-tracking-an-apriltag.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/arm-tracking-an-apriltag.jpg
 ```
 
@@ -106,7 +117,7 @@ ffmpeg -ss 2 -i media/clips/arm-tracking-an-apriltag.mp4 -frames:v 1 -update 1 -
   chrome and check prompts, hostnames and paths.
 
 ```sh
-ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -movflags +faststart media/clips/auto-tuning-routine.mp4
+ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -map_chapters -1 -movflags +faststart media/clips/auto-tuning-routine.mp4
 ffmpeg -ss 2 -i media/clips/auto-tuning-routine.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/auto-tuning-routine.jpg
 ```
 
@@ -126,7 +137,7 @@ ffmpeg -ss 2 -i media/clips/auto-tuning-routine.mp4 -frames:v 1 -update 1 -q:v 3
   bumpers, event signage and audience faces. No window chrome, topic list or terminal in frame.
 
 ```sh
-ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -movflags +faststart media/clips/vision-replay-match.mp4
+ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -map_chapters -1 -movflags +faststart media/clips/vision-replay-match.mp4
 ffmpeg -ss 2 -i media/clips/vision-replay-match.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/vision-replay-match.jpg
 ```
 
@@ -146,7 +157,7 @@ ffmpeg -ss 2 -i media/clips/vision-replay-match.mp4 -frames:v 1 -update 1 -q:v 3
   or terminal in frame.
 
 ```sh
-ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -movflags +faststart media/clips/vision-replay-camera-stream.mp4
+ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -map_chapters -1 -movflags +faststart media/clips/vision-replay-camera-stream.mp4
 ffmpeg -ss 2 -i media/clips/vision-replay-camera-stream.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/vision-replay-camera-stream.jpg
 ```
 

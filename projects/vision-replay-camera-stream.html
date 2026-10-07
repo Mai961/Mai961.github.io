@@ -8,6 +8,7 @@
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -32,12 +33,12 @@
         <p>This browser cannot play the clip here. <a href="../media/clips/vision-replay-camera-stream.mp4">Open the MP4 file</a>.</p>
       </video>
     </div>
-    <figcaption>Replay of the Odin1 camera&#8217;s recorded image stream through the localizer.</figcaption>
+    <figcaption>Replay of the Odin camera&#8217;s recorded image stream through the localizer.</figcaption>
   </figure>
   <div class="prose">
   <section>
     <h2>Problem</h2>
-    <p>The field EKF downstream weights each tag fix by its covariance instead of accepting or rejecting it with thresholds, so the localizer has to report a covariance it actually computed. It also works across two scales: field coordinates reach about 17&nbsp;m, while the tags are centimetres across.</p>
+    <p>The field EKF (extended Kalman filter) downstream weights each tag fix by its covariance instead of accepting or rejecting it with thresholds. So the localizer has to report a covariance it actually computed. It also works across two scales: field coordinates reach about 17&nbsp;m, while the tags are centimetres across.</p>
   </section>
   <section>
     <h2>What I built</h2>
@@ -45,7 +46,7 @@
   </section>
   <section>
     <h2>How it works</h2>
-    <p>Each detection first passes acceptance gates: decode quality, an allow-list, an edge margin and range. With two or more tags, all corners are pooled, and the field points are recentred on their centroid before OpenCV&#8217;s SQPnP seeds the pose. A weighted Levenberg-Marquardt refine follows, and keeps the seed if the result is non-finite, puts a point behind the camera, or fits worse. With one tag, IPPE returns both candidate poses of the flat square, and the covariance gains the spread toward the second pose, weighted by a flip rate fitted to recorded data. The node publishes the camera pose with its covariance, each tag solved alone to check the field layout, and every detection, including rejected ones and why.</p>
+    <p>Each detection first passes acceptance gates: decode quality, an allow-list, an edge margin and range. With two or more tags, all corners are pooled, and the field points are recentred on their centroid before OpenCV&#8217;s SQPnP seeds the pose. A weighted Levenberg-Marquardt refine follows, and keeps the seed if the result is non-finite, puts a point behind the camera, or fits worse. With one tag, IPPE returns both candidate poses of the flat square. The covariance gains the spread toward the second pose, weighted by a flip rate fitted to recorded data. The node publishes the camera pose with its covariance, and each tag solved alone to check the field layout. It also publishes every detection, including rejected ones and why.</p>
   </section>
   <section>
     <h2>Links</h2>
@@ -60,24 +61,5 @@
     <p>&copy; 2026 Zile Liao</p>
   </div>
 </footer>
-<script>
-(function () {
-  var v = document.querySelector(".clip video");
-  if (!v || !("IntersectionObserver" in window)) return;
-  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  var visible = false;
-  var io = new IntersectionObserver(function (entries) {
-    visible = entries[entries.length - 1].isIntersecting;
-    if (visible) {
-      var p = v.play();
-      if (p && p.catch) p.catch(function () {});
-    } else {
-      v.pause();
-    }
-  }, { threshold: 0.5 });
-  v.addEventListener("pause", function () { if (visible) io.disconnect(); });
-  io.observe(v);
-})();
-</script>
 </body>
 </html>

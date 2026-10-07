@@ -8,6 +8,7 @@
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -37,15 +38,15 @@
   <div class="prose">
   <section>
     <h2>Problem</h2>
-    <p>Control needs to know where the robot is on the field. The node this replaced froze a field correction at the first good tag sighting and judged every later one through hand-tuned gates, because the tag solve did not say how good a pose was.</p>
+    <p>Control needs to know where the robot is on the field. The node this replaced froze a field correction at the first good tag sighting. It then judged every later one through hand-tuned gates, because the tag solve did not say how good a pose was.</p>
   </section>
   <section>
     <h2>What I built</h2>
-    <p>The AprilTag localizer&#8217;s pooled multi-tag solve and its covariance, and the field EKF that fuses those fixes with the camera&#8217;s visual-inertial odometry (VIO). I wrote the filter in Python first, then ported it to C++ to cut CPU load. The result goes to the robot controller over UDP.</p>
+    <p>I developed the AprilTag localizer&#8217;s pooled multi-tag solve and its covariance. I also wrote the field EKF (extended Kalman filter) that fuses those fixes with the camera&#8217;s visual-inertial odometry (VIO). I wrote it in Python first, then ported it to C++ to cut CPU load. The result goes to the robot controller over UDP.</p>
   </section>
   <section>
     <h2>How it works</h2>
-    <p>The EKF predicts from the camera&#8217;s VIO odometry, at about 400&nbsp;Hz, and corrects with each tag fix, weighted by the covariance the localizer computed rather than accepted or rejected by thresholds. Before the update, the tag pose is converted to the robot base through the camera mount and carried forward from the image&#8217;s capture time to now using odometry. By default, rotation comes only from multi-tag solves, because a single-tag solve can flip between two attitudes. A confidence floor keeps the covariance from shrinking to zero, so the filter keeps listening to the tags after a bump or a SLAM jump. On the robot controller, WPILib&#8217;s swerve pose estimator fuses the pose, dated to the image&#8217;s capture time, with wheel odometry.</p>
+    <p>The EKF predicts from the camera&#8217;s VIO odometry, at about 400&nbsp;Hz, and corrects with each tag fix. Each fix is weighted by the covariance the localizer computed, not accepted or rejected by thresholds. Before the update, the tag pose is converted to the robot base through the camera mount. Odometry then carries it forward from the image&#8217;s capture time to now. By default, rotation comes only from multi-tag solves, because a single-tag solve can flip between two attitudes. A confidence floor keeps the covariance from shrinking to zero. The filter then keeps listening to the tags after a bump or a jump in the camera&#8217;s own odometry. On the robot controller, WPILib&#8217;s swerve pose estimator fuses the pose, dated to the image&#8217;s capture time, with wheel odometry.</p>
   </section>
   <section>
     <h2>Links</h2>
@@ -61,24 +62,5 @@
     <p>&copy; 2026 Zile Liao</p>
   </div>
 </footer>
-<script>
-(function () {
-  var v = document.querySelector(".clip video");
-  if (!v || !("IntersectionObserver" in window)) return;
-  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  var visible = false;
-  var io = new IntersectionObserver(function (entries) {
-    visible = entries[entries.length - 1].isIntersecting;
-    if (visible) {
-      var p = v.play();
-      if (p && p.catch) p.catch(function () {});
-    } else {
-      v.pause();
-    }
-  }, { threshold: 0.5 });
-  v.addEventListener("pause", function () { if (visible) io.disconnect(); });
-  io.observe(v);
-})();
-</script>
 </body>
 </html>

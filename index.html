@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mai | robotics software</title>
-<meta name="description" content="Mai: robotics software for perception, state estimation, real-time transport and control. Clips and write-ups of six projects.">
+<meta name="description" content="Mai: robotics software for perception, state estimation, transport and control. Clips and write-ups of six projects.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="assets/site.css">
@@ -26,8 +26,8 @@
 <main id="main" class="wrap">
   <section class="prose" aria-labelledby="about">
     <h1 id="about">Mai</h1>
-    <p class="tagline">Robotics software: perception, state estimation, real-time transport, control &#8212; project showcases from my work on a competition robot.</p>
-    <p>The robot code itself is not open source: the showcase repository holds short, annotated excerpts of my own work, simplified to show how each piece works.</p>
+    <p class="tagline">Robotics software: perception, state estimation, transport, control &#8212; project showcases from my work on a competition robot.</p>
+    <p>The robot code is not open source: the showcase repository holds short, annotated excerpts of my own work, simplified to show how each piece works.</p>
     <ul class="links">
       <li><a href="https://github.com/Mai961/robotics-showcase">Showcase repository</a></li>
       <li><a href="https://github.com/Mai961">GitHub profile</a></li>
@@ -37,32 +37,32 @@
     <h2 id="projects-heading">Projects</h2>
     <ul class="grid">
     <li class="card">
-      <div class="media poster" role="img" aria-label="Still frame from the clip: Shoot on the move" style="background-image: url(media/posters/shoot-on-the-move.jpg), url(media/posters/placeholder.svg)"></div>
+      <div class="media poster" aria-hidden="true" style="background-image: url(media/posters/shoot-on-the-move.jpg), url(media/posters/placeholder.svg)"></div>
       <h3><a href="projects/shoot-on-the-move.html">Shoot on the move</a></h3>
       <p>A turret that keeps aiming while the robot drives, with shot compensation for the robot&#8217;s own velocity.</p>
     </li>
     <li class="card">
-      <div class="media poster" role="img" aria-label="Still frame from the clip: Arm placing objects" style="background-image: url(media/posters/arm-placing-objects.jpg), url(media/posters/placeholder.svg)"></div>
-      <h3><a href="projects/arm-placing-objects.html">Arm placing objects</a></h3>
-      <p>Whole-body inverse kinematics on the coprocessor, with joint targets executed by the robot controller.</p>
+      <div class="media poster" aria-hidden="true" style="background-image: url(media/posters/arm-placing-objects.jpg), url(media/posters/placeholder.svg)"></div>
+      <h3><a href="projects/arm-placing-objects.html">Whole-body arm control</a></h3>
+      <p>A whole-body QP on the coprocessor moves the arm to a pose fixed on the field; the robot controller executes the joint targets.</p>
     </li>
     <li class="card">
-      <div class="media poster" role="img" aria-label="Still frame from the clip: Arm tracking an AprilTag" style="background-image: url(media/posters/arm-tracking-an-apriltag.jpg), url(media/posters/placeholder.svg)"></div>
-      <h3><a href="projects/arm-tracking-an-apriltag.html">Arm tracking an AprilTag</a></h3>
-      <p>AprilTag fixes give the field pose that places the arm&#8217;s field-fixed goal.</p>
+      <div class="media poster" aria-hidden="true" style="background-image: url(media/posters/arm-tracking-an-apriltag.jpg), url(media/posters/placeholder.svg)"></div>
+      <h3><a href="projects/arm-tracking-an-apriltag.html">Localizing the arm&#8217;s field-fixed goal</a></h3>
+      <p>AprilTag fixes tell the robot where it stands, so the arm&#8217;s goal can be fixed on the field.</p>
     </li>
     <li class="card">
-      <div class="media poster" role="img" aria-label="Still frame from the clip: Auto-tuning routine" style="background-image: url(media/posters/auto-tuning-routine.jpg), url(media/posters/placeholder.svg)"></div>
+      <div class="media poster" aria-hidden="true" style="background-image: url(media/posters/auto-tuning-routine.jpg), url(media/posters/placeholder.svg)"></div>
       <h3><a href="projects/auto-tuning-routine.html">Auto-tuning routine</a></h3>
       <p>A PID tuning bench for an arm joint, steered by a coding agent inside hard limits.</p>
     </li>
     <li class="card">
-      <div class="media poster" role="img" aria-label="Still frame from the clip: Vision replay: a recorded match" style="background-image: url(media/posters/vision-replay-match.jpg), url(media/posters/placeholder.svg)"></div>
+      <div class="media poster" aria-hidden="true" style="background-image: url(media/posters/vision-replay-match.jpg), url(media/posters/placeholder.svg)"></div>
       <h3><a href="projects/vision-replay-match.html">Vision replay: a recorded match</a></h3>
       <p>Tag detections and the estimated field pose, replayed from a recorded match.</p>
     </li>
     <li class="card">
-      <div class="media poster" role="img" aria-label="Still frame from the clip: Vision replay: the camera’s image stream" style="background-image: url(media/posters/vision-replay-camera-stream.jpg), url(media/posters/placeholder.svg)"></div>
+      <div class="media poster" aria-hidden="true" style="background-image: url(media/posters/vision-replay-camera-stream.jpg), url(media/posters/placeholder.svg)"></div>
       <h3><a href="projects/vision-replay-camera-stream.html">Vision replay: the camera&#8217;s image stream</a></h3>
       <p>The camera&#8217;s recorded image stream, replayed through the AprilTag localizer.</p>
     </li>

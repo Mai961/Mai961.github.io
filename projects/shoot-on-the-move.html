@@ -8,6 +8,7 @@
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -41,7 +42,7 @@
   </section>
   <section>
     <h2>What I built</h2>
-    <p>I wrote the turret&#8217;s aiming cascade and its shot compensation, with contributions from teammates. Both run every 20&nbsp;ms in the WPILib robot program. The compensation turns the robot&#8217;s pose and velocity into a turret angle, a hood angle and a ball exit speed. The controller drives the turret to that angle: an outer loop turns the angle error into a velocity command, and the motor controller&#8217;s own velocity loop tracks it.</p>
+    <p>I wrote the turret&#8217;s aiming cascade and its shot compensation, with contributions from teammates. Both run every 20&nbsp;ms in the WPILib robot program. The compensation turns the robot&#8217;s pose and velocity into a turret angle, a hood angle and a ball exit speed. The controller drives the turret to that angle as a cascade. An outer loop turns the angle error into a velocity command, and the motor controller&#8217;s own velocity loop tracks it.</p>
   </section>
   <section>
     <h2>How it works</h2>
@@ -61,24 +62,5 @@
     <p>&copy; 2026 Zile Liao</p>
   </div>
 </footer>
-<script>
-(function () {
-  var v = document.querySelector(".clip video");
-  if (!v || !("IntersectionObserver" in window)) return;
-  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  var visible = false;
-  var io = new IntersectionObserver(function (entries) {
-    visible = entries[entries.length - 1].isIntersecting;
-    if (visible) {
-      var p = v.play();
-      if (p && p.catch) p.catch(function () {});
-    } else {
-      v.pause();
-    }
-  }, { threshold: 0.5 });
-  v.addEventListener("pause", function () { if (visible) io.disconnect(); });
-  io.observe(v);
-})();
-</script>
 </body>
 </html>

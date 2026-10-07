@@ -8,6 +8,7 @@
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -41,11 +42,11 @@
   </section>
   <section>
     <h2>What I built</h2>
-    <p>I wrote a ROS 2 node on the bench computer that runs the experiments, and a written procedure that a coding agent (Claude Code) follows to steer them. The node sets gains, drives the joint through a test trajectory, scores the result, and aborts if anything looks unsafe. The agent decides which gain to sweep next, over what range, and when to stop, with a stated reason for every move. There is no language-model API client in the code: the deterministic sweep stays in code that enforces the limits, and the agent points it.</p>
+    <p>I wrote a ROS 2 node on the bench computer that runs the experiments. I also wrote the procedure that a coding agent (Claude Code) follows to steer them. The node sets gains, drives the joint through a test trajectory, scores the result, and aborts if anything looks unsafe. The agent decides which gain to sweep next, over what range, and when to stop, with a stated reason for every move. There is no language-model API client in the code: the deterministic sweep stays in code that enforces the limits, and the agent points it.</p>
   </section>
   <section>
     <h2>How it works</h2>
-    <p>The agent sets one ROS parameter to a JSON directive and reads back a JSON result file. A sweep runs one episode per value and keeps the cheapest, scored on rise time, tracking error, overshoot, settling error and vibration. Each gain has a hard range declared on its ROS parameter, so the parameter server rejects an out-of-range value (kV and kA also travel on direct topics that do not re-check it). During every episode, a breach check aborts to IDLE if the joint leaves its safe position band, the stator current spikes, or the velocity reverses too often; an aborted episode scores infinity, so it can never win. When the agent is done, the gains go to a YAML file, and a human edits them into the robot&#8217;s configuration. A fork of the same bench was used to retune the turret&#8217;s loops.</p>
+    <p>The agent sets one ROS parameter to a JSON directive and reads back a JSON result file. A sweep runs one episode per value and keeps the cheapest, scored on rise time, tracking error, overshoot, settling error and vibration. Each gain has a hard range declared on its ROS parameter, so the parameter server rejects an out-of-range value. One caveat: kV and kA also travel on direct topics that do not re-check the range. Each episode aborts to IDLE if the joint leaves its safe position band, the stator current spikes, or the velocity reverses too often. An aborted episode scores infinity, so it can never win. When the agent is done, the gains go to a YAML file, and a human edits them into the robot&#8217;s configuration. A fork of the same bench was used to retune the turret&#8217;s loops.</p>
   </section>
   <section>
     <h2>Links</h2>
@@ -60,24 +61,5 @@
     <p>&copy; 2026 Zile Liao</p>
   </div>
 </footer>
-<script>
-(function () {
-  var v = document.querySelector(".clip video");
-  if (!v || !("IntersectionObserver" in window)) return;
-  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  var visible = false;
-  var io = new IntersectionObserver(function (entries) {
-    visible = entries[entries.length - 1].isIntersecting;
-    if (visible) {
-      var p = v.play();
-      if (p && p.catch) p.catch(function () {});
-    } else {
-      v.pause();
-    }
-  }, { threshold: 0.5 });
-  v.addEventListener("pause", function () { if (visible) io.disconnect(); });
-  io.observe(v);
-})();
-</script>
 </body>
 </html>
