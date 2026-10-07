@@ -1,8 +1,8 @@
 # Media manifest: capture checklist
 
-Every clip, poster, photo and CV on the site is a slot: the pages already point at the file names
-below. Until a file exists, its page shows the shared placeholder (`media/posters/placeholder.svg`)
-or, for the CV links, a missing file. Fill a slot by dropping the file in at exactly the listed path.
+Every clip and poster on the site is a slot: the pages already point at the file names below.
+Until a file exists, its page shows the shared placeholder (`media/posters/placeholder.svg`). Fill a
+slot by dropping the file in at exactly the listed path.
 
 The links to the robotics showcase (`https://github.com/Mai961/robotics-showcase/...`) only work for
 visitors once that repository is public.
@@ -24,7 +24,7 @@ keeps a 25 s clip under 8 MB at either size; check with `ls -l` anyway. For a sc
 the window chrome first by putting `crop=W:H:X:Y,` at the start of the `-vf` filter (width, height,
 and the top-left corner of the area to keep, in source pixels).
 
-## Privacy checklist (every clip, the photo and the CVs)
+## Privacy checklist (every clip and poster)
 
 - [ ] No faces of minors. When in doubt, crop, blur, or pick another take.
 - [ ] No readable team number: bumpers, banners, shirts, laptop stickers.
@@ -32,7 +32,7 @@ and the top-left corner of the area to keep, in source pixels).
 - [ ] Screen recordings: no hostnames, IP addresses, usernames, window titles, terminal prompts
       or file paths. Crop the window chrome; render bag replays without the window around them.
 - [ ] No other people's names on screen (chat, dashboards, git logs).
-- [ ] Metadata stripped (the clip command does this; for the photo use `exiftool -all= FILE`).
+- [ ] Metadata stripped (the clip command does this).
 - [ ] Longer than 25 s or over 8 MB: unlisted YouTube link instead of a file here.
 
 ## Clip slots
@@ -153,22 +153,3 @@ ffmpeg -ss 2 -i media/clips/vision-replay-camera-stream.mp4 -frames:v 1 -update 
 - [ ] clip
 - [ ] poster
 - [ ] privacy checklist
-
-## Other slots
-
-### Photo
-
-- File: `media/photos/about.jpg`, shown on the home page next to the introduction.
-- Square, 800×800 JPEG, under 200 KB. The page crops it to a square from the centre.
-- Strip metadata: `exiftool -all= media/photos/about.jpg`.
-- [ ] photo
-- [ ] privacy checklist
-
-### CV (two PDFs)
-
-- English: `cv/cv_en.pdf`. German: `cv/cv_de.pdf`. Both are linked from the home page.
-- Under 1 MB each. Check the PDF's own metadata (title, author, creator tool) before committing.
-- The site is public once Pages is on: leave out anything you would not post publicly, such as a
-  street address, date of birth or phone number.
-- [ ] `cv_en.pdf`
-- [ ] `cv_de.pdf`

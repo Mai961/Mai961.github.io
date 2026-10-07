@@ -173,7 +173,7 @@ main {
   padding-block: 2rem 3rem;
 }
 
-/* Placeholder-backed media: the real file is the top layer, placeholder.svg sits below it. */
+/* Placeholder-backed media: the real poster is the top layer, placeholder.svg sits below it. */
 
 .media {
   display: block;
@@ -187,21 +187,10 @@ main {
 
 /* Home: hero */
 
-.hero {
-  display: grid;
-  gap: 1.5rem 2.5rem;
-  align-items: start;
-}
-
 .tagline {
   font-size: 1.1875rem;
   color: var(--muted);
   margin-bottom: 1.25rem;
-}
-
-.photo {
-  width: min(100%, 16rem);
-  aspect-ratio: 1 / 1;
 }
 
 .links {
@@ -210,21 +199,6 @@ main {
   gap: 0.5rem 1.25rem;
   padding: 0;
   list-style: none;
-}
-
-.cv {
-  color: var(--muted);
-}
-
-@media (min-width: 720px) {
-  .hero {
-    grid-template-columns: minmax(0, 1fr) 16rem;
-  }
-
-  .photo {
-    width: 100%;
-    margin-top: 0.5rem;
-  }
 }
 
 /* Project grid */
