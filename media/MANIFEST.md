@@ -32,6 +32,15 @@ start of the `-vf` filter (the box's top-left corner and size, in source pixels,
 blacks out that rectangle for the whole clip, so it suits a fixed camera. Otherwise use `crop=` to
 frame the number out, or pick another take.
 
+To blur the same box instead of blacking it out, put
+`split[a][b];[b]crop=W:H:X:Y,gblur=sigma=20[c];[a][c]overlay=X:Y,` at the start of the `-vf` filter,
+before `scale` (same source-pixel box: size W×H, top-left corner X,Y).
+
+An empty slot's `<video>` in `index.html` uses the shared placeholder as its poster
+(`poster="media/posters/placeholder.svg"`); Chrome paints a grey box over the CSS placeholder when a
+video has no poster at all. When you add a slot's poster file, change that attribute to
+`poster="media/posters/<slug>.jpg"`.
+
 ## Privacy checklist (every clip and poster)
 
 - [ ] No identifiable faces without consent (minors never). When in doubt, crop, blur, or pick
