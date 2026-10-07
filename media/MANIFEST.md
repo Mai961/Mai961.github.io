@@ -158,8 +158,11 @@ ffmpeg -ss 2 -i media/clips/vision-replay-match.mp4 -frames:v 1 -update 1 -q:v 3
 - Clip: `media/clips/vision-replay-camera-stream.mp4`
 - Poster: `media/posters/vision-replay-camera-stream.jpg`
 - Target length: 10–25 s
-- Shows: a replay of the Odin camera's recorded image stream through the localizer, rendered
-  from a ROS 2 bag: the image with the accepted tags and the resulting pose.
+- Status: filled. The clip is 20 s, 1280×720, 6.4 MB; the poster is 1280×720.
+- Shows: the Odin camera's recorded SLAM point cloud, replayed and accumulated over 20 s.
+- How it was made: Rendered offline from a recorded ROS 2 bag of the Odin camera's SLAM point cloud
+  (sensor_msgs/PointCloud2 at 10 Hz) with a Python script: points accumulate on a 1 cm voxel grid
+  while the camera orbits once; no screen recording involved.
 - Privacy: check what the camera saw (people, screens, whiteboards). No window chrome, topic list
   or terminal in frame.
 
@@ -168,6 +171,6 @@ ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspec
 ffmpeg -ss 2 -i media/clips/vision-replay-camera-stream.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/vision-replay-camera-stream.jpg
 ```
 
-- [ ] clip
-- [ ] poster
+- [x] clip
+- [x] poster
 - [ ] privacy checklist

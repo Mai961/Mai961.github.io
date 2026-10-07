@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vision replay: the camera’s image stream | Mai</title>
-<meta name="description" content="The camera’s recorded image stream, replayed through the AprilTag localizer.">
+<meta name="description" content="The camera’s recorded SLAM point cloud, accumulated as it streams in.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="../assets/site.css">
@@ -28,11 +28,11 @@
   <h1>Vision replay: the camera&#8217;s image stream</h1>
   <figure class="clip">
     <div class="media frame" style="background-image: url(../media/posters/vision-replay-camera-stream.jpg), url(../media/posters/placeholder.svg)">
-      <video controls muted loop playsinline preload="none" poster="../media/posters/vision-replay-camera-stream.jpg" aria-label="Clip: replay of the Odin camera&#8217;s recorded image stream through the localizer.">
+      <video controls muted loop playsinline preload="none" poster="../media/posters/vision-replay-camera-stream.jpg" aria-label="Clip: the camera&#8217;s recorded SLAM point cloud, replayed and accumulated over 20&nbsp;s.">
         <source src="../media/clips/vision-replay-camera-stream.mp4" type="video/mp4">
       </video>
     </div>
-    <figcaption>Replay of the Odin camera&#8217;s recorded image stream through the localizer.<span class="clip-file"><a href="../media/clips/vision-replay-camera-stream.mp4">Open the MP4 file</a></span></figcaption>
+    <figcaption>Clip: the camera&#8217;s recorded SLAM point cloud, replayed and accumulated over 20&nbsp;s.<span class="clip-file"><a href="../media/clips/vision-replay-camera-stream.mp4">Open the MP4 file</a></span></figcaption>
   </figure>
   <div class="prose">
   <section>
@@ -41,7 +41,7 @@
   </section>
   <section>
     <h2>What I built</h2>
-    <p>The AprilTag localizer, a C++ ROS 2 node that turns a camera image into the camera&#8217;s pose on the field plus a 6x6 covariance. It started from a teammate&#8217;s port of an existing package; the pooled multi-tag solve, its weighted refine and the covariance are mine. The node never opens a camera; it reads an image topic, which on the robot came from the Odin camera&#8217;s own driver.</p>
+    <p>The AprilTag localizer, a C++ ROS 2 node that turns a camera image into the camera&#8217;s pose on the field plus a 6x6 covariance. It started from a teammate&#8217;s port of an existing package; the pooled multi-tag solve, its weighted refine and the covariance are mine. The node never opens a camera; it reads an image topic, which on the robot came from the Odin camera&#8217;s own driver. The clip above shows that camera&#8217;s point cloud stream.</p>
   </section>
   <section>
     <h2>How it works</h2>
