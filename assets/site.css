@@ -279,6 +279,11 @@ main {
   margin-top: 0.5rem;
 }
 
+.clip-file {
+  display: block;
+  margin-top: 0.25rem;
+}
+
 .project h1 {
   font-size: clamp(1.875rem, 5vw, 2.5rem);
 }

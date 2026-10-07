@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Localizing the arm’s field-fixed goal | Mai</title>
+<title>Reaching a field-fixed goal from AprilTag localization | Mai</title>
 <meta name="description" content="AprilTag fixes tell the robot where it stands, so the arm’s goal can be fixed on the field.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:,">
@@ -25,15 +25,14 @@
   </div>
 </header>
 <main id="main" class="wrap project">
-  <h1>Localizing the arm&#8217;s field-fixed goal</h1>
+  <h1>Reaching a field-fixed goal from AprilTag localization</h1>
   <figure class="clip">
     <div class="media frame" style="background-image: url(../media/posters/arm-tracking-an-apriltag.jpg), url(../media/posters/placeholder.svg)">
-      <video controls muted loop playsinline preload="none" poster="../media/posters/arm-tracking-an-apriltag.jpg">
+      <video controls muted loop playsinline preload="none" poster="../media/posters/arm-tracking-an-apriltag.jpg" aria-label="Clip: the robot locating itself from AprilTags, then the arm reaching its goal.">
         <source src="../media/clips/arm-tracking-an-apriltag.mp4" type="video/mp4">
-        <p>This browser cannot play the clip here. <a href="../media/clips/arm-tracking-an-apriltag.mp4">Open the MP4 file</a>.</p>
       </video>
     </div>
-    <figcaption>Clip: the robot locating itself from AprilTags, then reaching a goal fixed on the field.</figcaption>
+    <figcaption>Clip: the robot locating itself from AprilTags, then the arm reaching its goal.<span class="clip-file"><a href="../media/clips/arm-tracking-an-apriltag.mp4">Open the MP4 file</a></span></figcaption>
   </figure>
   <div class="prose">
   <section>
@@ -42,11 +41,11 @@
   </section>
   <section>
     <h2>What I built</h2>
-    <p>The localizer that turns tag sightings into a field pose, and the whole-body controller that uses it. The localizer started from a teammate&#8217;s port of an existing package; I developed its pooled multi-tag solve, the weighted refine and the covariance. The whole-body node reads the robot&#8217;s field pose, which the field EKF (extended Kalman filter) builds from those fixes, directly over ROS 2.</p>
+    <p>I wrote the field EKF (extended Kalman filter) and the whole-body controller, and developed the localizer&#8217;s pooled multi-tag solve and covariance. The whole-body node reads the robot&#8217;s field pose from the EKF directly over ROS 2.</p>
   </section>
   <section>
     <h2>How it works</h2>
-    <p>The localizer is described on the <a href="vision-replay-camera-stream.html">camera-stream page</a>; here it matters only that each fix carries a covariance the EKF can weight. The phases run DRIVE, APPROACH, TASK and RETRACT. APPROACH aims the arm, then waits until it reaches the goal&#8217;s aim posture. It also waits until a fresh field pose shows the chassis at its staging pose. When the arm enters TASK, the whole-body node converts the field-fixed goal into the solver&#8217;s frame through the chassis pose measured at that moment. Each QP step then moves the end of the arm toward it within joint and speed limits. Freezing the field-fixed goal at TASK entry was tested in simulation; hardware validation was still pending.</p>
+    <p>The localizer is described on the <a href="vision-replay-camera-stream.html">camera-stream page</a>; here it matters only that each fix carries a covariance the EKF can weight. The phase machine is described on the <a href="arm-placing-objects.html">whole-body page</a>. The localizer solves the camera&#8217;s pose in the field. The EKF converts it to the robot base through the camera mount, carries it forward to now with odometry, and fuses it. Before TASK, APPROACH also waits for a fresh field pose that shows the chassis at its staging pose. When the arm enters TASK, the whole-body node converts the field-fixed goal into the solver&#8217;s frame through the chassis pose measured at that moment. Each QP step then moves the end of the arm toward it within joint and speed limits. Freezing the field-fixed goal at TASK entry was tested in simulation; hardware validation was still pending.</p>
   </section>
   <section>
     <h2>Links</h2>

@@ -1,17 +1,24 @@
 (function () {
   var v = document.querySelector(".clip video");
   if (!v || !("IntersectionObserver" in window)) return;
-  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var reduceMotion = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   var visible = false;
-  var io = new IntersectionObserver(function (entries) {
+  var userPaused = false;
+  var autoPausing = false;
+  new IntersectionObserver(function (entries) {
     visible = entries[entries.length - 1].isIntersecting;
     if (visible) {
+      if (reduceMotion || userPaused) return;
       var p = v.play();
       if (p && p.catch) p.catch(function () {});
-    } else {
+    } else if (!v.paused) {
+      autoPausing = true;
       v.pause();
     }
-  }, { threshold: 0.5 });
-  v.addEventListener("pause", function () { if (visible) io.disconnect(); });
-  io.observe(v);
+  }, { threshold: 0.5 }).observe(v);
+  v.addEventListener("pause", function () {
+    if (autoPausing) { autoPausing = false; return; }
+    if (visible) userPaused = true;
+  });
+  v.addEventListener("play", function () { userPaused = false; });
 })();

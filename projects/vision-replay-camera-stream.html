@@ -28,12 +28,11 @@
   <h1>Vision replay: the camera&#8217;s image stream</h1>
   <figure class="clip">
     <div class="media frame" style="background-image: url(../media/posters/vision-replay-camera-stream.jpg), url(../media/posters/placeholder.svg)">
-      <video controls muted loop playsinline preload="none" poster="../media/posters/vision-replay-camera-stream.jpg">
+      <video controls muted loop playsinline preload="none" poster="../media/posters/vision-replay-camera-stream.jpg" aria-label="Clip: replay of the Odin camera&#8217;s recorded image stream through the localizer.">
         <source src="../media/clips/vision-replay-camera-stream.mp4" type="video/mp4">
-        <p>This browser cannot play the clip here. <a href="../media/clips/vision-replay-camera-stream.mp4">Open the MP4 file</a>.</p>
       </video>
     </div>
-    <figcaption>Replay of the Odin camera&#8217;s recorded image stream through the localizer.</figcaption>
+    <figcaption>Replay of the Odin camera&#8217;s recorded image stream through the localizer.<span class="clip-file"><a href="../media/clips/vision-replay-camera-stream.mp4">Open the MP4 file</a></span></figcaption>
   </figure>
   <div class="prose">
   <section>
@@ -46,7 +45,7 @@
   </section>
   <section>
     <h2>How it works</h2>
-    <p>Each detection first passes acceptance gates: decode quality, an allow-list, an edge margin and range. With two or more tags, all corners are pooled, and the field points are recentred on their centroid before OpenCV&#8217;s SQPnP seeds the pose. A weighted Levenberg-Marquardt refine follows, and keeps the seed if the result is non-finite, puts a point behind the camera, or fits worse. With one tag, IPPE returns both candidate poses of the flat square. The covariance gains the spread toward the second pose, weighted by a flip rate fitted to recorded data. The node publishes the camera pose with its covariance, and each tag solved alone to check the field layout. It also publishes every detection, including rejected ones and why.</p>
+    <p>Each detection first passes acceptance gates: decode quality, an allow-list, an edge margin and range. With two or more tags, all corners are pooled, and the field points are recentred on their centroid. Then OpenCV&#8217;s SQPnP (a perspective-n-point solver) seeds the pose. A weighted Levenberg&#8211;Marquardt (a least-squares refinement) step follows. It keeps the seed if the result is non-finite, puts a point behind the camera, or fits worse. With one tag, IPPE (OpenCV&#8217;s planar-target solver) returns both candidate poses of the flat square. The covariance gains the spread toward the second pose, weighted by a flip rate fitted to recorded data. The node publishes the camera pose with its covariance, each tag solved alone, and every detection, including rejected ones and why.</p>
   </section>
   <section>
     <h2>Links</h2>
