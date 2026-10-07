@@ -165,8 +165,13 @@ ffmpeg -ss 2 -i media/clips/vision-replay-match.mp4 -frames:v 1 -update 1 -q:v 3
 - Clip: `media/clips/vision-pointcloud-localizer.mp4`
 - Poster: `media/posters/vision-pointcloud-localizer.jpg`
 - Target length: 10–25 s
-- Shows: a screen recording of the Odin camera driver's point cloud beside the camera image with the
-  localizer's detections.
+- Status: filled. The clip is 7.8 s (the whole recording, shorter than the 10–25 s target),
+  1280×720, 1.8 MB; the poster is 1280×720.
+- Shows: a screen recording of the 3D view, with the Odin camera driver's point cloud and the
+  field's tag markers, beside the camera image with the localizer's detections.
+- How it was made: screen recording by me, encoded with ffmpeg: scaled to 1280 wide and padded to
+  1280×720, no crop needed (the capture shows no window chrome, taskbar or clock). A background
+  robot's bumper number is Gaussian-blurred in the camera image.
 - Privacy: a screen recording. Crop the window chrome and check panel titles, the topic list and
   everything the camera saw.
 
@@ -175,6 +180,6 @@ ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspec
 ffmpeg -ss 2 -i media/clips/vision-pointcloud-localizer.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/vision-pointcloud-localizer.jpg
 ```
 
-- [ ] clip
-- [ ] poster
+- [x] clip
+- [x] poster
 - [ ] privacy checklist

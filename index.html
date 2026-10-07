@@ -116,11 +116,11 @@
       <h3>Point cloud and localizer, live</h3>
       <figure class="clip">
         <div class="media frame" style="background-image: url(media/posters/vision-pointcloud-localizer.jpg), url(media/posters/placeholder.svg)">
-          <video controls muted loop playsinline preload="none" poster="media/posters/vision-pointcloud-localizer.jpg" aria-label="Clip: the camera&#8217;s point cloud beside the localizer&#8217;s output.">
+          <video controls muted loop playsinline preload="none" poster="media/posters/vision-pointcloud-localizer.jpg" aria-label="Clip: screen recording of the 3D view, with the point cloud and the field&#8217;s tag markers, beside the camera image with the localizer&#8217;s detections.">
             <source src="media/clips/vision-pointcloud-localizer.mp4" type="video/mp4">
           </video>
         </div>
-        <figcaption>Clip: the camera&#8217;s point cloud beside the localizer&#8217;s output.<span class="clip-file"><a href="media/clips/vision-pointcloud-localizer.mp4">Open the MP4 file</a></span></figcaption>
+        <figcaption>Clip: screen recording of the 3D view, with the point cloud and the field&#8217;s tag markers, beside the camera image with the localizer&#8217;s detections.<span class="clip-file"><a href="media/clips/vision-pointcloud-localizer.mp4">Open the MP4 file</a></span></figcaption>
       </figure>
       <p class="prose">The point cloud is the Odin camera driver&#8217;s own output, not my work. The localizer reads the same camera&#8217;s images; it started from a teammate&#8217;s port, and its pooled multi-tag solve and covariance are mine. With two or more tags in view, all corners are pooled, and OpenCV&#8217;s SQPnP (a perspective-n-point solver) seeds the camera pose. A weighted Levenberg&#8211;Marquardt (a least-squares refinement) step follows, and the covariance comes from a numeric Jacobian. With one tag, IPPE (OpenCV&#8217;s planar-target solver) returns both candidate poses of the flat square, and the covariance gains the spread toward the second pose. If the geometry is not observable, the pose is withheld instead of inventing a covariance.</p>
       <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a></p>
