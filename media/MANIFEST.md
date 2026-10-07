@@ -159,7 +159,7 @@ ffmpeg -ss 2 -i media/clips/vision-replay-match.mp4 -frames:v 1 -update 1 -q:v 3
 - [x] poster
 - [ ] privacy checklist
 
-### 6. Vision replay: the camera's image stream
+### 6. Vision replay: the camera's SLAM point cloud
 
 - Page: `projects/vision-replay-camera-stream.html`
 - Clip: `media/clips/vision-replay-camera-stream.mp4`
