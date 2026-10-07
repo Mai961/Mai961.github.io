@@ -1,8 +1,8 @@
 # Media manifest: capture checklist
 
-Every clip and poster on the site is a slot: the pages already point at the file names below.
-Until a file exists, its page shows the shared placeholder (`media/posters/placeholder.svg`). Fill a
-slot by dropping the file in at exactly the listed path.
+Every clip and poster on the site is a slot: `index.html` already points at the file names below.
+Until a file exists, its showcase shows the shared placeholder (`media/posters/placeholder.svg`).
+Fill a slot by dropping the file in at exactly the listed path.
 
 The links to the robotics showcase (`https://github.com/Mai961/robotics-showcase/...`) only work for
 visitors once that repository is public.
@@ -12,7 +12,7 @@ visitors once that repository is public.
 - Container and codec: MP4, H.264 (`libx264`), pixel format `yuv420p`, no audio track.
 - Size: 1280×720 (or 1920×1080), 30 fps, at most 8 MB.
 - Length: 10–25 s. Anything longer goes to an unlisted YouTube video instead of this repository,
-  linked from the project page's Links section.
+  linked from the showcase's Details line.
 - `-movflags +faststart` so the clip starts before it has fully downloaded.
 - `-map_metadata -1` clears the file-level metadata (phone GPS, creation time, title),
   `-map_metadata:s:v -1` the video track's own tags (its creation time and the recording device's
@@ -56,7 +56,7 @@ frame the number out, or pick another take.
 
 ### 1. Shoot on the move
 
-- Page: `projects/shoot-on-the-move.html`
+- Section: `index.html#shoot-on-the-move`
 - Clip: `media/clips/shoot-on-the-move.mp4`
 - Poster: `media/posters/shoot-on-the-move.jpg`
 - Target length: 10–25 s
@@ -75,7 +75,7 @@ ffmpeg -ss 2 -i media/clips/shoot-on-the-move.mp4 -frames:v 1 -update 1 -q:v 3 m
 
 ### 2. Whole-body arm control
 
-- Page: `projects/arm-placing-objects.html`
+- Section: `index.html#whole-body-control`
 - Clip: `media/clips/arm-placing-objects.mp4`
 - Poster: `media/posters/arm-placing-objects.jpg`
 - Target length: 10–25 s
@@ -94,12 +94,12 @@ ffmpeg -ss 2 -i media/clips/arm-placing-objects.mp4 -frames:v 1 -update 1 -q:v 3
 
 ### 3. Reaching a field-fixed goal from AprilTag localization
 
-- Page: `projects/arm-tracking-an-apriltag.html`
+- Section: `index.html#whole-body-control`
 - Clip: `media/clips/arm-tracking-an-apriltag.mp4`
 - Poster: `media/posters/arm-tracking-an-apriltag.jpg`
 - Target length: 10–25 s
 - Shows: the robot approaches, the tags give its field pose, and the arm reaches its goal. I intend
-  to record the arm tracking a moving tag. I will rename this page back to 'Arm tracking an
+  to record the arm tracking a moving tag. I will rename this showcase back to 'Arm tracking an
   AprilTag' only after the showcase README describes the mechanism.
 - Privacy: bumpers, people holding the tag (faces), the room around the bench.
 
@@ -114,7 +114,7 @@ ffmpeg -ss 2 -i media/clips/arm-tracking-an-apriltag.mp4 -frames:v 1 -update 1 -
 
 ### 4. Auto-tuning routine
 
-- Page: `projects/auto-tuning-routine.html`
+- Section: `index.html#auto-tuning`
 - Clip: `media/clips/auto-tuning-routine.mp4`
 - Poster: `media/posters/auto-tuning-routine.jpg`
 - Target length: 10–25 s
@@ -132,9 +132,9 @@ ffmpeg -ss 2 -i media/clips/auto-tuning-routine.mp4 -frames:v 1 -update 1 -q:v 3
 - [ ] poster
 - [ ] privacy checklist
 
-### 5. Vision replay: a recorded match
+### 5. Replay of a recorded match
 
-- Page: `projects/vision-replay-match.html`
+- Section: `index.html#vision`
 - Clip: `media/clips/vision-replay-match.mp4`
 - Poster: `media/posters/vision-replay-match.jpg`
 - Target length: 10–25 s
@@ -159,27 +159,22 @@ ffmpeg -ss 2 -i media/clips/vision-replay-match.mp4 -frames:v 1 -update 1 -q:v 3
 - [x] poster
 - [ ] privacy checklist
 
-### 6. AprilTag localizer, with the camera's recorded point cloud
+### 6. Point cloud and localizer, live
 
-- Page: `projects/vision-replay-camera-stream.html`
-- Clip: `media/clips/vision-replay-camera-stream.mp4`
-- Poster: `media/posters/vision-replay-camera-stream.jpg`
+- Section: `index.html#vision`
+- Clip: `media/clips/vision-pointcloud-localizer.mp4`
+- Poster: `media/posters/vision-pointcloud-localizer.jpg`
 - Target length: 10–25 s
-- Status: filled. The clip is 20 s, 1280×720, 6.4 MB; the poster is 1280×720.
-- Shows: the Odin camera driver's own SLAM point cloud, replayed from a recorded bag and
-  accumulated over 20 s. The point cloud is the driver's output, not mine.
-- How it was made: Rendered offline from a recorded ROS 2 bag of the Odin camera's SLAM point
-  cloud, a sensor_msgs/PointCloud2 stream at 10 Hz (from the render script, not from the showcase
-  README), with a Python script: points accumulate on a 1 cm voxel grid (from the render script,
-  not from the showcase README) while the camera orbits once; no screen recording involved.
-- Privacy: check what the camera saw (people, screens, whiteboards). No window chrome, topic list
-  or terminal in frame.
+- Shows: a screen recording of the Odin camera driver's point cloud beside the camera image with the
+  localizer's detections.
+- Privacy: a screen recording. Crop the window chrome and check panel titles, the topic list and
+  everything the camera saw.
 
 ```sh
-ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -map_metadata:s:v -1 -map_chapters -1 -movflags +faststart media/clips/vision-replay-camera-stream.mp4
-ffmpeg -ss 2 -i media/clips/vision-replay-camera-stream.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/vision-replay-camera-stream.jpg
+ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -map_metadata:s:v -1 -map_chapters -1 -movflags +faststart media/clips/vision-pointcloud-localizer.mp4
+ffmpeg -ss 2 -i media/clips/vision-pointcloud-localizer.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/vision-pointcloud-localizer.jpg
 ```
 
-- [x] clip
-- [x] poster
+- [ ] clip
+- [ ] poster
 - [ ] privacy checklist
