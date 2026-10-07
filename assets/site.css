@@ -41,7 +41,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   line-height: 1.6;
   overflow-wrap: break-word;
 }
@@ -211,7 +211,7 @@ main {
 /* Intro */
 
 .tagline {
-  font-size: 1.1875rem;
+  font-size: 1.3125rem;
   color: var(--muted);
   margin-bottom: 1.25rem;
 }
@@ -238,7 +238,7 @@ main {
 }
 
 .showcase + .showcase {
-  margin-top: 3rem;
+  margin-top: 4.5rem;
 }
 
 .showcase h3 {
@@ -246,9 +246,24 @@ main {
   margin-bottom: 0.75rem;
 }
 
-.details {
+.showcase p {
+  max-width: 70ch;
+  margin-bottom: 1.1em;
+}
+
+.showcase .lead {
+  font-weight: 650;
+  margin-bottom: 0.6em;
+}
+
+.showcase .note {
   color: var(--muted);
-  font-size: 0.9375rem;
+}
+
+.showcase .details {
+  margin-top: 1.75rem;
+  color: var(--muted);
+  font-size: 1rem;
 }
 
 .clip {

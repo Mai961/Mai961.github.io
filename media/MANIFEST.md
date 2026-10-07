@@ -159,7 +159,7 @@ ffmpeg -ss 2 -i media/clips/vision-replay-match.mp4 -frames:v 1 -update 1 -q:v 3
 - [x] poster
 - [ ] privacy checklist
 
-### 6. Point cloud and localizer, live
+### 6. Point cloud and localizer
 
 - Section: `index.html#vision`
 - Clip: `media/clips/vision-pointcloud-localizer.mp4`
