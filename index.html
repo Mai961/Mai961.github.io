@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mai | robotics software</title>
+<meta name="description" content="Mai: robotics software for perception, state estimation, real-time transport and control. Clips and write-ups of six projects.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="index.html">Mai</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#cv">CV</a></li>
+        <li><a href="https://github.com/Mai961/robotics-showcase">Showcase repo</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+  <section class="hero" aria-labelledby="about">
+    <div class="prose">
+      <h1 id="about">Mai</h1>
+      <p class="tagline">robotics software: perception, state estimation, real-time transport, control</p>
+      <p>I&#8217;m based in Freiburg. For four seasons I have written robot software for a competition robot: ROS&nbsp;2 on a Linux coprocessor, talking to a WPILib Java robot controller. I&#8217;m currently looking for a part-time developer role.</p>
+      <ul class="links">
+        <li><a href="https://github.com/Mai961/robotics-showcase">Robotics showcase</a></li>
+        <li><a href="https://github.com/Mai961">GitHub</a></li>
+        <li><a href="mailto:michael96mai@gmail.com">michael96mai@gmail.com</a></li>
+      </ul>
+      <p class="cv" id="cv">CV: <a href="cv/cv_en.pdf">English (PDF)</a> &middot; <a href="cv/cv_de.pdf" hreflang="de"><span lang="de">Deutsch</span> (PDF)</a></p>
+    </div>
+    <div class="media photo" role="img" aria-label="Photo of Mai" style="background-image: url(media/photos/about.jpg), url(media/posters/placeholder.svg)"></div>
+  </section>
+  <section id="projects" aria-labelledby="projects-heading">
+    <h2 id="projects-heading">Projects</h2>
+    <p class="prose">Each project page starts with a clip and links to its module in my robotics showcase. The robot code itself is not open source: the showcase holds short, annotated excerpts of my own work, simplified to show how each piece works.</p>
+    <ul class="grid">
+    <li class="card">
+      <div class="media poster" role="img" aria-label="Still frame from the clip: Shoot on the move" style="background-image: url(media/posters/shoot-on-the-move.jpg), url(media/posters/placeholder.svg)"></div>
+      <h3><a href="projects/shoot-on-the-move.html">Shoot on the move</a></h3>
+      <p>A turret that keeps aiming while the robot drives, with shot compensation for the robot&#8217;s own velocity.</p>
+    </li>
+    <li class="card">
+      <div class="media poster" role="img" aria-label="Still frame from the clip: Arm placing objects" style="background-image: url(media/posters/arm-placing-objects.jpg), url(media/posters/placeholder.svg)"></div>
+      <h3><a href="projects/arm-placing-objects.html">Arm placing objects</a></h3>
+      <p>Whole-body inverse kinematics on the coprocessor, with joint targets executed by the robot controller.</p>
+    </li>
+    <li class="card">
+      <div class="media poster" role="img" aria-label="Still frame from the clip: Arm tracking an AprilTag" style="background-image: url(media/posters/arm-tracking-an-apriltag.jpg), url(media/posters/placeholder.svg)"></div>
+      <h3><a href="projects/arm-tracking-an-apriltag.html">Arm tracking an AprilTag</a></h3>
+      <p>AprilTag fixes give the field pose that places the arm&#8217;s field-fixed goal.</p>
+    </li>
+    <li class="card">
+      <div class="media poster" role="img" aria-label="Still frame from the clip: Auto-tuning routine" style="background-image: url(media/posters/auto-tuning-routine.jpg), url(media/posters/placeholder.svg)"></div>
+      <h3><a href="projects/auto-tuning-routine.html">Auto-tuning routine</a></h3>
+      <p>A PID tuning bench for an arm joint, steered by a coding agent inside hard limits.</p>
+    </li>
+    <li class="card">
+      <div class="media poster" role="img" aria-label="Still frame from the clip: Vision replay: a recorded match" style="background-image: url(media/posters/vision-replay-match.jpg), url(media/posters/placeholder.svg)"></div>
+      <h3><a href="projects/vision-replay-match.html">Vision replay: a recorded match</a></h3>
+      <p>Tag detections and the estimated field pose, replayed from a recorded match.</p>
+    </li>
+    <li class="card">
+      <div class="media poster" role="img" aria-label="Still frame from the clip: Vision replay: the camera’s image stream" style="background-image: url(media/posters/vision-replay-camera-stream.jpg), url(media/posters/placeholder.svg)"></div>
+      <h3><a href="projects/vision-replay-camera-stream.html">Vision replay: the camera&#8217;s image stream</a></h3>
+      <p>The camera&#8217;s recorded image stream, replayed through the AprilTag localizer.</p>
+    </li>
+    </ul>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Zile Liao &middot; <a href="mailto:michael96mai@gmail.com">michael96mai@gmail.com</a></p>
+  </div>
+</footer>
+</body>
+</html>

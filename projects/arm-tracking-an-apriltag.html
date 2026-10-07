@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arm tracking an AprilTag | Mai</title>
+<meta name="description" content="AprilTag fixes give the field pose that places the arm’s field-fixed goal.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">Mai</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#cv">CV</a></li>
+        <li><a href="https://github.com/Mai961/robotics-showcase">Showcase repo</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap project">
+  <h1>Arm tracking an AprilTag</h1>
+  <!-- TODO(user): confirm the arm tracks the tag pose -->
+  <figure class="clip">
+    <div class="media frame" style="background-image: url(../media/posters/arm-tracking-an-apriltag.jpg), url(../media/posters/placeholder.svg)">
+      <video controls muted loop playsinline preload="none" poster="../media/posters/arm-tracking-an-apriltag.jpg">
+        <source src="../media/clips/arm-tracking-an-apriltag.mp4" type="video/mp4">
+        <p>This browser cannot play the clip here. <a href="../media/clips/arm-tracking-an-apriltag.mp4">Open the MP4 file</a>.</p>
+      </video>
+    </div>
+    <figcaption>Clip: the robot arm tracking an AprilTag.</figcaption>
+  </figure>
+  <div class="prose">
+  <section>
+    <h2>Problem</h2>
+    <p>The arm&#8217;s goals are poses fixed on the field, while the whole-body solver works in the robot&#8217;s own frame, so the robot has to know where it stands. AprilTags, printed squares at known places on the field, give that pose, but a single flat tag has a two-way pose ambiguity.</p>
+  </section>
+  <section>
+    <h2>What I built</h2>
+    <p>The localizer that turns tag sightings into a field pose, and the whole-body controller that uses it. The localizer started from a teammate&#8217;s port of an existing package; I developed its pooled multi-tag solve, the weighted refine and the covariance. The whole-body node reads the robot&#8217;s field pose, which the field EKF builds from those fixes, directly over ROS 2.</p>
+  </section>
+  <section>
+    <h2>How it works</h2>
+    <p>With two or more tags in view, the localizer pools all their corners into one solve, each weighted by its tag&#8217;s apparent edge length squared, so small, distant tags fade out smoothly. OpenCV&#8217;s SQPnP seeds the pose, and a weighted Levenberg-Marquardt refine improves it. The covariance comes from a numeric Jacobian; if the geometry is not observable, the pose is withheld instead of inventing a covariance. The field EKF weights each fix by that covariance. When the arm enters TASK, the whole-body node converts the field-fixed goal into the solver&#8217;s frame through the chassis pose measured at that moment, and each QP step moves the end of the arm toward it within joint and speed limits. Freezing the field-fixed goal at TASK entry was tested in simulation; hardware validation was still pending.</p>
+  </section>
+  <section>
+    <h2>Links</h2>
+    <ul>
+      <li><a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a>: the AprilTag localizer</li>
+      <li><a href="https://github.com/Mai961/robotics-showcase/tree/main/control/wholebody-2026">control/wholebody-2026</a>: the whole-body controller that takes the field-fixed goal</li>
+      <li><a href="https://github.com/Mai961/robotics-showcase/tree/main/state-estimation">state-estimation</a>: the field EKF between the two</li>
+    </ul>
+  </section>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Zile Liao &middot; <a href="mailto:michael96mai@gmail.com">michael96mai@gmail.com</a></p>
+  </div>
+</footer>
+<script>
+(function () {
+  var v = document.querySelector(".clip video");
+  if (!v || !("IntersectionObserver" in window)) return;
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var visible = false;
+  var io = new IntersectionObserver(function (entries) {
+    visible = entries[entries.length - 1].isIntersecting;
+    if (visible) {
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+    } else {
+      v.pause();
+    }
+  }, { threshold: 0.5 });
+  v.addEventListener("pause", function () { if (visible) io.disconnect(); });
+  io.observe(v);
+})();
+</script>
+</body>
+</html>

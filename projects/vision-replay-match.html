@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vision replay: a recorded match | Mai</title>
+<meta name="description" content="Tag detections and the estimated field pose, replayed from a recorded match.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">Mai</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#cv">CV</a></li>
+        <li><a href="https://github.com/Mai961/robotics-showcase">Showcase repo</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap project">
+  <h1>Vision replay: a recorded match</h1>
+  <figure class="clip">
+    <div class="media frame" style="background-image: url(../media/posters/vision-replay-match.jpg), url(../media/posters/placeholder.svg)">
+      <video controls muted loop playsinline preload="none" poster="../media/posters/vision-replay-match.jpg">
+        <source src="../media/clips/vision-replay-match.mp4" type="video/mp4">
+        <p>This browser cannot play the clip here. <a href="../media/clips/vision-replay-match.mp4">Open the MP4 file</a>.</p>
+      </video>
+    </div>
+    <figcaption>Replay of a recorded match, tag detections and the estimated field pose overlaid.</figcaption>
+  </figure>
+  <div class="prose">
+  <section>
+    <h2>Problem</h2>
+    <p>Control needs to know where the robot is on the field. The node this replaced froze a field correction at the first good tag sighting and judged every later one through hand-tuned gates, because the tag solve did not say how good a pose was.</p>
+  </section>
+  <section>
+    <h2>What I built</h2>
+    <p>The AprilTag localizer&#8217;s pooled multi-tag solve and its covariance, and the field EKF that fuses those fixes with the camera&#8217;s visual-inertial odometry (VIO). I wrote the filter in Python first, then ported it to C++ to cut CPU load. The result goes to the robot controller over UDP.</p>
+  </section>
+  <section>
+    <h2>How it works</h2>
+    <p>The EKF predicts from the camera&#8217;s VIO odometry, at about 400&nbsp;Hz, and corrects with each tag fix, weighted by the covariance the localizer computed rather than accepted or rejected by thresholds. Before the update, the tag pose is converted to the robot base through the camera mount and carried forward from the image&#8217;s capture time to now using odometry. By default, rotation comes only from multi-tag solves, because a single-tag solve can flip between two attitudes. A confidence floor keeps the covariance from shrinking to zero, so the filter keeps listening to the tags after a bump or a SLAM jump. On the robot controller, WPILib&#8217;s swerve pose estimator fuses the pose, dated to the image&#8217;s capture time, with wheel odometry.</p>
+  </section>
+  <section>
+    <h2>Links</h2>
+    <ul>
+      <li><a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a>: the AprilTag localizer</li>
+      <li><a href="https://github.com/Mai961/robotics-showcase/tree/main/state-estimation">state-estimation</a>: the field EKF and the robot-side fusion</li>
+    </ul>
+  </section>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Zile Liao &middot; <a href="mailto:michael96mai@gmail.com">michael96mai@gmail.com</a></p>
+  </div>
+</footer>
+<script>
+(function () {
+  var v = document.querySelector(".clip video");
+  if (!v || !("IntersectionObserver" in window)) return;
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var visible = false;
+  var io = new IntersectionObserver(function (entries) {
+    visible = entries[entries.length - 1].isIntersecting;
+    if (visible) {
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+    } else {
+      v.pause();
+    }
+  }, { threshold: 0.5 });
+  v.addEventListener("pause", function () { if (visible) io.disconnect(); });
+  io.observe(v);
+})();
+</script>
+</body>
+</html>

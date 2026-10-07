@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arm placing objects | Mai</title>
+<meta name="description" content="Whole-body inverse kinematics on the coprocessor, with joint targets executed by the robot controller.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">Mai</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#cv">CV</a></li>
+        <li><a href="https://github.com/Mai961/robotics-showcase">Showcase repo</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap project">
+  <h1>Arm placing objects</h1>
+  <figure class="clip">
+    <div class="media frame" style="background-image: url(../media/posters/arm-placing-objects.jpg), url(../media/posters/placeholder.svg)">
+      <video controls muted loop playsinline preload="none" poster="../media/posters/arm-placing-objects.jpg">
+        <source src="../media/clips/arm-placing-objects.mp4" type="video/mp4">
+        <p>This browser cannot play the clip here. <a href="../media/clips/arm-placing-objects.mp4">Open the MP4 file</a>.</p>
+      </video>
+    </div>
+    <figcaption>Clip: the robot arm placing objects.</figcaption>
+  </figure>
+  <div class="prose">
+  <section>
+    <h2>Problem</h2>
+    <p>The end of the arm has to reach poses fixed on the field. The robot is a swerve chassis with a three-joint planar arm: shoulder, telescope and wrist. Instead of hand-writing arm setpoints and state machines, a solver on the coprocessor should decide how the whole robot moves, and the robot controller should only close the control loops.</p>
+  </section>
+  <section>
+    <h2>What I built</h2>
+    <p>I wrote both halves. On the coprocessor, a Python ROS 2 node runs a phase state machine and, every tick, a quadratic program (QP) built with Placo over a model of the whole robot, under hard limits and weighted soft goals. On the robot, a WPILib joint executor hands the newest joint targets to the motor controllers&#8217; position loops and reports the measured joints back.</p>
+  </section>
+  <section>
+    <h2>How it works</h2>
+    <p>The phases run DRIVE, APPROACH, TASK, RETRACT and back to DRIVE; the robot never sees the phase. APPROACH waits until the arm reaches the goal&#8217;s aim posture and the chassis its staging pose. On entering TASK, the goal is converted into the solver&#8217;s frame through the chassis pose measured at that moment, so it stays at the same field point. Speed limits bound each QP step, so the joint targets <code>[q1, d, q3]</code> walk toward the goal over many ticks as they stream to the robot over UDP. The two streams fail in opposite ways on purpose: a lost arm target leaves the arm holding the last one, while a chassis command older than 0.3&nbsp;s stops the chassis. Driving to the staging pose and gating TASK on arrival were validated on hardware; the QP moving the chassis in TASK was tested in simulation only.</p>
+  </section>
+  <section>
+    <h2>Links</h2>
+    <ul>
+      <li><a href="https://github.com/Mai961/robotics-showcase/tree/main/control/wholebody-2026">control/wholebody-2026</a>: the state machine, the QP and the joint executor</li>
+    </ul>
+  </section>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Zile Liao &middot; <a href="mailto:michael96mai@gmail.com">michael96mai@gmail.com</a></p>
+  </div>
+</footer>
+<script>
+(function () {
+  var v = document.querySelector(".clip video");
+  if (!v || !("IntersectionObserver" in window)) return;
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var visible = false;
+  var io = new IntersectionObserver(function (entries) {
+    visible = entries[entries.length - 1].isIntersecting;
+    if (visible) {
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+    } else {
+      v.pause();
+    }
+  }, { threshold: 0.5 });
+  v.addEventListener("pause", function () { if (visible) io.disconnect(); });
+  io.observe(v);
+})();
+</script>
+</body>
+</html>
