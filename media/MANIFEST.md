@@ -138,8 +138,15 @@ ffmpeg -ss 2 -i media/clips/auto-tuning-routine.mp4 -frames:v 1 -update 1 -q:v 3
 - Clip: `media/clips/vision-replay-match.mp4`
 - Poster: `media/posters/vision-replay-match.jpg`
 - Target length: 10–25 s
-- Shows: a replay of a recorded match, rendered from a ROS 2 bag: the camera image with the tag
-  detections and the estimated field pose overlaid.
+- Status: filled. The clip is 20 s, 1280×720, 0.9 MB; the poster is 1280×720.
+- Shows: 20 s of a recorded match: the localizer's debug image beside the estimated field pose and
+  each tag fix.
+- How it was made: Rendered offline from a recorded ROS 2 bag with a Python script: left, the
+  localizer's own debug image (about 3 Hz, each frame held until the next); right, the fused field
+  pose at 400 Hz drawn as a path with each tag fix as a fading marker. The camera scene is
+  Gaussian-blurred because a readable team number was visible on arena banners; the tag boxes and
+  overlay are untouched. To replace it with an unblurred render, drop in a new file with the same
+  name.
 - Privacy: the camera sees other robots and the venue. Crop or blur readable team numbers on
   bumpers, event signage and audience faces. No window chrome, topic list or terminal in frame.
 
@@ -148,8 +155,8 @@ ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspec
 ffmpeg -ss 2 -i media/clips/vision-replay-match.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/vision-replay-match.jpg
 ```
 
-- [ ] clip
-- [ ] poster
+- [x] clip
+- [x] poster
 - [ ] privacy checklist
 
 ### 6. Vision replay: the camera's image stream
