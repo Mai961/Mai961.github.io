@@ -159,17 +159,19 @@ ffmpeg -ss 2 -i media/clips/vision-replay-match.mp4 -frames:v 1 -update 1 -q:v 3
 - [x] poster
 - [ ] privacy checklist
 
-### 6. Vision replay: the camera's SLAM point cloud
+### 6. AprilTag localizer, with the camera's recorded point cloud
 
 - Page: `projects/vision-replay-camera-stream.html`
 - Clip: `media/clips/vision-replay-camera-stream.mp4`
 - Poster: `media/posters/vision-replay-camera-stream.jpg`
 - Target length: 10–25 s
 - Status: filled. The clip is 20 s, 1280×720, 6.4 MB; the poster is 1280×720.
-- Shows: the Odin camera's recorded SLAM point cloud, replayed and accumulated over 20 s.
-- How it was made: Rendered offline from a recorded ROS 2 bag of the Odin camera's SLAM point cloud
-  (sensor_msgs/PointCloud2 at 10 Hz) with a Python script: points accumulate on a 1 cm voxel grid
-  while the camera orbits once; no screen recording involved.
+- Shows: the Odin camera driver's own SLAM point cloud, replayed from a recorded bag and
+  accumulated over 20 s. The point cloud is the driver's output, not mine.
+- How it was made: Rendered offline from a recorded ROS 2 bag of the Odin camera's SLAM point
+  cloud, a sensor_msgs/PointCloud2 stream at 10 Hz (from the render script, not from the showcase
+  README), with a Python script: points accumulate on a 1 cm voxel grid (from the render script,
+  not from the showcase README) while the camera orbits once; no screen recording involved.
 - Privacy: check what the camera saw (people, screens, whiteboards). No window chrome, topic list
   or terminal in frame.
 

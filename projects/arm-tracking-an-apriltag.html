@@ -41,11 +41,11 @@
   </section>
   <section>
     <h2>What I built</h2>
-    <p>I wrote the field EKF (extended Kalman filter) and the whole-body controller, and developed the localizer&#8217;s pooled multi-tag solve and covariance. The whole-body node reads the robot&#8217;s field pose from the EKF directly over ROS 2.</p>
+    <p>I wrote the field EKF (extended Kalman filter) and the whole-body controller. The whole-body node reads the robot&#8217;s field pose from the EKF directly over ROS 2.</p>
   </section>
   <section>
     <h2>How it works</h2>
-    <p>The localizer is described on the <a href="vision-replay-camera-stream.html">camera-stream page</a>; here it matters only that each fix carries a covariance the EKF can weight. The phase machine is described on the <a href="arm-placing-objects.html">whole-body page</a>. The localizer solves the camera&#8217;s pose in the field. The EKF converts it to the robot base through the camera mount, carries it forward to now with odometry, and fuses it. Before TASK, APPROACH also waits for a fresh field pose that shows the chassis at its staging pose. When the arm enters TASK, the whole-body node converts the field-fixed goal into the solver&#8217;s frame through the chassis pose measured at that moment. Each QP step then moves the end of the arm toward it within joint and speed limits. Freezing the field-fixed goal at TASK entry was tested in simulation; hardware validation was still pending.</p>
+    <p>The localizer is described on the <a href="vision-replay-camera-stream.html">localizer page</a>; here it matters only that each fix carries a covariance the EKF can weight. The localizer solves the camera&#8217;s pose in the field, and the EKF turns it into the robot&#8217;s field pose, as the <a href="vision-replay-match.html">match-replay page</a> explains. Before TASK, APPROACH also waits for a fresh field pose that shows the chassis at its staging pose. In TASK, each QP step moves the end of the arm toward the goal within joint and speed limits. The phase machine, and how the goal is frozen in the solver&#8217;s frame at TASK entry, are on the <a href="arm-placing-objects.html">whole-body page</a>.</p>
   </section>
   <section>
     <h2>Links</h2>
