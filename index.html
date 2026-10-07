@@ -43,7 +43,7 @@
     <article class="showcase">
       <figure class="clip">
         <div class="media frame" style="background-image: url(media/posters/shoot-on-the-move.jpg), url(media/posters/placeholder.svg)">
-          <video controls muted loop playsinline preload="none" poster="media/posters/placeholder.svg" aria-labelledby="cap-shoot-on-the-move">
+          <video controls muted loop playsinline preload="none" poster="media/posters/shoot-on-the-move.jpg" aria-labelledby="cap-shoot-on-the-move">
             <source src="media/clips/shoot-on-the-move.mp4" type="video/mp4">
           </video>
         </div>
@@ -61,7 +61,7 @@
       <h3>Whole-body arm control</h3>
       <figure class="clip">
         <div class="media frame" style="background-image: url(media/posters/arm-placing-objects.jpg), url(media/posters/placeholder.svg)">
-          <video controls muted loop playsinline preload="none" poster="media/posters/placeholder.svg" aria-labelledby="cap-arm-placing-objects">
+          <video controls muted loop playsinline preload="none" poster="media/posters/arm-placing-objects.jpg" aria-labelledby="cap-arm-placing-objects">
             <source src="media/clips/arm-placing-objects.mp4" type="video/mp4">
           </video>
         </div>
@@ -76,15 +76,16 @@
       <h3>Reaching a field-fixed goal from AprilTag localization</h3>
       <figure class="clip">
         <div class="media frame" style="background-image: url(media/posters/arm-tracking-an-apriltag.jpg), url(media/posters/placeholder.svg)">
-          <video controls muted loop playsinline preload="none" poster="media/posters/placeholder.svg" aria-labelledby="cap-arm-tracking-an-apriltag">
+          <video controls muted loop playsinline preload="none" poster="media/posters/arm-tracking-an-apriltag.jpg" aria-labelledby="cap-arm-tracking-an-apriltag">
             <source src="media/clips/arm-tracking-an-apriltag.mp4" type="video/mp4">
           </video>
         </div>
-        <figcaption><span id="cap-arm-tracking-an-apriltag">Clip: the robot locating itself from AprilTags, then the arm reaching its goal.</span><span class="clip-file"><a href="media/clips/arm-tracking-an-apriltag.mp4">Open the MP4 file</a></span></figcaption>
+        <figcaption><span id="cap-arm-tracking-an-apriltag">Clip: the arm following an AprilTag held at the end of a stick.</span><span class="clip-file"><a href="media/clips/arm-tracking-an-apriltag.mp4">Open the MP4 file</a></span></figcaption>
       </figure>
       <p class="lead">AprilTag fixes tell the robot where it stands, so the arm&#8217;s goal can be fixed on the field.</p>
       <p>AprilTags are printed squares at known places on the field; a tag fix is a pose from one camera frame. The arm&#8217;s goals are poses fixed on the field, while the whole-body solver works in the robot&#8217;s own frame. Before TASK, APPROACH also requires the field pose to be fresh. In TASK, each QP step moves the end of the arm toward the goal within joint and speed limits.</p>
       <p class="note">I wrote the field EKF (extended Kalman filter), which turns the localizer&#8217;s tag fixes into the robot&#8217;s field pose; both are shown under <a href="#vision">Vision</a>.</p>
+      <p>About the clip: I recorded this demo, where an AprilTag on the end of a stick moves near the robot and the arm follows it. This demo mode is not excerpted in the showcase repository.</p>
       <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/control/wholebody-2026">control/wholebody-2026</a>, <a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a>, <a href="https://github.com/Mai961/robotics-showcase/tree/main/state-estimation">state-estimation</a></p>
     </article>
   </section>
@@ -93,11 +94,11 @@
     <article class="showcase">
       <figure class="clip">
         <div class="media frame" style="background-image: url(media/posters/auto-tuning-routine.jpg), url(media/posters/placeholder.svg)">
-          <video controls muted loop playsinline preload="none" poster="media/posters/placeholder.svg" aria-labelledby="cap-auto-tuning-routine">
+          <video controls muted loop playsinline preload="none" poster="media/posters/auto-tuning-routine.jpg" aria-labelledby="cap-auto-tuning-routine">
             <source src="media/clips/auto-tuning-routine.mp4" type="video/mp4">
           </video>
         </div>
-        <figcaption><span id="cap-auto-tuning-routine">Clip: the auto-tuning routine on the test bench.</span><span class="clip-file"><a href="media/clips/auto-tuning-routine.mp4">Open the MP4 file</a></span></figcaption>
+        <figcaption><span id="cap-auto-tuning-routine">Clip: the auto-tuning routine moving the robot&#8217;s arm.</span><span class="clip-file"><a href="media/clips/auto-tuning-routine.mp4">Open the MP4 file</a></span></figcaption>
       </figure>
       <p class="lead">A PID tuning bench for an arm joint, steered by a coding agent inside hard limits.</p>
       <p>A blind grid or greedy search over an arm joint&#8217;s PID and feedforward gains tends to chase noisy minima into extreme values. The node sets gains, drives the joint through a test trajectory, scores the result, and aborts if anything looks unsafe. The agent decides which gain to sweep next, over what range, and when to stop, with a stated reason for every move. Each episode aborts to IDLE if the joint leaves its safe position band, the stator current (motor current) spikes, or the velocity reverses too often.</p>
