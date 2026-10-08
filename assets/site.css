@@ -344,6 +344,13 @@ main {
   margin-top: 0.5rem;
 }
 
+.clip-heading {
+  margin: 1.75rem 0 0.6rem;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
 .clip-file {
   display: block;
   margin-top: 0.25rem;
