@@ -5,17 +5,17 @@ showcase](https://github.com/Mai961/robotics-showcase) repository, hosted here s
 download them and open them locally in Foxglove Studio, or in the viewer linked from the site.
 
 The match, whole-body and clock-sync clips, with their `metadata.yaml` and layout files, are
-byte-identical copies of the showcase repository's: the match and whole-body clips from its
-public-evidence branch, the clock-sync clip from main. The match clip holds the localizer and the
+byte-identical copies of the showcase repository's main. The match clip holds the localizer and the
 field EKF over the same 20 s of a recorded match, with the field and tag scene topics, derived path
 and fix display topics, and the blurred detection image. The whole-body clip is a shop-session cycle
-with the arm on the field through the full transform chain; the node's parameter and debug topics
-are not included, and the recorded path is cropped to the clip.
+toward the goal `rear_2`, with a smooth curved approach and the arm on the field through the full
+transform chain; the node's parameter and debug topics are not included, and the recorded path is
+cropped to the clip.
 
 | File | Size | Source |
 |---|---|---|
-| `match/match-20s.mcap` | 6.1 MB | bag `20260905-134217`, 66.8 s to 86.8 s; showcase repository, public-evidence branch: `state-estimation/replay/match-20s.mcap` |
-| `wholebody-shop/wholebody-cycle-shop.mcap` | 3.1 MB | bag `20260818-140551`, 65.95 s to 75.25 s; showcase repository, public-evidence branch: `control/wholebody-2026/replay/wholebody-cycle-shop.mcap` |
+| `match/match-20s.mcap` | 6.1 MB | bag `20260905-134217`, 66.8 s to 86.8 s; showcase repository, main: `state-estimation/replay/match-20s.mcap` |
+| `wholebody-shop/wholebody-cycle-shop.mcap` | 1.2 MB | bag `20260814-163002`, 59.49 s to 65.87 s (6.38 s); showcase repository, main: `control/wholebody-2026/replay/wholebody-cycle-shop.mcap` |
 | `udp-bridge/clock-sync-154s.mcap` | 18 KB | showcase repository, main: `udp-bridge/replay/clock-sync-154s.mcap` |
 
 One more clip is hosted here that is not in the showcase repository:
