@@ -173,7 +173,7 @@ ffmpeg -ss 2 -i media/clips/arm-placing-objects.mp4 -frames:v 1 -update 1 -q:v 3
 - Clip: `media/clips/wholebody-layout.mp4`
 - Poster: `media/posters/wholebody-layout.jpg`
 - Target length: 10–25 s
-- Status: filled. The clip is 10.0 s, 1280×720, 0.7 MB; the poster is 1280×720.
+- Status: filled. The clip is 7.0 s, 1280×720, 0.4 MB; the poster is 1280×720.
 - Shows: the whole-body cycle (shop session) replayed in the viewer: joint references against
   measurements, the phase events, the arm and the robot on the field.
 - How it was made: screen recording of the viewer layout playing the replay clip, encoded with

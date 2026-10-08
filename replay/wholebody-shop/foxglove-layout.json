@@ -114,9 +114,9 @@
         "phi": 55,
         "thetaOffset": 10,
         "targetOffset": [
-          2.4,
-          4.3,
-          0.5
+          1.49,
+          4.22,
+          0.6
         ],
         "target": [
           0,
@@ -140,7 +140,8 @@
           "showLabel": false,
           "axisScale": 0.3,
           "labelSize": 0.12
-        }
+        },
+        "backgroundColor": "#f4f4f5"
       },
       "transforms": {
         "frame:arm_measured/ee": {
