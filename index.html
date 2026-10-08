@@ -73,7 +73,7 @@
       </figure>
       <p class="lead">The AprilTag localizer turns a camera image into the camera&#8217;s pose on the field, plus a 6x6 covariance.</p>
       <p>With two or more tags in view, all corners are pooled. If the geometry is not observable, the pose is withheld instead of inventing a covariance.</p>
-      <p class="note">The point cloud is the Odin camera driver&#8217;s own output, not my work.</p>
+      <p class="note">The point cloud is the camera driver&#8217;s own output; the localizer started from a teammate&#8217;s port, and its pooled multi-tag solve and covariance are mine.</p>
       <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a></p>
       <p class="replay">Replay: <a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp"><code>python perception-sqpnp/replay/replay_localizer.py</code></a> &#8594; re-solving 178 pooled frames from the logged corners, which the node rounded to whole pixels, lands within a median 14.1&nbsp;mm of the recorded pose; from unrounded corners reprojected from each tag&#8217;s logged pose, 0.48&nbsp;mm.</p>
 
