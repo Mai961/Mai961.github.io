@@ -56,7 +56,7 @@
             <source src="media/clips/vision-replay-match.mp4" type="video/mp4">
           </video>
         </div>
-        <figcaption><span id="cap-vision-replay-match">Clip: 20&nbsp;s of a recorded match, the localizer&#8217;s debug image beside the estimated field pose and each tag fix.</span><span class="clip-file"><a href="media/clips/vision-replay-match.mp4">Open the MP4 file</a> &#183; <a href="replay/state-estimation/field-ekf-match-20s.mcap" download>Download the replay (.mcap, 2.0&nbsp;MB)</a></span></figcaption>
+        <figcaption><span id="cap-vision-replay-match">Clip: 20&nbsp;s of a recorded match, the localizer&#8217;s debug image beside the estimated field pose and each tag fix.</span><span class="clip-file"><a href="media/clips/vision-replay-match.mp4">Open the MP4 file</a> &#183; <a href="replay/state-estimation/field-ekf-match-20s.mcap" download>Download the replay (.mcap, 5.4&nbsp;MB)</a></span></figcaption>
       </figure>
       <p class="lead">The field EKF fuses tag fixes from the localizer with the camera&#8217;s visual-inertial odometry (VIO).</p>
       <p>The EKF predicts from the VIO odometry at about 400&nbsp;Hz and corrects with each tag fix. Each fix is weighted by the covariance the localizer computed.</p>
@@ -77,7 +77,7 @@
             <source src="media/clips/vision-pointcloud-localizer.mp4" type="video/mp4">
           </video>
         </div>
-        <figcaption><span id="cap-vision-pointcloud-localizer">Clip: screen recording of the 3D view, with the point cloud and the field&#8217;s tag markers, beside the camera image with the localizer&#8217;s detections.</span><span class="clip-file"><a href="media/clips/vision-pointcloud-localizer.mp4">Open the MP4 file</a> &#183; <a href="replay/perception-sqpnp/localizer-shop-20s.mcap" download>Download the replay (.mcap, 13.9&nbsp;MB)</a> &#183; <a href="replay/odin-cloud-slam/odin-cloud-slam-15s.mcap" download>Download the point-cloud replay (.mcap, 22.5&nbsp;MB)</a></span></figcaption>
+        <figcaption><span id="cap-vision-pointcloud-localizer">Clip: screen recording of the 3D view, with the point cloud and the field&#8217;s tag markers, beside the camera image with the localizer&#8217;s detections.</span><span class="clip-file"><a href="media/clips/vision-pointcloud-localizer.mp4">Open the MP4 file</a> &#183; <a href="replay/perception-sqpnp/localizer-shop-20s.mcap" download>Download the replay (.mcap, 15.7&nbsp;MB)</a> &#183; <a href="replay/odin-cloud-slam/odin-cloud-slam-15s.mcap" download>Download the point-cloud replay (.mcap, 22.5&nbsp;MB)</a></span></figcaption>
       </figure>
       <p class="lead">The AprilTag localizer turns a camera image into the camera&#8217;s pose on the field, plus a 6x6 covariance.</p>
       <p>With two or more tags in view, all corners are pooled. If the geometry is not observable, the pose is withheld instead of inventing a covariance.</p>
@@ -120,7 +120,16 @@
             <source src="media/clips/arm-placing-objects.mp4" type="video/mp4">
           </video>
         </div>
-        <figcaption><span id="cap-arm-placing-objects">Clip: the robot driving to its staging pose, then the arm reaching its goal.</span><span class="clip-file"><a href="media/clips/arm-placing-objects.mp4">Open the MP4 file</a> &#183; <a href="replay/control-wholebody-2026/wholebody-cycle-10s.mcap" download>Download the replay (.mcap, 0.8&nbsp;MB)</a></span></figcaption>
+        <figcaption><span id="cap-arm-placing-objects">Clip: the robot driving to its staging pose, then the arm reaching its goal.</span><span class="clip-file"><a href="media/clips/arm-placing-objects.mp4">Open the MP4 file</a> &#183; <a href="replay/control-wholebody-2026/wholebody-cycle-10s.mcap" download>Download the replay (.mcap, 1.2&nbsp;MB)</a></span></figcaption>
+      </figure>
+      <h4 class="clip-heading">Replay in the viewer</h4>
+      <figure class="clip">
+        <div class="media frame" style="background-image: url(media/posters/wholebody-layout.jpg), url(media/posters/placeholder.svg)">
+          <video controls muted loop playsinline preload="none" poster="media/posters/wholebody-layout.jpg" aria-labelledby="cap-wholebody-layout">
+            <source src="media/clips/wholebody-layout.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption><span id="cap-wholebody-layout">Clip: the 10&nbsp;s whole-body cycle replayed in the browser viewer: joint references against measurements, the phase, the arm and the robot on the field.</span><span class="clip-file"><a href="media/clips/wholebody-layout.mp4">Open the MP4 file</a></span></figcaption>
       </figure>
       <p class="lead">A solver on the coprocessor decides how the whole robot moves.</p>
       <p>A phase state machine runs DRIVE, APPROACH, TASK and RETRACT. On entering TASK, the goal is converted into the solver&#8217;s frame and frozen, so it stays at one field point.</p>

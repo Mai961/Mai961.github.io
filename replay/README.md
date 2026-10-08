@@ -1,17 +1,23 @@
 # Replay clips
 
-These are byte-identical copies of the replay clips in the [robotics
-showcase](https://github.com/Mai961/robotics-showcase) repository (main, commit `0c41990`). They are
-hosted here so visitors can download them and open them locally in Foxglove Studio. Each file is an
-MCAP recording of a ROS 2 bag. The showcase repository is the source of truth: when a clip changes
-there, copy it here again unchanged.
+These are MCAP recordings of ROS 2 bags from the
+[robotics showcase](https://github.com/Mai961/robotics-showcase) repository's replay clips, hosted
+here so visitors can download them and open them locally in Foxglove Studio.
 
-| File | Copied from (showcase repository) |
-|---|---|
-| `perception-sqpnp/localizer-shop-20s.mcap` | `perception-sqpnp/replay/localizer-shop-20s.mcap` |
-| `state-estimation/field-ekf-match-20s.mcap` | `state-estimation/replay/field-ekf-match-20s.mcap` |
-| `control-wholebody-2026/wholebody-cycle-10s.mcap` | `control/wholebody-2026/replay/wholebody-cycle-10s.mcap` |
-| `udp-bridge/clock-sync-154s.mcap` | `udp-bridge/replay/clock-sync-154s.mcap` |
+The localizer, field EKF and whole-body clips are rebuilt from the same recorded windows as the
+showcase repository's clips (main, commit `0c41990`). They now also carry the field and tag scene
+topics for the viewer (`/viz/field`, `/viz/robot_field`, `/viz/field_base_path`, and for the
+localizer and EKF clips `/viz/tag_seen` and a derived `/viz/fix_points` display topic; the
+whole-body clip adds `/viz/arm`). Each of their folders holds the clip, its rosbag2
+`metadata.yaml` and a `foxglove-layout.json` to import. The clock-sync clip is still a
+byte-identical copy of the showcase repository's.
+
+| File | Size | Source in the showcase repository |
+|---|---|---|
+| `perception-sqpnp/localizer-shop-20s.mcap` | 15.7 MB | rebuilt from `perception-sqpnp/replay/localizer-shop-20s.mcap`'s window |
+| `state-estimation/field-ekf-match-20s.mcap` | 5.4 MB | rebuilt from `state-estimation/replay/field-ekf-match-20s.mcap`'s window |
+| `control-wholebody-2026/wholebody-cycle-10s.mcap` | 1.2 MB | rebuilt from `control/wholebody-2026/replay/wholebody-cycle-10s.mcap`'s window |
+| `udp-bridge/clock-sync-154s.mcap` | 18 KB | byte-identical copy of `udp-bridge/replay/clock-sync-154s.mcap` |
 
 One more clip is hosted here that is not in the showcase repository:
 

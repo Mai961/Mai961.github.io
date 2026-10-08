@@ -7,7 +7,7 @@ Fill a slot by dropping the file in at exactly the listed path.
 The links to the robotics showcase (`https://github.com/Mai961/robotics-showcase/...`) only work for
 visitors once that repository is public.
 
-## Encoding spec (all six clips)
+## Encoding spec (all clips)
 
 - Container and codec: MP4, H.264 (`libx264`), pixel format `yuv420p`, no audio track.
 - Size: 1280×720 (or 1920×1080), 30 fps, at most 8 MB.
@@ -165,7 +165,30 @@ ffmpeg -ss 2 -i media/clips/arm-placing-objects.mp4 -frames:v 1 -update 1 -q:v 3
 - [x] poster
 - [ ] privacy checklist
 
-### 5. Reaching a field-fixed goal from AprilTag localization
+### 5. Replay in the viewer (whole-body)
+
+- Section: `index.html#whole-body-control`
+- Clip: `media/clips/wholebody-layout.mp4`
+- Poster: `media/posters/wholebody-layout.jpg`
+- Target length: 10–25 s
+- Status: filled. The clip is 10.0 s, 1280×720, 0.5 MB; the poster is 1280×720.
+- Shows: the 10 s whole-body cycle replayed in the browser viewer: joint references against
+  measurements, the phase, the arm and the robot on the field.
+- How it was made: screen recording of the viewer layout playing the replay clip, encoded with
+  ffmpeg.
+- Privacy: a screen recording. Check panel titles, the topic list and the playback clock; crop the
+  window chrome.
+
+```sh
+ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -map_metadata:s:v -1 -map_chapters -1 -movflags +faststart media/clips/wholebody-layout.mp4
+ffmpeg -ss 2 -i media/clips/wholebody-layout.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/wholebody-layout.jpg
+```
+
+- [x] clip
+- [x] poster
+- [ ] privacy checklist
+
+### 6. Reaching a field-fixed goal from AprilTag localization
 
 - Section: `index.html#whole-body-control`
 - Clip: `media/clips/arm-tracking-an-apriltag.mp4`
@@ -191,7 +214,7 @@ ffmpeg -ss 2 -i media/clips/arm-tracking-an-apriltag.mp4 -frames:v 1 -update 1 -
 - [x] poster
 - [ ] privacy checklist
 
-### 6. Auto-tuning routine
+### 7. Auto-tuning routine
 
 - Section: `index.html#auto-tuning`
 - Clip: `media/clips/auto-tuning-routine.mp4`
