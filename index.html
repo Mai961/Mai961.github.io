@@ -62,7 +62,7 @@
       <p>The EKF predicts from the VIO odometry at about 400&nbsp;Hz and corrects with each tag fix. Each fix is weighted by the covariance the localizer computed.</p>
       <p class="note">I wrote the EKF in Python first, then ported it to C++ to cut CPU load.</p>
       <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/state-estimation">state-estimation</a>, <a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a></p>
-      <p class="replay">Replay: <a href="https://github.com/Mai961/robotics-showcase/tree/main/state-estimation"><code>python state-estimation/replay/replay_field_ekf.py</code></a> &#8594; a Python port of the C++ EKF tracks the recorded field pose to a median of 0.008&nbsp;mm after the cold start (130 tag updates; 1 of 130 above the 95&nbsp;% line of NIS, the normalized innovation squared).</p>
+      <p class="replay">Replay: <a href="https://github.com/Mai961/robotics-showcase/tree/main/state-estimation"><code>python state-estimation/replay/replay_field_ekf.py</code></a> &#8594; A Python port of the C++ EKF tracks the recorded field pose to a median of 0.008&nbsp;mm after the cold start (130 tag updates). One of 130 updates lies above the 95&nbsp;% line of NIS, the normalized innovation squared.</p>
 
     </article>
     <article class="showcase">
@@ -80,10 +80,10 @@
         <figcaption><span id="cap-vision-pointcloud-localizer">Clip: screen recording of the 3D view, with the point cloud and the field&#8217;s tag markers, beside the camera image with the localizer&#8217;s detections.</span><span class="clip-file"><a href="media/clips/vision-pointcloud-localizer.mp4">Open the MP4 file</a> &#183; <a href="replay/perception-sqpnp/localizer-shop-20s.mcap" download>Download the replay (.mcap, 15.7&nbsp;MB)</a> &#183; <a href="replay/odin-cloud-slam/odin-cloud-slam-15s.mcap" download>Download the point-cloud replay (.mcap, 22.5&nbsp;MB)</a></span></figcaption>
       </figure>
       <p class="lead">The AprilTag localizer turns a camera image into the camera&#8217;s pose on the field, plus a 6x6 covariance.</p>
-      <p>With two or more tags in view, all corners are pooled. If the geometry is not observable, the pose is withheld instead of inventing a covariance.</p>
+      <p>If the geometry is not observable, the pose is withheld instead of inventing a covariance.</p>
       <p class="note">The point cloud is the camera driver&#8217;s own output; the localizer started from a teammate&#8217;s port, and its pooled multi-tag solve and covariance are mine.</p>
       <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a></p>
-      <p class="replay">Replay: <a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp"><code>python perception-sqpnp/replay/replay_localizer.py</code></a> &#8594; re-solving 178 pooled frames from the logged corners, which the node rounded to whole pixels, lands within a median 14.1&nbsp;mm of the recorded pose; from unrounded corners reprojected from each tag&#8217;s logged pose, 0.48&nbsp;mm.</p>
+      <p class="replay">Replay: <a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp"><code>python perception-sqpnp/replay/replay_localizer.py</code></a> &#8594; Re-solving 178 pooled frames from the logged corners, which the node rounded to whole pixels, lands within a median 14.1&nbsp;mm of the recorded pose. From unrounded corners reprojected from each tag&#8217;s logged pose, the median is 0.48&nbsp;mm.</p>
 
     </article>
     <p class="section-note">The viewer buttons open the clip with its panel layout in Lichtblick, an open-source build of Foxglove Studio; no sign-in.</p>
@@ -103,7 +103,7 @@
       <p>A ball fired from a moving robot keeps the robot&#8217;s velocity. The compensation looks ahead and splits the velocity into the part toward the target and the part across it.</p>
       <p class="note">I wrote the turret&#8217;s aiming cascade and its shot compensation, with contributions from teammates.</p>
       <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/control/turret-2026">control/turret-2026</a></p>
-      <p class="replay">Replay: <a href="https://github.com/Mai961/robotics-showcase/tree/main/control/turret-2026"><code>python control/turret-2026/replay/replay_shot_solution.py</code></a> &#8594; the turret loop&#8217;s aim error and feedforward recompute from the 30&nbsp;s log to within 0.0010&#176; and 0.0005&nbsp;V; tracking RMS 0.90&#176; (in this clip the turret held a fixed field heading and shot compensation was off; the compensation law is shown as a counterfactual).</p>
+      <p class="replay">Replay: <a href="https://github.com/Mai961/robotics-showcase/tree/main/control/turret-2026"><code>python control/turret-2026/replay/replay_shot_solution.py</code></a> &#8594; The turret loop&#8217;s aim error and feedforward recompute from the 30&nbsp;s log to within 0.0010&#176; and 0.0005&nbsp;V. Tracking RMS is 0.90&#176;. In this clip the turret held a fixed field heading, and shot compensation was off. The compensation law is shown as a counterfactual.</p>
 
     </article>
   </section>
