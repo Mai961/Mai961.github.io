@@ -5,6 +5,7 @@
   --text: #1b1d21;
   --muted: #545a63;
   --rule: #d9dce1;
+  --pill-border: #868d97;
   --accent: #0b5cad;
   --focus: #0b5cad;
   --radius: 10px;
@@ -20,6 +21,7 @@
     --text: #e7e9ec;
     --muted: #a5abb4;
     --rule: #2e333b;
+    --pill-border: #5c6470;
     --accent: #80b9ff;
     --focus: #80b9ff;
   }
@@ -148,7 +150,17 @@ ul {
 }
 
 .site-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
   color: var(--text);
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  flex: none;
+  fill: currentColor;
 }
 
 /* Topic nav: one link per section, sticky on wide screens */
@@ -219,9 +231,37 @@ main {
 .links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1.25rem;
+  gap: 0.6rem;
+  margin: 1.25rem 0 0;
   padding: 0;
   list-style: none;
+}
+
+.links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.5em 0.9em;
+  border: 1px solid var(--pill-border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.25;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.links a:hover {
+  border-color: var(--accent);
+  background: var(--surface);
+  color: var(--accent);
+}
+
+.links a:focus-visible {
+  border-color: var(--accent);
+  outline-offset: 2px;
+  border-radius: 999px;
 }
 
 /* Topics and showcases */
