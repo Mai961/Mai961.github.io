@@ -5,9 +5,10 @@ These are MCAP recordings of ROS 2 bags from the
 here so visitors can download them and open them locally in Foxglove Studio.
 
 All four clips, and the `metadata.yaml` and layout files beside them, are byte-identical copies of
-the showcase repository's (main); the localizer and EKF clips carry the field and tag scene topics
-and a derived `/viz/fix_points` display topic, and the whole-body clip carries the field scene
-topics and `/viz/arm`.
+the showcase repository's (main), except the whole-body layout, which here also hides
+`/wholebody/goals_field` in the field 3D panel; the localizer and EKF clips carry the field and tag
+scene topics and a derived `/viz/fix_points` display topic, and the whole-body clip carries the
+field scene topics and `/viz/arm`.
 
 | File | Size | Source in the showcase repository |
 |---|---|---|

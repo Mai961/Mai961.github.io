@@ -11,10 +11,10 @@ they are, without running Jekyll. GitHub Pages deploys the site from the `main` 
 
 To add a showcase in 10 minutes: in `index.html`, copy an existing `<article class="showcase">`
 block into the right topic section. For a new topic, copy a whole `<section class="topic">` and add
-a link to its `id` in the topic nav at the top. Change the heading, the caption (it is also the
-video's `aria-label`), the paragraph, the Details links, and every `<slug>` in the clip and poster
-paths. Add a slot block for it to `media/MANIFEST.md`, copied from an existing block. Encode the
-clip and extract its poster frame with the commands in `media/MANIFEST.md`, drop them into
+a link to its `id` in the topic nav at the top. Change the heading, the caption (it is referenced by
+the video's `aria-labelledby`), the paragraph, the Details links, and every `<slug>` in the clip and
+poster paths. Add a slot block for it to `media/MANIFEST.md`, copied from an existing block. Encode
+the clip and extract its poster frame with the commands in `media/MANIFEST.md`, drop them into
 `media/clips/<slug>.mp4` and `media/posters/<slug>.jpg`, go through the privacy checklist there,
 then commit. To preview locally, run `python3 -m http.server` in the repository root and open
 http://localhost:8000.
