@@ -2,10 +2,10 @@ rosbag2_bagfile_information:
   version: 9
   storage_identifier: mcap
   duration:
-    nanoseconds: 19996192166
+    nanoseconds: 19971949661
   starting_time:
-    nanoseconds_since_epoch: 1785597098394095611
-  message_count: 4818
+    nanoseconds_since_epoch: 1785597080414279848
+  message_count: 4519
   topics_with_message_count:
     - topic_metadata:
         name: /viz/tag_seen
@@ -28,7 +28,7 @@ rosbag2_bagfile_information:
               nsec: 854775807
             avoid_ros_namespace_conventions: false
         type_description_hash: RIHS01_48c640ae3c3c25188e497ddea0ea11c2e189b50db3ef425f2c518d2355e5ff60
-      message_count: 128
+      message_count: 122
     - topic_metadata:
         name: /tf_static
         type: tf2_msgs/msg/TFMessage
@@ -72,7 +72,7 @@ rosbag2_bagfile_information:
               nsec: 854775807
             avoid_ros_namespace_conventions: false
         type_description_hash: RIHS01_10f3786d7d40fd2b54367835614bff85d4ad3b5dab62bf8bca0cc232d73b4cd8
-      message_count: 971
+      message_count: 998
     - topic_metadata:
         name: /odin_apriltag_localizer/field_odom
         type: geometry_msgs/msg/PoseStamped
@@ -94,7 +94,7 @@ rosbag2_bagfile_information:
               nsec: 854775807
             avoid_ros_namespace_conventions: false
         type_description_hash: RIHS01_10f3786d7d40fd2b54367835614bff85d4ad3b5dab62bf8bca0cc232d73b4cd8
-      message_count: 127
+      message_count: 70
     - topic_metadata:
         name: /viz/odin_camera
         type: foxglove_msgs/msg/PoseInFrame
@@ -116,7 +116,7 @@ rosbag2_bagfile_information:
               nsec: 854775807
             avoid_ros_namespace_conventions: false
         type_description_hash: RIHS01_1845ac4cd5c79fed67d1b392a5f719cf3fbd4019eff82969bb18fcbfa6fcc5f4
-      message_count: 127
+      message_count: 70
     - topic_metadata:
         name: /odin_apriltag_localizer/tag_pose
         type: geometry_msgs/msg/PoseStamped
@@ -138,7 +138,7 @@ rosbag2_bagfile_information:
               nsec: 854775807
             avoid_ros_namespace_conventions: false
         type_description_hash: RIHS01_10f3786d7d40fd2b54367835614bff85d4ad3b5dab62bf8bca0cc232d73b4cd8
-      message_count: 127
+      message_count: 70
     - topic_metadata:
         name: /odin_apriltag_localizer/debug_image/compressed
         type: sensor_msgs/msg/CompressedImage
@@ -160,7 +160,7 @@ rosbag2_bagfile_information:
               nsec: 854775807
             avoid_ros_namespace_conventions: false
         type_description_hash: RIHS01_15640771531571185e2efc8a100baf923961a4d15d5569652e6cb6691e8e371a
-      message_count: 191
+      message_count: 198
     - topic_metadata:
         name: /viz/field
         type: foxglove_msgs/msg/SceneUpdate
@@ -204,7 +204,7 @@ rosbag2_bagfile_information:
               nsec: 854775807
             avoid_ros_namespace_conventions: false
         type_description_hash: RIHS01_1957a5bb3cee5da65c4e52e52b65a93df227efce4c20f8458b36e73066ca334b
-      message_count: 392
+      message_count: 247
     - topic_metadata:
         name: /viz/field_base_pose
         type: geometry_msgs/msg/PoseStamped
@@ -226,7 +226,7 @@ rosbag2_bagfile_information:
               nsec: 854775807
             avoid_ros_namespace_conventions: false
         type_description_hash: RIHS01_10f3786d7d40fd2b54367835614bff85d4ad3b5dab62bf8bca0cc232d73b4cd8
-      message_count: 971
+      message_count: 996
     - topic_metadata:
         name: /tf
         type: tf2_msgs/msg/TFMessage
@@ -263,7 +263,7 @@ rosbag2_bagfile_information:
               nsec: 854775807
             avoid_ros_namespace_conventions: false
         type_description_hash: RIHS01_e369d0f05a23ae52508854b66f6aa0437f3449d652e8cbf22d5abe85d020f087
-      message_count: 1498
+      message_count: 1464
     - topic_metadata:
         name: /odin1/odometry
         type: nav_msgs/msg/Odometry
@@ -285,7 +285,7 @@ rosbag2_bagfile_information:
               nsec: 854775807
             avoid_ros_namespace_conventions: false
         type_description_hash: RIHS01_3cc97dc7fb7502f8714462c526d369e35b603cfc34d946e3f2eda2766dfec6e0
-      message_count: 205
+      message_count: 204
     - topic_metadata:
         name: /odin1/cloud_slam
         type: sensor_msgs/msg/PointCloud2
@@ -307,7 +307,7 @@ rosbag2_bagfile_information:
               nsec: 854775807
             avoid_ros_namespace_conventions: false
         type_description_hash: RIHS01_9198cabf7da3796ae6fe19c4cb3bdd3525492988c70522628af5daa124bae2b5
-      message_count: 69
+      message_count: 68
   compression_format: ""
   compression_mode: ""
   relative_file_paths:
@@ -315,9 +315,9 @@ rosbag2_bagfile_information:
   files:
     - path: odin-cloud-slam-20s.mcap
       starting_time:
-        nanoseconds_since_epoch: 1785597098394095611
+        nanoseconds_since_epoch: 1785597080414279848
       duration:
-        nanoseconds: 19996192166
-      message_count: 4818
+        nanoseconds: 19971949661
+      message_count: 4519
   custom_data: ~
   ros_distro: jazzy
