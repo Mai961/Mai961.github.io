@@ -339,6 +339,40 @@ main {
   font-style: italic;
 }
 
+/* Replay clips page */
+
+.replay-entry {
+  border-top: 2px solid var(--rule);
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+}
+
+.replay-entry h2 {
+  margin-top: 0;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.3rem 1rem;
+  max-width: 72ch;
+  margin: 0 0 1rem;
+}
+
+.facts dt {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.facts dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.back {
+  margin-top: 3rem;
+}
+
 /* Footer */
 
 .site-footer {

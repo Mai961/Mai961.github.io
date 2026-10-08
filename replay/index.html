@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Replay clips</title>
+<meta name="description" content="Replay clips: MCAP recordings behind the project showcase, to download or open in Foxglove.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<!-- Icons: Primer Octicons 19.40.0 (mark-github), MIT License, Copyright (c) GitHub Inc. -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">Mai</a>
+    <a class="site-link" href="https://github.com/Mai961/robotics-showcase"><svg class="icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/></svg><span>Showcase repo</span></a>
+  </div>
+</header>
+<nav class="topics" aria-label="Topics">
+  <div class="wrap">
+    <ul>
+      <li><a href="../index.html#vision">Vision</a></li>
+      <li><a href="../index.html#shoot-on-the-move">Shoot on the move</a></li>
+      <li><a href="../index.html#whole-body-control">Whole-body control</a></li>
+      <li><a href="../index.html#auto-tuning">Auto-tuning</a></li>
+    </ul>
+  </div>
+</nav>
+<main id="main" class="wrap">
+  <section class="intro prose" aria-labelledby="title">
+    <h1 id="title">Replay clips</h1>
+    <p>Short MCAP recordings of ROS&nbsp;2 bags behind the project showcase. Download one, or open it in Foxglove by URL. The first four are byte-identical copies of the replay clips in the showcase repository.</p>
+    <p class="clip-note">Foxglove links open app.foxglove.dev, which needs a free sign-in; the MP4s on the showcase page play without it.</p>
+    <p><a href="../index.html">Back to the showcase</a></p>
+  </section>
+  <section id="localizer-shop" class="replay-entry" aria-labelledby="localizer-shop-h">
+    <h2 id="localizer-shop-h">Localizer, shop session</h2>
+    <p class="prose">20&nbsp;s of the AprilTag localizer at work in a shop session: its input (the Odin camera&#8217;s fisheye frames, every second frame) and its outputs (the debug view, the camera pose with its covariance, each tag solved alone, and every detection). 4,558 messages.</p>
+    <dl class="facts">
+      <dt>File</dt><dd><code>localizer-shop-20s.mcap</code>, 13.9&nbsp;MB</dd>
+      <dt>Source</dt><dd>bag <code>20260814-161602</code>, 2.0&nbsp;s to 22.0&nbsp;s</dd>
+      <dt>Module</dt><dd><a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a> in the showcase repository</dd>
+      <dt>Layout</dt><dd>No layout file; panel suggestions are in the module&#8217;s README in the showcase repository.</dd>
+    </dl>
+    <ul class="links">
+      <li><a href="perception-sqpnp/localizer-shop-20s.mcap" download>Download the .mcap</a></li>
+      <li><a href="https://app.foxglove.dev/view?ds=remote-file&amp;ds.url=https%3A%2F%2Fmai961.github.io%2Freplay%2Fperception-sqpnp%2Flocalizer-shop-20s.mcap">Open in Foxglove</a></li>
+    </ul>
+  </section>
+  <section id="field-ekf-match" class="replay-entry" aria-labelledby="field-ekf-match-h">
+    <h2 id="field-ekf-match-h">Field EKF, recorded match</h2>
+    <p class="prose">20&nbsp;s of the field EKF during a match, the same 20&nbsp;s as the match clip on the showcase page: the VIO odometry it predicts from (400&nbsp;Hz), the tag fixes it corrects with, the field pose it outputs (400&nbsp;Hz), and one record per fix. 18,903 messages.</p>
+    <dl class="facts">
+      <dt>File</dt><dd><code>field-ekf-match-20s.mcap</code>, 2.0&nbsp;MB</dd>
+      <dt>Source</dt><dd>bag <code>20260905-134217</code>, 66.8&nbsp;s to 86.8&nbsp;s</dd>
+      <dt>Module</dt><dd><a href="https://github.com/Mai961/robotics-showcase/tree/main/state-estimation">state-estimation</a> in the showcase repository</dd>
+      <dt>Layout</dt><dd>No layout file; panel suggestions are in the module&#8217;s README in the showcase repository.</dd>
+    </dl>
+    <ul class="links">
+      <li><a href="state-estimation/field-ekf-match-20s.mcap" download>Download the .mcap</a></li>
+      <li><a href="https://app.foxglove.dev/view?ds=remote-file&amp;ds.url=https%3A%2F%2Fmai961.github.io%2Freplay%2Fstate-estimation%2Ffield-ekf-match-20s.mcap">Open in Foxglove</a></li>
+    </ul>
+  </section>
+  <section id="wholebody-cycle" class="replay-entry" aria-labelledby="wholebody-cycle-h">
+    <h2 id="wholebody-cycle-h">Whole-body cycle</h2>
+    <p class="prose">One full DRIVE, APPROACH, TASK, RETRACT, DRIVE cycle on the field, with about 3.5&nbsp;s of DRIVE before and after it: joint targets, measured joints, the operator&#8217;s goal and the phase. 15,165 messages.</p>
+    <dl class="facts">
+      <dt>File</dt><dd><code>wholebody-cycle-10s.mcap</code>, 0.8&nbsp;MB</dd>
+      <dt>Source</dt><dd>bag <code>20260905-084025</code>, 72.4&nbsp;s to 82.4&nbsp;s</dd>
+      <dt>Module</dt><dd><a href="https://github.com/Mai961/robotics-showcase/tree/main/control/wholebody-2026">control/wholebody-2026</a> in the showcase repository</dd>
+      <dt>Layout</dt><dd>No layout file; panel suggestions are in the module&#8217;s README in the showcase repository.</dd>
+    </dl>
+    <ul class="links">
+      <li><a href="control-wholebody-2026/wholebody-cycle-10s.mcap" download>Download the .mcap</a></li>
+      <li><a href="https://app.foxglove.dev/view?ds=remote-file&amp;ds.url=https%3A%2F%2Fmai961.github.io%2Freplay%2Fcontrol-wholebody-2026%2Fwholebody-cycle-10s.mcap">Open in Foxglove</a></li>
+    </ul>
+  </section>
+  <section id="clock-sync" class="replay-entry" aria-labelledby="clock-sync-h">
+    <h2 id="clock-sync-h">UDP bridge clock sync</h2>
+    <p class="prose">The bridge&#8217;s clock estimate through a whole match: all 308 messages of its clock topic, each holding the offset, round trip, age and a valid flag.</p>
+    <dl class="facts">
+      <dt>File</dt><dd><code>clock-sync-154s.mcap</code>, 18&nbsp;KB</dd>
+      <dt>Source</dt><dd>bag <code>20260905-134217</code>, its full 154&nbsp;s</dd>
+      <dt>Module</dt><dd><a href="https://github.com/Mai961/robotics-showcase/tree/main/udp-bridge">udp-bridge</a> in the showcase repository</dd>
+      <dt>Layout</dt><dd>No layout file; panel suggestions are in the module&#8217;s README in the showcase repository.</dd>
+    </dl>
+    <ul class="links">
+      <li><a href="udp-bridge/clock-sync-154s.mcap" download>Download the .mcap</a></li>
+      <li><a href="https://app.foxglove.dev/view?ds=remote-file&amp;ds.url=https%3A%2F%2Fmai961.github.io%2Freplay%2Fudp-bridge%2Fclock-sync-154s.mcap">Open in Foxglove</a></li>
+    </ul>
+  </section>
+  <section id="odin-cloud-slam" class="replay-entry" aria-labelledby="odin-cloud-slam-h">
+    <h2 id="odin-cloud-slam-h">Odin camera SLAM point cloud</h2>
+    <p class="prose">The first 15&nbsp;s of a recorded shop bag: the point cloud (every second message), odometry, transforms and localizer fixes; no camera. 1,384 messages. The point cloud is the Odin camera driver&#8217;s own output, not my work.</p>
+    <dl class="facts">
+      <dt>File</dt><dd><code>odin-cloud-slam-15s.mcap</code>, 22.5&nbsp;MB</dd>
+      <dt>Source</dt><dd>bag <code>20260801-151119</code>, 0.0&nbsp;s to 15.0&nbsp;s</dd>
+      <dt>Module</dt><dd>hosted only here; details in its <a href="odin-cloud-slam/README.md">README</a></dd>
+      <dt>Layout</dt><dd><a href="odin-cloud-slam/foxglove-layout.json">Foxglove layout (JSON)</a></dd>
+    </dl>
+    <ul class="links">
+      <li><a href="odin-cloud-slam/odin-cloud-slam-15s.mcap" download>Download the .mcap</a></li>
+      <li><a href="https://app.foxglove.dev/view?ds=remote-file&amp;ds.url=https%3A%2F%2Fmai961.github.io%2Freplay%2Fodin-cloud-slam%2Fodin-cloud-slam-15s.mcap">Open in Foxglove</a></li>
+    </ul>
+  </section>
+  <p class="back"><a href="../index.html">Back to the showcase</a></p>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Zile Liao</p>
+  </div>
+</footer>
+</body>
+</html>
