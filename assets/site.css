@@ -270,6 +270,27 @@ main {
 
 /* Topics and showcases */
 
+.title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.title-row h1,
+.title-row h2,
+.title-row h3 {
+  margin: 0;
+}
+
+.section-note {
+  margin-top: 2.5rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  font-style: italic;
+}
+
 .topic {
   border-top: 2px solid var(--rule);
   margin-top: 3rem;
@@ -340,19 +361,6 @@ main {
 .clip-file {
   display: block;
   margin-top: 0.25rem;
-}
-
-.clip-replay {
-  display: block;
-  margin-top: 0.35rem;
-}
-
-.clip-replay .pill,
-p > .pill {
-  margin-left: 0.35em;
-  padding: 0.3em 0.75em;
-  font-size: 0.875rem;
-  vertical-align: middle;
 }
 
 .clip-note {
