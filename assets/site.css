@@ -270,20 +270,6 @@ main {
 
 /* Topics and showcases */
 
-.title-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem 1rem;
-  margin-bottom: 0.75rem;
-}
-
-.title-row h1,
-.title-row h2,
-.title-row h3 {
-  margin: 0;
-}
-
 .section-note {
   margin-top: 2.5rem;
   color: var(--muted);
@@ -402,6 +388,22 @@ main {
 
 .back {
   margin-top: 3rem;
+}
+
+/* Title rows: a heading with buttons beside it. After the heading rules above, so margin: 0 wins. */
+
+.title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.title-row h1,
+.title-row h2,
+.title-row h3 {
+  margin: 0;
 }
 
 /* Footer */
