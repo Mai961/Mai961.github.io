@@ -238,7 +238,8 @@ main {
   list-style: none;
 }
 
-.links a {
+.links a,
+.pill {
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
@@ -253,13 +254,15 @@ main {
   overflow-wrap: anywhere;
 }
 
-.links a:hover {
+.links a:hover,
+.pill:hover {
   border-color: var(--accent);
   background: var(--surface);
   color: var(--accent);
 }
 
-.links a:focus-visible {
+.links a:focus-visible,
+.pill:focus-visible {
   border-color: var(--accent);
   outline-offset: 2px;
   border-radius: 999px;
@@ -337,6 +340,19 @@ main {
 .clip-file {
   display: block;
   margin-top: 0.25rem;
+}
+
+.clip-replay {
+  display: block;
+  margin-top: 0.35rem;
+}
+
+.clip-replay .pill,
+p > .pill {
+  margin-left: 0.35em;
+  padding: 0.3em 0.75em;
+  font-size: 0.875rem;
+  vertical-align: middle;
 }
 
 .clip-note {

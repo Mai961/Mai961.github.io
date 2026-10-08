@@ -23,3 +23,15 @@ The files are stored in plain git (no LFS), marked `binary` in `.gitattributes`.
 
 When this repository is served by Cloudflare Pages, `_headers` adds the CORS headers Foxglove needs
 to open the clips by URL.
+
+## Foxglove hosting
+
+The same files are mirrored to a Cloudflare R2 bucket so Foxglove can open them by URL; r2.dev is
+Cloudflare's rate-limited development domain, enough for a few demo files. The bucket keys match
+the paths under `replay/`:
+
+- `perception-sqpnp/localizer-shop-20s.mcap`
+- `state-estimation/field-ekf-match-20s.mcap`
+- `control-wholebody-2026/wholebody-cycle-10s.mcap`
+- `udp-bridge/clock-sync-154s.mcap`
+- `odin-cloud-slam/odin-cloud-slam-15s.mcap`
