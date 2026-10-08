@@ -1,23 +1,16 @@
 {
   "configById": {
-    "3D!odincloud": {
-      "followTf": "odom",
-      "followMode": "follow-none",
-      "scene": {
-        "transforms": {
-          "showLabel": false,
-          "axisScale": 0.5
-        }
-      },
+    "3D!cloud": {
+      "lichtblickPanelTitle": "Odin SLAM cloud on the field",
       "cameraState": {
         "perspective": true,
-        "distance": 14,
+        "distance": 27,
         "phi": 55,
-        "thetaOffset": 30,
+        "thetaOffset": 195,
         "targetOffset": [
-          2,
-          0,
-          0
+          -1.0,
+          3.5,
+          0.0
         ],
         "target": [
           0,
@@ -31,8 +24,17 @@
           1
         ],
         "fovy": 45,
-        "near": 0.5,
+        "near": 0.05,
         "far": 5000
+      },
+      "followMode": "follow-none",
+      "followTf": "field",
+      "scene": {
+        "transforms": {
+          "showLabel": false,
+          "axisScale": 0.3,
+          "labelSize": 0.12
+        }
       },
       "transforms": {
         "frame:base": {
@@ -60,34 +62,52 @@
           "colorField": "rgb",
           "decayTime": 0
         },
-        "/odin1/odometry": {
+        "/viz/field": {
+          "visible": true
+        },
+        "/viz/tag_seen": {
+          "visible": true
+        },
+        "/viz/odin_camera": {
+          "visible": true,
+          "type": "axis",
+          "axisScale": 0.3
+        },
+        "/viz/field_base_path": {
+          "visible": true,
+          "type": "line",
+          "lineWidth": 0.04,
+          "gradient": [
+            "#7cc6ffff",
+            "#7cc6ffff"
+          ]
+        },
+        "/viz/field_base_pose": {
           "visible": true,
           "type": "arrow",
           "arrowScale": [
             0.6,
-            0.12,
-            0.12
+            0.15,
+            0.15
           ],
-          "color": "#ffb000ff",
-          "showCovariance": false,
-          "decayTime": 15
+          "color": "#e8502fff"
         }
       },
       "layers": {
         "grid": {
-          "layerId": "foxglove.Grid",
           "visible": true,
           "frameLocked": true,
           "label": "Grid",
           "instanceId": "grid",
-          "frameId": "odom",
+          "layerId": "foxglove.Grid",
+          "frameId": "field",
           "size": 20,
           "divisions": 20,
           "lineWidth": 1,
           "color": "#248eff40",
           "position": [
-            0,
-            0,
+            8.27,
+            4.035,
             0
           ],
           "rotation": [
@@ -99,7 +119,13 @@
         }
       },
       "publish": {
-        "type": "point"
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
       },
       "imageMode": {}
     }
@@ -109,5 +135,5 @@
   "playbackConfig": {
     "speed": 1
   },
-  "layout": "3D!odincloud"
+  "layout": "3D!cloud"
 }

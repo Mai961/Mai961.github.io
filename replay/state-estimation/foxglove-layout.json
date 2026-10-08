@@ -123,7 +123,7 @@
           "visible": true
         },
         "/viz/field_base_path": {
-          "visible": true,
+          "visible": false,
           "type": "line",
           "lineWidth": 0.04,
           "gradient": [
@@ -131,13 +131,22 @@
             "#7cc6ffff"
           ]
         },
+        "/viz/path_so_far": {
+          "visible": true,
+          "type": "line",
+          "lineWidth": 0.04,
+          "gradient": [
+            "#4e98e2ff",
+            "#4e98e2ff"
+          ]
+        },
         "/viz/fix_points": {
           "visible": true,
-          "pointSize": 6,
+          "pointSize": 7,
           "pointShape": "circle",
           "colorMode": "flat",
           "flatColor": "#ff8c00ff",
-          "decayTime": 0,
+          "decayTime": 2,
           "colorField": "age_s"
         },
         "/odin_tree/field_base": {

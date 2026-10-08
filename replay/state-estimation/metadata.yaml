@@ -5,7 +5,7 @@ rosbag2_bagfile_information:
     nanoseconds: 19999877615
   starting_time:
     nanoseconds_since_epoch: 1788587004089390741
-  message_count: 28042
+  message_count: 28241
   topics_with_message_count:
     - topic_metadata:
         name: /viz/fix/innovation_yaw_deg
@@ -623,6 +623,28 @@ rosbag2_bagfile_information:
             avoid_ros_namespace_conventions: false
         type_description_hash: RIHS01_9198cabf7da3796ae6fe19c4cb3bdd3525492988c70522628af5daa124bae2b5
       message_count: 130
+    - topic_metadata:
+        name: /viz/path_so_far
+        type: nav_msgs/msg/Path
+        serialization_format: cdr
+        offered_qos_profiles:
+          - history: keep_last
+            depth: 10
+            reliability: reliable
+            durability: volatile
+            deadline:
+              sec: 9223372036
+              nsec: 854775807
+            lifespan:
+              sec: 9223372036
+              nsec: 854775807
+            liveliness: automatic
+            liveliness_lease_duration:
+              sec: 9223372036
+              nsec: 854775807
+            avoid_ros_namespace_conventions: false
+        type_description_hash: RIHS01_1957a5bb3cee5da65c4e52e52b65a93df227efce4c20f8458b36e73066ca334b
+      message_count: 199
   compression_format: ""
   compression_mode: ""
   relative_file_paths:
@@ -633,6 +655,6 @@ rosbag2_bagfile_information:
         nanoseconds_since_epoch: 1788587004089390741
       duration:
         nanoseconds: 19999877615
-      message_count: 28042
+      message_count: 28241
   custom_data: ~
   ros_distro: jazzy
