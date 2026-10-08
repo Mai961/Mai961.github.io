@@ -41,3 +41,15 @@ the paths under `replay/`:
 - `control-wholebody-2026/wholebody-cycle-10s.mcap`
 - `udp-bridge/clock-sync-154s.mcap`
 - `odin-cloud-slam/odin-cloud-slam-15s.mcap`
+
+The viewer buttons on the site open each clip in a hosted viewer,
+https://replay-viewer-e62.pages.dev/, a deployment of Lichtblick (an open-source, MIT-licensed build
+of Foxglove Studio). A viewer link follows this template, with both URLs URL-encoded:
+
+```
+https://replay-viewer-e62.pages.dev/?ds=remote-file&ds.url=<R2 URL of the .mcap>&layoutUrl=<R2 URL of the layout>
+```
+
+The layout loads from the same R2 folder as the clip: `<folder>/foxglove-layout.json`. For example,
+the clip `state-estimation/field-ekf-match-20s.mcap` opens with
+`state-estimation/foxglove-layout.json`.
