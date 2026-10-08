@@ -332,6 +332,13 @@ main {
   margin-top: 0.25rem;
 }
 
+.clip-note {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
 /* Footer */
 
 .site-footer {

@@ -22,10 +22,10 @@
 <nav class="topics" aria-label="Topics">
   <div class="wrap">
     <ul>
+      <li><a href="#vision">Vision</a></li>
       <li><a href="#shoot-on-the-move">Shoot on the move</a></li>
       <li><a href="#whole-body-control">Whole-body control</a></li>
       <li><a href="#auto-tuning">Auto-tuning</a></li>
-      <li><a href="#vision">Vision</a></li>
     </ul>
   </div>
 </nav>
@@ -40,6 +40,39 @@
       <li><a href="https://github.com/Mai961"><svg class="icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/></svg><span>GitHub profile</span></a></li>
       <li><a href="mailto:michael96mai@gmail.com"><svg class="icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V5.809L8.38 9.397a.75.75 0 0 1-.76 0L1.5 5.809v6.442Zm13-8.181v-.32a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25v.32L8 7.88Z"/></svg><span>michael96mai@gmail.com</span></a></li>
     </ul>
+  </section>
+  <section id="vision" class="topic" aria-labelledby="vision-h">
+    <h2 id="vision-h">Vision: AprilTag localizer + field EKF</h2>
+    <article class="showcase">
+      <h3>Replay of a recorded match</h3>
+      <figure class="clip">
+        <div class="media frame" style="background-image: url(media/posters/vision-replay-match.jpg), url(media/posters/placeholder.svg)">
+          <video controls muted loop playsinline preload="none" poster="media/posters/vision-replay-match.jpg" aria-labelledby="cap-vision-replay-match">
+            <source src="media/clips/vision-replay-match.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption><span id="cap-vision-replay-match">Clip: 20&nbsp;s of a recorded match, the localizer&#8217;s debug image beside the estimated field pose and each tag fix.</span><span class="clip-file"><a href="media/clips/vision-replay-match.mp4">Open the MP4 file</a> &#183; <a href="https://app.foxglove.dev/view?ds=remote-file&amp;ds.url=https%3A%2F%2Fmai961.github.io%2Freplay%2Fstate-estimation%2Ffield-ekf-match-20s.mcap">Open in Foxglove</a></span><span class="clip-note">Foxglove links open app.foxglove.dev, which needs a free sign-in; the MP4s play without it.</span></figcaption>
+      </figure>
+      <p class="lead">The field EKF fuses tag fixes from the localizer with the camera&#8217;s visual-inertial odometry (VIO).</p>
+      <p>It replaced a node that judged each tag sighting through hand-tuned gates; now each fix is weighted by the covariance the localizer computed. The EKF predicts from the VIO odometry at about 400&nbsp;Hz and corrects with each tag fix. Before the update, the tag pose is converted to the robot base through the camera mount, then carried forward to now with odometry. On the robot controller, WPILib&#8217;s pose estimator fuses the result with wheel odometry.</p>
+      <p class="note">I wrote the EKF in Python first, then ported it to C++ to cut CPU load.</p>
+      <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/state-estimation">state-estimation</a>, <a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a></p>
+    </article>
+    <article class="showcase">
+      <h3>Point cloud and localizer</h3>
+      <figure class="clip">
+        <div class="media frame" style="background-image: url(media/posters/vision-pointcloud-localizer.jpg), url(media/posters/placeholder.svg)">
+          <video controls muted loop playsinline preload="none" poster="media/posters/vision-pointcloud-localizer.jpg" aria-labelledby="cap-vision-pointcloud-localizer">
+            <source src="media/clips/vision-pointcloud-localizer.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption><span id="cap-vision-pointcloud-localizer">Clip: screen recording of the 3D view, with the point cloud and the field&#8217;s tag markers, beside the camera image with the localizer&#8217;s detections.</span><span class="clip-file"><a href="media/clips/vision-pointcloud-localizer.mp4">Open the MP4 file</a> &#183; <a href="https://app.foxglove.dev/view?ds=remote-file&amp;ds.url=https%3A%2F%2Fmai961.github.io%2Freplay%2Fperception-sqpnp%2Flocalizer-shop-20s.mcap">Open in Foxglove</a> (20&nbsp;s shop session, localizer input/output)</span></figcaption>
+      </figure>
+      <p class="lead">The AprilTag localizer turns a camera image into the camera&#8217;s pose on the field, plus a 6x6 covariance.</p>
+      <p>With two or more tags in view, all corners are pooled, and OpenCV&#8217;s SQPnP (a perspective-n-point solver) seeds the camera pose. A weighted Levenberg&#8211;Marquardt (a least-squares refinement) step follows, and the covariance comes from a numeric Jacobian. With one tag, IPPE (OpenCV&#8217;s planar-target solver) returns both candidate poses of the flat square, and the covariance gains the spread toward the second pose. If the geometry is not observable, the pose is withheld instead of inventing a covariance.</p>
+      <p class="note">The point cloud is the Odin camera driver&#8217;s own output, not my work. The localizer reads the same camera&#8217;s images; it started from a teammate&#8217;s port, and its pooled multi-tag solve and covariance are mine.</p>
+      <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a></p>
+    </article>
   </section>
   <section id="shoot-on-the-move" class="topic" aria-labelledby="shoot-on-the-move-h">
     <h2 id="shoot-on-the-move-h">Shoot on the move</h2>
@@ -68,7 +101,7 @@
             <source src="media/clips/arm-placing-objects.mp4" type="video/mp4">
           </video>
         </div>
-        <figcaption><span id="cap-arm-placing-objects">Clip: the robot driving to its staging pose, then the arm reaching its goal.</span><span class="clip-file"><a href="media/clips/arm-placing-objects.mp4">Open the MP4 file</a></span></figcaption>
+        <figcaption><span id="cap-arm-placing-objects">Clip: the robot driving to its staging pose, then the arm reaching its goal.</span><span class="clip-file"><a href="media/clips/arm-placing-objects.mp4">Open the MP4 file</a> &#183; <a href="https://app.foxglove.dev/view?ds=remote-file&amp;ds.url=https%3A%2F%2Fmai961.github.io%2Freplay%2Fcontrol-wholebody-2026%2Fwholebody-cycle-10s.mcap">Open in Foxglove</a></span></figcaption>
       </figure>
       <p class="lead">Instead of hand-written arm setpoints and state machines, a solver on the coprocessor decides how the whole robot moves.</p>
       <p>The robot is a swerve chassis (each wheel drives and steers) with a three-joint planar arm: shoulder, telescope and wrist. A phase state machine runs DRIVE, APPROACH, TASK and RETRACT; APPROACH waits until the arm reaches its aim posture and the chassis its staging pose. On entering TASK, the goal is converted into the solver&#8217;s frame through the measured chassis pose and frozen, so it stays at one field point.</p>
@@ -107,39 +140,6 @@
       <p>A blind grid or greedy search over an arm joint&#8217;s PID and feedforward gains tends to chase noisy minima into extreme values. The node sets gains, drives the joint through a test trajectory, scores the result, and aborts if anything looks unsafe. The agent decides which gain to sweep next, over what range, and when to stop, with a stated reason for every move. Each episode aborts to IDLE if the joint leaves its safe position band, the stator current (motor current) spikes, or the velocity reverses too often.</p>
       <p class="note">I wrote a ROS&nbsp;2 node on the bench computer that runs the experiments, and the procedure a coding agent (Claude Code) follows. There is no language-model API client: the deterministic sweep stays in code that enforces the limits, and the agent points it.</p>
       <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/llm-tuning-agent">llm-tuning-agent</a></p>
-    </article>
-  </section>
-  <section id="vision" class="topic" aria-labelledby="vision-h">
-    <h2 id="vision-h">Vision</h2>
-    <article class="showcase">
-      <h3>Replay of a recorded match</h3>
-      <figure class="clip">
-        <div class="media frame" style="background-image: url(media/posters/vision-replay-match.jpg), url(media/posters/placeholder.svg)">
-          <video controls muted loop playsinline preload="none" poster="media/posters/vision-replay-match.jpg" aria-labelledby="cap-vision-replay-match">
-            <source src="media/clips/vision-replay-match.mp4" type="video/mp4">
-          </video>
-        </div>
-        <figcaption><span id="cap-vision-replay-match">Clip: 20&nbsp;s of a recorded match, the localizer&#8217;s debug image beside the estimated field pose and each tag fix.</span><span class="clip-file"><a href="media/clips/vision-replay-match.mp4">Open the MP4 file</a></span></figcaption>
-      </figure>
-      <p class="lead">The field EKF fuses tag fixes from the localizer with the camera&#8217;s visual-inertial odometry (VIO).</p>
-      <p>It replaced a node that judged each tag sighting through hand-tuned gates; now each fix is weighted by the covariance the localizer computed. The EKF predicts from the VIO odometry at about 400&nbsp;Hz and corrects with each tag fix. Before the update, the tag pose is converted to the robot base through the camera mount, then carried forward to now with odometry. On the robot controller, WPILib&#8217;s pose estimator fuses the result with wheel odometry.</p>
-      <p class="note">I wrote the EKF in Python first, then ported it to C++ to cut CPU load.</p>
-      <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/state-estimation">state-estimation</a>, <a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a></p>
-    </article>
-    <article class="showcase">
-      <h3>Point cloud and localizer</h3>
-      <figure class="clip">
-        <div class="media frame" style="background-image: url(media/posters/vision-pointcloud-localizer.jpg), url(media/posters/placeholder.svg)">
-          <video controls muted loop playsinline preload="none" poster="media/posters/vision-pointcloud-localizer.jpg" aria-labelledby="cap-vision-pointcloud-localizer">
-            <source src="media/clips/vision-pointcloud-localizer.mp4" type="video/mp4">
-          </video>
-        </div>
-        <figcaption><span id="cap-vision-pointcloud-localizer">Clip: screen recording of the 3D view, with the point cloud and the field&#8217;s tag markers, beside the camera image with the localizer&#8217;s detections.</span><span class="clip-file"><a href="media/clips/vision-pointcloud-localizer.mp4">Open the MP4 file</a></span></figcaption>
-      </figure>
-      <p class="lead">The AprilTag localizer turns a camera image into the camera&#8217;s pose on the field, plus a 6x6 covariance.</p>
-      <p>With two or more tags in view, all corners are pooled, and OpenCV&#8217;s SQPnP (a perspective-n-point solver) seeds the camera pose. A weighted Levenberg&#8211;Marquardt (a least-squares refinement) step follows, and the covariance comes from a numeric Jacobian. With one tag, IPPE (OpenCV&#8217;s planar-target solver) returns both candidate poses of the flat square, and the covariance gains the spread toward the second pose. If the geometry is not observable, the pose is withheld instead of inventing a covariance.</p>
-      <p class="note">The point cloud is the Odin camera driver&#8217;s own output, not my work. The localizer reads the same camera&#8217;s images; it started from a teammate&#8217;s port, and its pooled multi-tag solve and covariance are mine.</p>
-      <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a></p>
     </article>
   </section>
 </main>
