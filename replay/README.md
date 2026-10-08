@@ -1,9 +1,9 @@
 # Replay clips
 
-These are byte-identical copies of the replay clips in the
-[robotics showcase](https://github.com/Mai961/robotics-showcase) repository (main, commit
-`0c41990`). They are hosted here so that Foxglove can open them by URL. Each file is an MCAP
-recording of a ROS 2 bag. The showcase repository is the source of truth: when a clip changes
+These are byte-identical copies of the replay clips in the [robotics
+showcase](https://github.com/Mai961/robotics-showcase) repository (main, commit `0c41990`). They are
+hosted here so visitors can download them and open them locally in Foxglove Studio. Each file is an
+MCAP recording of a ROS 2 bag. The showcase repository is the source of truth: when a clip changes
 there, copy it here again unchanged.
 
 | File | Copied from (showcase repository) |
