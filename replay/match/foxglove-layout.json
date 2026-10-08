@@ -82,7 +82,8 @@
           "showLabel": false,
           "axisScale": 0.3,
           "labelSize": 0.12
-        }
+        },
+        "backgroundColor": "#f4f4f5"
       },
       "transforms": {
         "frame:base": {
@@ -216,13 +217,13 @@
       "lichtblickPanelTitle": "Field (3D)",
       "cameraState": {
         "perspective": true,
-        "distance": 16,
-        "phi": 55,
-        "thetaOffset": 30,
+        "distance": 16.5,
+        "phi": 65,
+        "thetaOffset": 46,
         "targetOffset": [
-          5.0,
-          2.8,
-          0
+          6.5,
+          3.8,
+          0.0
         ],
         "target": [
           0,
@@ -246,7 +247,8 @@
           "showLabel": false,
           "axisScale": 0.3,
           "labelSize": 0.12
-        }
+        },
+        "backgroundColor": "#f4f4f5"
       },
       "transforms": {
         "frame:base": {
