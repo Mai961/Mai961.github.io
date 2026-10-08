@@ -321,7 +321,7 @@
           "axisScale": 0.35
         },
         "/wholebody/goals_field": {
-          "visible": true,
+          "visible": false,
           "type": "arrow",
           "arrowScale": [
             0.3,
