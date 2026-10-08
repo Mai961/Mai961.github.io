@@ -63,106 +63,7 @@ video has no poster at all. When you add a slot's poster file, change that attri
 
 ## Clip slots
 
-### 1. Shoot on the move
-
-- Section: `index.html#shoot-on-the-move`
-- Clip: `media/clips/shoot-on-the-move.mp4`
-- Poster: `media/posters/shoot-on-the-move.jpg`
-- Target length: 10–25 s
-- Status: filled. The clip is 15.2 s, 1280×720, 2.9 MB.
-- Shows: the robot shooting while it drives. The turret holds its aim while the chassis moves and
-  turns; at least one ball leaves while the robot is moving.
-- How it was made: recorded by me; encoded with ffmpeg.
-- Privacy: bumpers and the background are the usual leaks here (team number, event signage, people).
-- Privacy findings, for me to decide: readable team numbers on the shooting robot's blue bumper and
-  on a red bumper at the left edge; two people far in the background (faces too small to
-  identify); laptop screens without readable text. Nothing was blurred.
-
-```sh
-ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -map_metadata:s:v -1 -map_chapters -1 -movflags +faststart media/clips/shoot-on-the-move.mp4
-ffmpeg -ss 2 -i media/clips/shoot-on-the-move.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/shoot-on-the-move.jpg
-```
-
-- [x] clip
-- [x] poster
-- [ ] privacy checklist
-
-### 2. Whole-body arm control
-
-- Section: `index.html#whole-body-control`
-- Clip: `media/clips/arm-placing-objects.mp4`
-- Poster: `media/posters/arm-placing-objects.jpg`
-- Target length: 10–25 s
-- Status: filled. The clip is 8.1 s, 1280×720, 1.2 MB: two portrait recordings, pillarboxed and
-  joined.
-- Shows: the robot driving to its staging pose, then the arm reaching its goal. One or two full
-  cycles: drive in, approach, reach its goal, retract.
-- How it was made: recorded by me; encoded with ffmpeg (both recordings encoded identically, then
-  joined with the concat filter).
-- Privacy: bumpers, people in the background.
-- Privacy findings, for me to decide: no people, no bumpers and no readable text beyond an exit
-  sign. Nothing was blurred.
-
-```sh
-ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -map_metadata:s:v -1 -map_chapters -1 -movflags +faststart media/clips/arm-placing-objects.mp4
-ffmpeg -ss 2 -i media/clips/arm-placing-objects.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/arm-placing-objects.jpg
-```
-
-- [x] clip
-- [x] poster
-- [ ] privacy checklist
-
-### 3. Reaching a field-fixed goal from AprilTag localization
-
-- Section: `index.html#whole-body-control`
-- Clip: `media/clips/arm-tracking-an-apriltag.mp4`
-- Poster: `media/posters/arm-tracking-an-apriltag.jpg`
-- Target length: 10–25 s
-- Status: filled. The clip is 13.1 s, 1280×720, 2.2 MB: a portrait HDR recording, tone-mapped to
-  SDR and pillarboxed.
-- Shows: the arm following an AprilTag held at the end of a stick. The showcase text covers the
-  field-fixed goal; this demo mode is not excerpted in the showcase repository. I will rename this
-  showcase back to 'Arm tracking an AprilTag' only after the showcase README describes the
-  mechanism.
-- How it was made: recorded by me; encoded with ffmpeg.
-- Privacy: bumpers, people holding the tag (faces), the room around the bench.
-- Privacy findings, for me to decide: no people in frame (the stick's holder is outside it), no
-  bumpers; the only text is a battery label and a caliper scale. Nothing was blurred.
-
-```sh
-ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -map_metadata:s:v -1 -map_chapters -1 -movflags +faststart media/clips/arm-tracking-an-apriltag.mp4
-ffmpeg -ss 2 -i media/clips/arm-tracking-an-apriltag.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/arm-tracking-an-apriltag.jpg
-```
-
-- [x] clip
-- [x] poster
-- [ ] privacy checklist
-
-### 4. Auto-tuning routine
-
-- Section: `index.html#auto-tuning`
-- Clip: `media/clips/auto-tuning-routine.mp4`
-- Poster: `media/posters/auto-tuning-routine.jpg`
-- Target length: 10–25 s
-- Status: filled. The clip is 5.1 s, 1280×720, 0.4 MB: a portrait recording, pillarboxed.
-- Shows: the auto-tuning routine moving the robot's arm, with a laptop and a tablet in the
-  foreground.
-- How it was made: recorded by me; encoded with ffmpeg.
-- Privacy: if a terminal or dashboard is in frame, it is a screen recording: crop the window
-  chrome and check prompts, hostnames and paths.
-- Privacy findings, for me to decide: no people; the laptop and tablet screens show no readable
-  text (the tablet shows app icons). Nothing was blurred.
-
-```sh
-ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -map_metadata:s:v -1 -map_chapters -1 -movflags +faststart media/clips/auto-tuning-routine.mp4
-ffmpeg -ss 2 -i media/clips/auto-tuning-routine.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/auto-tuning-routine.jpg
-```
-
-- [x] clip
-- [x] poster
-- [ ] privacy checklist
-
-### 5. Replay of a recorded match
+### 1. Replay of a recorded match
 
 - Section: `index.html#vision`
 - Clip: `media/clips/vision-replay-match.mp4`
@@ -189,7 +90,7 @@ ffmpeg -ss 2 -i media/clips/vision-replay-match.mp4 -frames:v 1 -update 1 -q:v 3
 - [x] poster
 - [ ] privacy checklist
 
-### 6. Point cloud and localizer
+### 2. Point cloud and localizer
 
 - Section: `index.html#vision`
 - Clip: `media/clips/vision-pointcloud-localizer.mp4`
@@ -209,6 +110,105 @@ ffmpeg -ss 2 -i media/clips/vision-replay-match.mp4 -frames:v 1 -update 1 -q:v 3
 ```sh
 ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -map_metadata:s:v -1 -map_chapters -1 -movflags +faststart media/clips/vision-pointcloud-localizer.mp4
 ffmpeg -ss 2 -i media/clips/vision-pointcloud-localizer.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/vision-pointcloud-localizer.jpg
+```
+
+- [x] clip
+- [x] poster
+- [ ] privacy checklist
+
+### 3. Shoot on the move
+
+- Section: `index.html#shoot-on-the-move`
+- Clip: `media/clips/shoot-on-the-move.mp4`
+- Poster: `media/posters/shoot-on-the-move.jpg`
+- Target length: 10–25 s
+- Status: filled. The clip is 15.2 s, 1280×720, 2.9 MB.
+- Shows: the robot shooting while it drives. The turret holds its aim while the chassis moves and
+  turns; at least one ball leaves while the robot is moving.
+- How it was made: recorded by me; encoded with ffmpeg.
+- Privacy: bumpers and the background are the usual leaks here (team number, event signage, people).
+- Privacy findings, for me to decide: readable team numbers on the shooting robot's blue bumper and
+  on a red bumper at the left edge; two people far in the background (faces too small to
+  identify); laptop screens without readable text. Nothing was blurred.
+
+```sh
+ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -map_metadata:s:v -1 -map_chapters -1 -movflags +faststart media/clips/shoot-on-the-move.mp4
+ffmpeg -ss 2 -i media/clips/shoot-on-the-move.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/shoot-on-the-move.jpg
+```
+
+- [x] clip
+- [x] poster
+- [ ] privacy checklist
+
+### 4. Whole-body arm control
+
+- Section: `index.html#whole-body-control`
+- Clip: `media/clips/arm-placing-objects.mp4`
+- Poster: `media/posters/arm-placing-objects.jpg`
+- Target length: 10–25 s
+- Status: filled. The clip is 8.1 s, 1280×720, 1.2 MB: two portrait recordings, pillarboxed and
+  joined.
+- Shows: the robot driving to its staging pose, then the arm reaching its goal. One or two full
+  cycles: drive in, approach, reach its goal, retract.
+- How it was made: recorded by me; encoded with ffmpeg (both recordings encoded identically, then
+  joined with the concat filter).
+- Privacy: bumpers, people in the background.
+- Privacy findings, for me to decide: no people, no bumpers and no readable text beyond an exit
+  sign. Nothing was blurred.
+
+```sh
+ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -map_metadata:s:v -1 -map_chapters -1 -movflags +faststart media/clips/arm-placing-objects.mp4
+ffmpeg -ss 2 -i media/clips/arm-placing-objects.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/arm-placing-objects.jpg
+```
+
+- [x] clip
+- [x] poster
+- [ ] privacy checklist
+
+### 5. Reaching a field-fixed goal from AprilTag localization
+
+- Section: `index.html#whole-body-control`
+- Clip: `media/clips/arm-tracking-an-apriltag.mp4`
+- Poster: `media/posters/arm-tracking-an-apriltag.jpg`
+- Target length: 10–25 s
+- Status: filled. The clip is 13.1 s, 1280×720, 2.2 MB: a portrait HDR recording, tone-mapped to
+  SDR and pillarboxed.
+- Shows: the arm following an AprilTag held at the end of a stick. The showcase text covers the
+  field-fixed goal; this demo mode is not excerpted in the showcase repository. I will rename this
+  showcase back to 'Arm tracking an AprilTag' only after the showcase README describes the
+  mechanism.
+- How it was made: recorded by me; encoded with ffmpeg.
+- Privacy: bumpers, people holding the tag (faces), the room around the bench.
+- Privacy findings, for me to decide: no people in frame (the stick's holder is outside it), no
+  bumpers; the only text is a battery label and a caliper scale. Nothing was blurred.
+
+```sh
+ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -map_metadata:s:v -1 -map_chapters -1 -movflags +faststart media/clips/arm-tracking-an-apriltag.mp4
+ffmpeg -ss 2 -i media/clips/arm-tracking-an-apriltag.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/arm-tracking-an-apriltag.jpg
+```
+
+- [x] clip
+- [x] poster
+- [ ] privacy checklist
+
+### 6. Auto-tuning routine
+
+- Section: `index.html#auto-tuning`
+- Clip: `media/clips/auto-tuning-routine.mp4`
+- Poster: `media/posters/auto-tuning-routine.jpg`
+- Target length: 10–25 s
+- Status: filled. The clip is 5.1 s, 1280×720, 0.4 MB: a portrait recording, pillarboxed.
+- Shows: the auto-tuning routine moving the robot's arm, with a laptop and a tablet in the
+  foreground.
+- How it was made: recorded by me; encoded with ffmpeg.
+- Privacy: if a terminal or dashboard is in frame, it is a screen recording: crop the window
+  chrome and check prompts, hostnames and paths.
+- Privacy findings, for me to decide: no people; the laptop and tablet screens show no readable
+  text (the tablet shows app icons). Nothing was blurred.
+
+```sh
+ffmpeg -ss START -t LENGTH -i INPUT.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -c:v libx264 -preset slow -crf 23 -maxrate 2.2M -bufsize 4.4M -an -map_metadata -1 -map_metadata:s:v -1 -map_chapters -1 -movflags +faststart media/clips/auto-tuning-routine.mp4
+ffmpeg -ss 2 -i media/clips/auto-tuning-routine.mp4 -frames:v 1 -update 1 -q:v 3 media/posters/auto-tuning-routine.jpg
 ```
 
 - [x] clip
