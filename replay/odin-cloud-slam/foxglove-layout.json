@@ -4,12 +4,12 @@
       "lichtblickPanelTitle": "Odin SLAM cloud on the field",
       "cameraState": {
         "perspective": true,
-        "distance": 27,
-        "phi": 55,
-        "thetaOffset": 195,
+        "distance": 13,
+        "phi": 62,
+        "thetaOffset": 110,
         "targetOffset": [
-          -1.0,
-          3.5,
+          5.0,
+          3.8,
           0.0
         ],
         "target": [
@@ -78,8 +78,8 @@
           "type": "line",
           "lineWidth": 0.04,
           "gradient": [
-            "#7cc6ffff",
-            "#7cc6ffff"
+            "#4e98e2ff",
+            "#4e98e2ff"
           ]
         },
         "/viz/field_base_pose": {

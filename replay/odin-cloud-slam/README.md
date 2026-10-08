@@ -1,7 +1,8 @@
 # odin-cloud-slam: 20 s of the Odin camera's SLAM point cloud
 
 `odin-cloud-slam-20s.mcap` (with its rosbag2 `metadata.yaml`) holds the first 20 s of the recorded
-shop bag `20260801-151119` (0–20 s after the bag's start): 4,519 messages, 25.9 MB.
+shop bag `20260801-151119` (0–20 s after the bag's start): 4,519 messages, 25.6 MB. The recorded
+path is cropped to the clip window.
 
 - `/odin1/cloud_slam`: the SLAM point cloud, every third message.
 - `/odin1/odometry`, `/tf` and `/tf_static`: odometry and transforms.
