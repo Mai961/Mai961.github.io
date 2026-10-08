@@ -33,56 +33,40 @@
 <main id="main" class="wrap">
   <section class="intro prose" aria-labelledby="title">
     <h1 id="title">Replay clips</h1>
-    <p>Short MCAP recordings of ROS&nbsp;2 bags behind the project showcase. Download one to open it on your own machine. The whole-body and clock-sync clips, with their <code>metadata.yaml</code> and layout files, are byte-identical copies of the showcase repository&#8217;s (main). The field EKF and localizer clips cover the same 20&nbsp;s of a recorded match and carry the field and tag scene topics and a derived <code>/viz/fix_points</code> display topic; they and the point-cloud clip are hosted here and on the viewer&#8217;s R2 mirror.</p>
+    <p>Short MCAP recordings of ROS&nbsp;2 bags behind the project showcase. Download one to open it on your own machine. The match, whole-body and clock-sync clips, with their <code>metadata.yaml</code> and layout files, are byte-identical copies of the showcase repository&#8217;s (match and whole-body from its public-evidence branch, clock-sync from main). The point-cloud clip is hosted only here and on the viewer&#8217;s R2 mirror.</p>
     <p class="clip-note">The viewer buttons open the clip with its panel layout in Lichtblick, an open-source build of Foxglove Studio; no sign-in.</p>
     <p><a href="../index.html">Back to the showcase</a></p>
   </section>
-  <section id="localizer-match" class="replay-entry" aria-labelledby="localizer-match-h">
+  <section id="match" class="replay-entry" aria-labelledby="match-h">
     <div class="title-row">
-      <h2 id="localizer-match-h">Localizer, recorded match</h2>
-      <a class="pill" href="https://replay-viewer-e62.pages.dev/?ds=remote-file&amp;ds.url=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fperception-match%2Flocalizer-match-20s.mcap&amp;layoutUrl=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fperception-match%2Ffoxglove-layout.json" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 1280 1344.4323" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1275.2846,430.6826l-221.6322-127.9823c-5.8367-3.3704-13.0283-3.3707-18.8653-.0007l-272.1716,157.1378V145.5971c0-6.7392-3.5952-12.9665-9.4314-16.3364L531.5322,1.2779c-6.288-3.6307-14.1484.9072-14.1484,8.1682l-.0011,450.3913-272.145-157.1234c-5.8365-3.3697-13.0272-3.3698-18.8638-.0002L4.7171,430.6819c-6.2881,3.6303-6.2882,12.7064-.0002,16.3368l390.0495,225.1958L4.716,897.4109c-6.2879,3.6303-6.288,12.706-.0003,16.3366l221.6419,127.9757c5.8366,3.3701,13.0278,3.3702,18.8646.0004l272.1606-157.1312v314.284c0,6.7402,3.5962,12.9682,9.4337,16.3377l221.6518,127.9411c6.288,3.6295,14.1472-.9085,14.1472-8.1688v-450.3939l272.1583,157.1312c5.8367,3.3699,13.0279,3.3697,18.8646-.0003l221.644-127.9752c6.2878-3.6305,6.2877-12.7063-.0002-16.3366l-390.0503-225.1963,390.0522-225.1962c6.2877-3.6302,6.2881-12.7057.0006-16.3364ZM762.6155,743.0071l-122.6164,70.7926-122.6164-70.7926v-141.5846l122.6164-70.7926,122.6164,70.7926v141.5846Z"/></svg><span>Open in viewer</span></a>
+      <h2 id="match-h">Recorded match: localizer + field EKF</h2>
+      <a class="pill" href="https://replay-viewer-e62.pages.dev/?ds=remote-file&amp;ds.url=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fmatch%2Fmatch-20s.mcap&amp;layoutUrl=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fmatch%2Ffoxglove-layout.json" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 1280 1344.4323" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1275.2846,430.6826l-221.6322-127.9823c-5.8367-3.3704-13.0283-3.3707-18.8653-.0007l-272.1716,157.1378V145.5971c0-6.7392-3.5952-12.9665-9.4314-16.3364L531.5322,1.2779c-6.288-3.6307-14.1484.9072-14.1484,8.1682l-.0011,450.3913-272.145-157.1234c-5.8365-3.3697-13.0272-3.3698-18.8638-.0002L4.7171,430.6819c-6.2881,3.6303-6.2882,12.7064-.0002,16.3368l390.0495,225.1958L4.716,897.4109c-6.2879,3.6303-6.288,12.706-.0003,16.3366l221.6419,127.9757c5.8366,3.3701,13.0278,3.3702,18.8646.0004l272.1606-157.1312v314.284c0,6.7402,3.5962,12.9682,9.4337,16.3377l221.6518,127.9411c6.288,3.6295,14.1472-.9085,14.1472-8.1688v-450.3939l272.1583,157.1312c5.8367,3.3699,13.0279,3.3697,18.8646-.0003l221.644-127.9752c6.2878-3.6305,6.2877-12.7063-.0002-16.3366l-390.0503-225.1963,390.0522-225.1962c6.2877-3.6302,6.2881-12.7057.0006-16.3364ZM762.6155,743.0071l-122.6164,70.7926-122.6164-70.7926v-141.5846l122.6164-70.7926,122.6164,70.7926v141.5846Z"/></svg><span>Open in viewer</span></a>
     </div>
-    <p class="prose">20&nbsp;s of the AprilTag localizer during a match, the same 20&nbsp;s as the field EKF clip: every detection, the camera pose with its covariance, each tag solved alone, and the tag fixes, with derived path and fix display topics for the viewer. The detection image is blurred. 35 topics, 21,797 messages.</p>
+    <p class="prose">20&nbsp;s of a match: the localizer&#8217;s detections, camera poses with their covariance and the tag fixes, the field EKF&#8217;s output and the VIO odometry it predicts from, the field and tag scene topics, and derived path and fix display topics. The detection image is blurred. 51 topics, 31,742 messages.</p>
     <dl class="facts">
-      <dt>File</dt><dd><code>localizer-match-20s.mcap</code>, 4.5&nbsp;MB</dd>
+      <dt>File</dt><dd><code>match-20s.mcap</code>, 6.1&nbsp;MB</dd>
       <dt>Source</dt><dd>bag <code>20260905-134217</code>, 66.8&nbsp;s to 86.8&nbsp;s</dd>
-      <dt>Module</dt><dd><a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a> in the showcase repository</dd>
-      <dt>Layout</dt><dd><a href="perception-match/foxglove-layout.json">Foxglove layout (JSON)</a></dd>
+      <dt>Module</dt><dd><a href="https://github.com/Mai961/robotics-showcase/tree/main/state-estimation">state-estimation</a> and <a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a> in the showcase repository</dd>
+      <dt>Layout</dt><dd><a href="match/foxglove-layout.json">Foxglove layout (JSON)</a></dd>
     </dl>
     <ul class="links">
-      <li><a href="perception-match/localizer-match-20s.mcap" download>Download the replay (.mcap, 4.5&nbsp;MB)</a></li>
+      <li><a href="match/match-20s.mcap" download>Download the replay (.mcap, 6.1&nbsp;MB)</a></li>
     </ul>
   </section>
-  <section id="field-ekf-match" class="replay-entry" aria-labelledby="field-ekf-match-h">
+  <section id="wholebody-shop" class="replay-entry" aria-labelledby="wholebody-shop-h">
     <div class="title-row">
-      <h2 id="field-ekf-match-h">Field EKF, recorded match</h2>
-      <a class="pill" href="https://replay-viewer-e62.pages.dev/?ds=remote-file&amp;ds.url=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fstate-estimation%2Ffield-ekf-match-20s.mcap&amp;layoutUrl=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fstate-estimation%2Ffoxglove-layout.json" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 1280 1344.4323" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1275.2846,430.6826l-221.6322-127.9823c-5.8367-3.3704-13.0283-3.3707-18.8653-.0007l-272.1716,157.1378V145.5971c0-6.7392-3.5952-12.9665-9.4314-16.3364L531.5322,1.2779c-6.288-3.6307-14.1484.9072-14.1484,8.1682l-.0011,450.3913-272.145-157.1234c-5.8365-3.3697-13.0272-3.3698-18.8638-.0002L4.7171,430.6819c-6.2881,3.6303-6.2882,12.7064-.0002,16.3368l390.0495,225.1958L4.716,897.4109c-6.2879,3.6303-6.288,12.706-.0003,16.3366l221.6419,127.9757c5.8366,3.3701,13.0278,3.3702,18.8646.0004l272.1606-157.1312v314.284c0,6.7402,3.5962,12.9682,9.4337,16.3377l221.6518,127.9411c6.288,3.6295,14.1472-.9085,14.1472-8.1688v-450.3939l272.1583,157.1312c5.8367,3.3699,13.0279,3.3697,18.8646-.0003l221.644-127.9752c6.2878-3.6305,6.2877-12.7063-.0002-16.3366l-390.0503-225.1963,390.0522-225.1962c6.2877-3.6302,6.2881-12.7057.0006-16.3364ZM762.6155,743.0071l-122.6164,70.7926-122.6164-70.7926v-141.5846l122.6164-70.7926,122.6164,70.7926v141.5846Z"/></svg><span>Open in viewer</span></a>
+      <h2 id="wholebody-shop-h">Whole-body cycle, shop session</h2>
+      <a class="pill" href="https://replay-viewer-e62.pages.dev/?ds=remote-file&amp;ds.url=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fwholebody-shop%2Fwholebody-cycle-shop.mcap&amp;layoutUrl=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fwholebody-shop%2Ffoxglove-layout.json" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 1280 1344.4323" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1275.2846,430.6826l-221.6322-127.9823c-5.8367-3.3704-13.0283-3.3707-18.8653-.0007l-272.1716,157.1378V145.5971c0-6.7392-3.5952-12.9665-9.4314-16.3364L531.5322,1.2779c-6.288-3.6307-14.1484.9072-14.1484,8.1682l-.0011,450.3913-272.145-157.1234c-5.8365-3.3697-13.0272-3.3698-18.8638-.0002L4.7171,430.6819c-6.2881,3.6303-6.2882,12.7064-.0002,16.3368l390.0495,225.1958L4.716,897.4109c-6.2879,3.6303-6.288,12.706-.0003,16.3366l221.6419,127.9757c5.8366,3.3701,13.0278,3.3702,18.8646.0004l272.1606-157.1312v314.284c0,6.7402,3.5962,12.9682,9.4337,16.3377l221.6518,127.9411c6.288,3.6295,14.1472-.9085,14.1472-8.1688v-450.3939l272.1583,157.1312c5.8367,3.3699,13.0279,3.3697,18.8646-.0003l221.644-127.9752c6.2878-3.6305,6.2877-12.7063-.0002-16.3366l-390.0503-225.1963,390.0522-225.1962c6.2877-3.6302,6.2881-12.7057.0006-16.3364ZM762.6155,743.0071l-122.6164,70.7926-122.6164-70.7926v-141.5846l122.6164-70.7926,122.6164,70.7926v141.5846Z"/></svg><span>Open in viewer</span></a>
     </div>
-    <p class="prose">20&nbsp;s of the field EKF during a match, the same 20&nbsp;s as the match clip on the showcase page: the VIO odometry it predicts from (400&nbsp;Hz), the tag fixes it corrects with, the field pose it outputs (400&nbsp;Hz), and one record per fix. 28,241 messages. Carries field and tag scene topics for the viewer, including a derived <code>/viz/fix_points</code> display topic, and the blurred detection image.</p>
+    <p class="prose">A whole-body cycle in a shop session: joint references and measurements, the operator&#8217;s goal, the phase status and events, the base reference, and the arm on the field through the full transform chain, with the blurred detection image. The node&#8217;s parameter and debug topics are not included, and the recorded path is cropped to the clip. 18 topics, 14,194 messages.</p>
     <dl class="facts">
-      <dt>File</dt><dd><code>field-ekf-match-20s.mcap</code>, 5.7&nbsp;MB</dd>
-      <dt>Source</dt><dd>bag <code>20260905-134217</code>, 66.8&nbsp;s to 86.8&nbsp;s</dd>
-      <dt>Module</dt><dd><a href="https://github.com/Mai961/robotics-showcase/tree/main/state-estimation">state-estimation</a> in the showcase repository</dd>
-      <dt>Layout</dt><dd><a href="state-estimation/foxglove-layout.json">Foxglove layout (JSON)</a></dd>
-    </dl>
-    <ul class="links">
-      <li><a href="state-estimation/field-ekf-match-20s.mcap" download>Download the replay (.mcap, 5.7&nbsp;MB)</a></li>
-    </ul>
-  </section>
-  <section id="wholebody-cycle" class="replay-entry" aria-labelledby="wholebody-cycle-h">
-    <div class="title-row">
-      <h2 id="wholebody-cycle-h">Whole-body cycle</h2>
-      <a class="pill" href="https://replay-viewer-e62.pages.dev/?ds=remote-file&amp;ds.url=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fcontrol-wholebody-2026%2Fwholebody-cycle-10s.mcap&amp;layoutUrl=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fcontrol-wholebody-2026%2Ffoxglove-layout.json" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 1280 1344.4323" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1275.2846,430.6826l-221.6322-127.9823c-5.8367-3.3704-13.0283-3.3707-18.8653-.0007l-272.1716,157.1378V145.5971c0-6.7392-3.5952-12.9665-9.4314-16.3364L531.5322,1.2779c-6.288-3.6307-14.1484.9072-14.1484,8.1682l-.0011,450.3913-272.145-157.1234c-5.8365-3.3697-13.0272-3.3698-18.8638-.0002L4.7171,430.6819c-6.2881,3.6303-6.2882,12.7064-.0002,16.3368l390.0495,225.1958L4.716,897.4109c-6.2879,3.6303-6.288,12.706-.0003,16.3366l221.6419,127.9757c5.8366,3.3701,13.0278,3.3702,18.8646.0004l272.1606-157.1312v314.284c0,6.7402,3.5962,12.9682,9.4337,16.3377l221.6518,127.9411c6.288,3.6295,14.1472-.9085,14.1472-8.1688v-450.3939l272.1583,157.1312c5.8367,3.3699,13.0279,3.3697,18.8646-.0003l221.644-127.9752c6.2878-3.6305,6.2877-12.7063-.0002-16.3366l-390.0503-225.1963,390.0522-225.1962c6.2877-3.6302,6.2881-12.7057.0006-16.3364ZM762.6155,743.0071l-122.6164,70.7926-122.6164-70.7926v-141.5846l122.6164-70.7926,122.6164,70.7926v141.5846Z"/></svg><span>Open in viewer</span></a>
-    </div>
-    <p class="prose">One full DRIVE, APPROACH, TASK, RETRACT, DRIVE cycle on the field, with about 3.5&nbsp;s of DRIVE before and after it: joint targets, measured joints, the operator&#8217;s goal and the phase. 19,953 messages. Carries field and arm scene topics for the viewer.</p>
-    <dl class="facts">
-      <dt>File</dt><dd><code>wholebody-cycle-10s.mcap</code>, 1.2&nbsp;MB</dd>
-      <dt>Source</dt><dd>bag <code>20260905-084025</code>, 72.4&nbsp;s to 82.4&nbsp;s</dd>
+      <dt>File</dt><dd><code>wholebody-cycle-shop.mcap</code>, 3.1&nbsp;MB</dd>
+      <dt>Source</dt><dd>bag <code>20260818-140551</code>, 65.95&nbsp;s to 75.25&nbsp;s</dd>
       <dt>Module</dt><dd><a href="https://github.com/Mai961/robotics-showcase/tree/main/control/wholebody-2026">control/wholebody-2026</a> in the showcase repository</dd>
-      <dt>Layout</dt><dd><a href="control-wholebody-2026/foxglove-layout.json">Foxglove layout (JSON)</a></dd>
+      <dt>Layout</dt><dd><a href="wholebody-shop/foxglove-layout.json">Foxglove layout (JSON)</a></dd>
     </dl>
     <ul class="links">
-      <li><a href="control-wholebody-2026/wholebody-cycle-10s.mcap" download>Download the replay (.mcap, 1.2&nbsp;MB)</a></li>
+      <li><a href="wholebody-shop/wholebody-cycle-shop.mcap" download>Download the replay (.mcap, 3.1&nbsp;MB)</a></li>
     </ul>
   </section>
   <section id="clock-sync" class="replay-entry" aria-labelledby="clock-sync-h">
@@ -106,15 +90,15 @@
       <h2 id="odin-cloud-slam-h">Odin camera SLAM point cloud</h2>
       <a class="pill" href="https://replay-viewer-e62.pages.dev/?ds=remote-file&amp;ds.url=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fodin-cloud-slam%2Fodin-cloud-slam-20s.mcap&amp;layoutUrl=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fodin-cloud-slam%2Ffoxglove-layout.json" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 1280 1344.4323" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1275.2846,430.6826l-221.6322-127.9823c-5.8367-3.3704-13.0283-3.3707-18.8653-.0007l-272.1716,157.1378V145.5971c0-6.7392-3.5952-12.9665-9.4314-16.3364L531.5322,1.2779c-6.288-3.6307-14.1484.9072-14.1484,8.1682l-.0011,450.3913-272.145-157.1234c-5.8365-3.3697-13.0272-3.3698-18.8638-.0002L4.7171,430.6819c-6.2881,3.6303-6.2882,12.7064-.0002,16.3368l390.0495,225.1958L4.716,897.4109c-6.2879,3.6303-6.288,12.706-.0003,16.3366l221.6419,127.9757c5.8366,3.3701,13.0278,3.3702,18.8646.0004l272.1606-157.1312v314.284c0,6.7402,3.5962,12.9682,9.4337,16.3377l221.6518,127.9411c6.288,3.6295,14.1472-.9085,14.1472-8.1688v-450.3939l272.1583,157.1312c5.8367,3.3699,13.0279,3.3697,18.8646-.0003l221.644-127.9752c6.2878-3.6305,6.2877-12.7063-.0002-16.3366l-390.0503-225.1963,390.0522-225.1962c6.2877-3.6302,6.2881-12.7057.0006-16.3364ZM762.6155,743.0071l-122.6164,70.7926-122.6164-70.7926v-141.5846l122.6164-70.7926,122.6164,70.7926v141.5846Z"/></svg><span>Open in viewer</span></a>
     </div>
-    <p class="prose">The first 20&nbsp;s of a recorded shop bag (0&#8211;20&nbsp;s): the point cloud (every third message), odometry, transforms, localizer fixes, field and tag scene topics, and the blurred detection image. 4,519 messages. The point cloud is the Odin camera driver&#8217;s own output, not my work.</p>
+    <p class="prose">The first 20&nbsp;s of a recorded shop bag (0&#8211;20&nbsp;s): the point cloud (every third message), odometry, transforms, localizer fixes, field and tag scene topics, and the blurred detection image; the recorded path is cropped to the clip window. 4,519 messages. The point cloud is the Odin camera driver&#8217;s own output, not my work.</p>
     <dl class="facts">
-      <dt>File</dt><dd><code>odin-cloud-slam-20s.mcap</code>, 25.9&nbsp;MB</dd>
+      <dt>File</dt><dd><code>odin-cloud-slam-20s.mcap</code>, 25.6&nbsp;MB</dd>
       <dt>Source</dt><dd>bag <code>20260801-151119</code>, 0.0&nbsp;s to 20.0&nbsp;s</dd>
       <dt>Module</dt><dd>hosted only here; details in its <a href="odin-cloud-slam/README.md">README</a></dd>
       <dt>Layout</dt><dd><a href="odin-cloud-slam/foxglove-layout.json">Foxglove layout (JSON)</a></dd>
     </dl>
     <ul class="links">
-      <li><a href="odin-cloud-slam/odin-cloud-slam-20s.mcap" download>Download the replay (.mcap, 25.9&nbsp;MB)</a></li>
+      <li><a href="odin-cloud-slam/odin-cloud-slam-20s.mcap" download>Download the replay (.mcap, 25.6&nbsp;MB)</a></li>
     </ul>
   </section>
   <p class="back"><a href="../index.html">Back to the showcase</a></p>
