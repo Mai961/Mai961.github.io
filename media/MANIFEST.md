@@ -138,7 +138,9 @@ ffmpeg -ss 2 -i media/clips/shoot-on-the-move.mp4 -frames:v 1 -update 1 -q:v 3 m
 
 - [x] clip
 - [x] poster
-- [ ] privacy checklist
+- [x] privacy checklist
+
+Decision: the team numbers on the bumpers stay visible as recorded (reviewed, left on purpose).
 
 ### 4. Whole-body arm control
 
