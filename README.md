@@ -7,8 +7,7 @@ showcase](https://github.com/Mai961/robotics-showcase). There is no framework, n
 nothing to install. Each clip and poster is a slot listed in [media/MANIFEST.md](media/MANIFEST.md),
 and any slot whose file is not there yet shows the shared placeholder,
 `media/posters/placeholder.svg`. The empty `.nojekyll` file tells GitHub Pages to serve the files as
-they are, without running Jekyll. Pages is not enabled yet; when I choose to publish, it is enabled
-in the repository settings to deploy from the `main` branch, root folder.
+they are, without running Jekyll. GitHub Pages deploys the site from the `main` branch, root folder.
 
 To add a showcase in 10 minutes: in `index.html`, copy an existing `<article class="showcase">`
 block into the right topic section. For a new topic, copy a whole `<section class="topic">` and add
