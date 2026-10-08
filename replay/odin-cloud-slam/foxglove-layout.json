@@ -4,21 +4,53 @@
       "followTf": "odom",
       "followMode": "follow-none",
       "scene": {
-        "transforms": { "showLabel": false, "axisScale": 0.5 }
+        "transforms": {
+          "showLabel": false,
+          "axisScale": 0.5
+        }
       },
       "cameraState": {
         "perspective": true,
         "distance": 14,
         "phi": 55,
         "thetaOffset": 30,
-        "targetOffset": [2, 0, 0],
-        "target": [0, 0, 0],
-        "targetOrientation": [0, 0, 0, 1],
+        "targetOffset": [
+          2,
+          0,
+          0
+        ],
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
         "fovy": 45,
         "near": 0.5,
         "far": 5000
       },
-      "transforms": {},
+      "transforms": {
+        "frame:base": {
+          "visible": false
+        },
+        "frame:field": {
+          "visible": false
+        },
+        "frame:odin_camera": {
+          "visible": false
+        },
+        "frame:odin_camera_measured": {
+          "visible": false
+        },
+        "frame:odom": {
+          "visible": false
+        }
+      },
       "topics": {
         "/odin1/cloud_slam": {
           "visible": true,
@@ -31,7 +63,11 @@
         "/odin1/odometry": {
           "visible": true,
           "type": "arrow",
-          "arrowScale": [0.6, 0.12, 0.12],
+          "arrowScale": [
+            0.6,
+            0.12,
+            0.12
+          ],
           "color": "#ffb000ff",
           "showCovariance": false,
           "decayTime": 15
@@ -49,17 +85,29 @@
           "divisions": 20,
           "lineWidth": 1,
           "color": "#248eff40",
-          "position": [0, 0, 0],
-          "rotation": [0, 0, 0],
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0
+          ],
           "order": 1
         }
       },
-      "publish": { "type": "point" },
+      "publish": {
+        "type": "point"
+      },
       "imageMode": {}
     }
   },
   "globalVariables": {},
   "userNodes": {},
-  "playbackConfig": { "speed": 1 },
+  "playbackConfig": {
+    "speed": 1
+  },
   "layout": "3D!odincloud"
 }
