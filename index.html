@@ -26,6 +26,7 @@
       <li><a href="#shoot-on-the-move">Shoot on the move</a></li>
       <li><a href="#whole-body-control">Whole-body control</a></li>
       <li><a href="#auto-tuning">Auto-tuning</a></li>
+      <li><a href="replay/">Replay clips</a></li>
     </ul>
   </div>
 </nav>
@@ -54,7 +55,7 @@
         <figcaption><span id="cap-vision-replay-match">Clip: 20&nbsp;s of a recorded match, the localizer&#8217;s debug image beside the estimated field pose and each tag fix.</span><span class="clip-file"><a href="media/clips/vision-replay-match.mp4">Open the MP4 file</a> &#183; <a href="replay/state-estimation/field-ekf-match-20s.mcap" download>Download the replay (.mcap, 2.0&nbsp;MB)</a></span><span class="clip-note">Open it in Foxglove Studio (free sign-in) via File &#8594; Open local file; import the layout JSON where one is offered. <a href="replay/">All replay clips</a></span></figcaption>
       </figure>
       <p class="lead">The field EKF fuses tag fixes from the localizer with the camera&#8217;s visual-inertial odometry (VIO).</p>
-      <p>It replaced a node that judged each tag sighting through hand-tuned gates; now each fix is weighted by the covariance the localizer computed. The EKF predicts from the VIO odometry at about 400&nbsp;Hz and corrects with each tag fix. Before the update, the tag pose is converted to the robot base through the camera mount, then carried forward to now with odometry. On the robot controller, WPILib&#8217;s pose estimator fuses the result with wheel odometry.</p>
+      <p>The EKF predicts from the VIO odometry at about 400&nbsp;Hz and corrects with each tag fix. Each fix is weighted by the covariance the localizer computed.</p>
       <p class="note">I wrote the EKF in Python first, then ported it to C++ to cut CPU load.</p>
       <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/state-estimation">state-estimation</a>, <a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a></p>
       <p class="replay">Replay: <a href="https://github.com/Mai961/robotics-showcase/tree/main/state-estimation"><code>python state-estimation/replay/replay_field_ekf.py</code></a> &#8594; a Python port of the C++ EKF tracks the recorded field pose to a median of 0.008&nbsp;mm after the cold start (130 tag updates; 1 of 130 above the 95&nbsp;% line of NIS, the normalized innovation squared).</p>
@@ -71,8 +72,8 @@
         <figcaption><span id="cap-vision-pointcloud-localizer">Clip: screen recording of the 3D view, with the point cloud and the field&#8217;s tag markers, beside the camera image with the localizer&#8217;s detections.</span><span class="clip-file"><a href="media/clips/vision-pointcloud-localizer.mp4">Open the MP4 file</a> &#183; <a href="replay/perception-sqpnp/localizer-shop-20s.mcap" download>Download the replay (.mcap, 13.9&nbsp;MB)</a>: 20&nbsp;s shop session, localizer input/output &#183; <a href="replay/odin-cloud-slam/odin-cloud-slam-15s.mcap" download>Download the point-cloud replay (.mcap, 22.5&nbsp;MB)</a>: 15&nbsp;s, driver&#8217;s SLAM point cloud + odometry, with its <a href="replay/odin-cloud-slam/foxglove-layout.json">layout JSON</a></span></figcaption>
       </figure>
       <p class="lead">The AprilTag localizer turns a camera image into the camera&#8217;s pose on the field, plus a 6x6 covariance.</p>
-      <p>With two or more tags in view, all corners are pooled, and OpenCV&#8217;s SQPnP (a perspective-n-point solver) seeds the camera pose. A weighted Levenberg&#8211;Marquardt (a least-squares refinement) step follows, and the covariance comes from a numeric Jacobian. With one tag, IPPE (OpenCV&#8217;s planar-target solver) returns both candidate poses of the flat square, and the covariance gains the spread toward the second pose. If the geometry is not observable, the pose is withheld instead of inventing a covariance.</p>
-      <p class="note">The point cloud is the Odin camera driver&#8217;s own output, not my work. The localizer reads the same camera&#8217;s images; it started from a teammate&#8217;s port, and its pooled multi-tag solve and covariance are mine.</p>
+      <p>With two or more tags in view, all corners are pooled. If the geometry is not observable, the pose is withheld instead of inventing a covariance.</p>
+      <p class="note">The point cloud is the Odin camera driver&#8217;s own output, not my work.</p>
       <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a></p>
       <p class="replay">Replay: <a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp"><code>python perception-sqpnp/replay/replay_localizer.py</code></a> &#8594; re-solving 178 pooled frames from the logged corners, which the node rounded to whole pixels, lands within a median 14.1&nbsp;mm of the recorded pose; from unrounded corners reprojected from each tag&#8217;s logged pose, 0.48&nbsp;mm.</p>
 
@@ -89,8 +90,8 @@
         </div>
         <figcaption><span id="cap-shoot-on-the-move">Clip: the competition robot shooting while it drives.</span><span class="clip-file"><a href="media/clips/shoot-on-the-move.mp4">Open the MP4 file</a></span></figcaption>
       </figure>
-      <p class="lead">A turret that keeps aiming while the robot drives, with shot compensation for the robot&#8217;s own velocity.</p>
-      <p>A ball fired from a moving robot keeps the robot&#8217;s velocity, so a shot table built for a standing robot is not enough. The compensation looks ahead to the release moment and splits the velocity into the part toward the target and the part across it. From that it sets a turret angle, a hood angle and a ball exit speed. An outer loop turns the angle error into a velocity command, which the motor controller&#8217;s own velocity loop tracks.</p>
+      <p class="lead">A turret that keeps aiming while the robot drives, with shot compensation for the robot&#8217;s velocity.</p>
+      <p>A ball fired from a moving robot keeps the robot&#8217;s velocity. The compensation looks ahead and splits the velocity into the part toward the target and the part across it.</p>
       <p class="note">I wrote the turret&#8217;s aiming cascade and its shot compensation, with contributions from teammates.</p>
       <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/control/turret-2026">control/turret-2026</a></p>
       <p class="replay">Replay: <a href="https://github.com/Mai961/robotics-showcase/tree/main/control/turret-2026"><code>python control/turret-2026/replay/replay_shot_solution.py</code></a> &#8594; the turret loop&#8217;s aim error and feedforward recompute from the 30&nbsp;s log to within 0.0010&#176; and 0.0005&nbsp;V; tracking RMS 0.90&#176; (in this clip the turret held a fixed field heading and shot compensation was off; the compensation law is shown as a counterfactual).</p>
@@ -109,9 +110,9 @@
         </div>
         <figcaption><span id="cap-arm-placing-objects">Clip: the robot driving to its staging pose, then the arm reaching its goal.</span><span class="clip-file"><a href="media/clips/arm-placing-objects.mp4">Open the MP4 file</a> &#183; <a href="replay/control-wholebody-2026/wholebody-cycle-10s.mcap" download>Download the replay (.mcap, 0.8&nbsp;MB)</a></span></figcaption>
       </figure>
-      <p class="lead">Instead of hand-written arm setpoints and state machines, a solver on the coprocessor decides how the whole robot moves.</p>
-      <p>The robot is a swerve chassis (each wheel drives and steers) with a three-joint planar arm: shoulder, telescope and wrist. A phase state machine runs DRIVE, APPROACH, TASK and RETRACT; APPROACH waits until the arm reaches its aim posture and the chassis its staging pose. On entering TASK, the goal is converted into the solver&#8217;s frame through the measured chassis pose and frozen, so it stays at one field point.</p>
-      <p class="note">I wrote nearly all of both halves. One is a Python ROS&nbsp;2 node that solves a quadratic program (QP) with the Placo library; the other is the robot&#8217;s joint executor. Gating TASK on arrival at the staging pose was validated on hardware; the goal freeze and the QP moving the chassis were simulation-only.</p>
+      <p class="lead">A solver on the coprocessor decides how the whole robot moves.</p>
+      <p>A phase state machine runs DRIVE, APPROACH, TASK and RETRACT. On entering TASK, the goal is converted into the solver&#8217;s frame and frozen, so it stays at one field point.</p>
+      <p class="note">The goal freeze and the QP moving the chassis were simulation-only.</p>
       <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/control/wholebody-2026">control/wholebody-2026</a></p>
 
     </article>
@@ -126,9 +127,8 @@
         <figcaption><span id="cap-arm-tracking-an-apriltag">Clip: the arm following an AprilTag held at the end of a stick.</span><span class="clip-file"><a href="media/clips/arm-tracking-an-apriltag.mp4">Open the MP4 file</a></span></figcaption>
       </figure>
       <p class="lead">AprilTag fixes tell the robot where it stands, so the arm&#8217;s goal can be fixed on the field.</p>
-      <p>AprilTags are printed squares at known places on the field; a tag fix is a pose from one camera frame. The arm&#8217;s goals are poses fixed on the field, while the whole-body solver works in the robot&#8217;s own frame. Before TASK, APPROACH also requires the field pose to be fresh. In TASK, each QP step moves the end of the arm toward the goal within joint and speed limits.</p>
-      <p class="note">I wrote the field EKF (extended Kalman filter), which turns the localizer&#8217;s tag fixes into the robot&#8217;s field pose; both are shown under <a href="#vision">Vision</a>.</p>
-      <p>About the clip: I recorded this demo, where an AprilTag on the end of a stick moves near the robot and the arm follows it. This demo mode is not excerpted in the showcase repository.</p>
+      <p>The arm&#8217;s goals are poses fixed on the field, while the whole-body solver works in the robot&#8217;s own frame. Before TASK, APPROACH requires the field pose to be fresh.</p>
+      <p class="note">This demo mode is not excerpted in the showcase repository.</p>
       <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/control/wholebody-2026">control/wholebody-2026</a>, <a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a>, <a href="https://github.com/Mai961/robotics-showcase/tree/main/state-estimation">state-estimation</a></p>
 
     </article>
@@ -145,8 +145,8 @@
         <figcaption><span id="cap-auto-tuning-routine">Clip: the auto-tuning routine moving the robot&#8217;s arm.</span><span class="clip-file"><a href="media/clips/auto-tuning-routine.mp4">Open the MP4 file</a></span></figcaption>
       </figure>
       <p class="lead">A PID tuning bench for an arm joint, steered by a coding agent inside hard limits.</p>
-      <p>A blind grid or greedy search over an arm joint&#8217;s PID and feedforward gains tends to chase noisy minima into extreme values. The node sets gains, drives the joint through a test trajectory, scores the result, and aborts if anything looks unsafe. The agent decides which gain to sweep next, over what range, and when to stop, with a stated reason for every move. Each episode aborts to IDLE if the joint leaves its safe position band, the stator current (motor current) spikes, or the velocity reverses too often.</p>
-      <p class="note">I wrote a ROS&nbsp;2 node on the bench computer that runs the experiments, and the procedure a coding agent (Claude Code) follows. There is no language-model API client: the deterministic sweep stays in code that enforces the limits, and the agent points it.</p>
+      <p>The agent decides which gain to sweep next, over what range, and when to stop. The deterministic sweep stays in code that enforces the limits.</p>
+      <p class="note">I wrote a ROS&nbsp;2 node that runs the experiments, and the procedure a coding agent (Claude Code) follows.</p>
       <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/llm-tuning-agent">llm-tuning-agent</a></p>
 
     </article>

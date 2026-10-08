@@ -187,7 +187,8 @@ ul {
   font-weight: 600;
 }
 
-.topics a:hover {
+.topics a:hover,
+.topics a[aria-current="page"] {
   text-decoration: underline;
   text-decoration-thickness: 2px;
 }
