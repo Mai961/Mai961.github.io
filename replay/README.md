@@ -21,7 +21,7 @@ One more clip is hosted here that is not in the showcase repository:
 
 | File | What it is |
 |---|---|
-| `odin-cloud-slam/odin-cloud-slam-20s.mcap` | The last 20 s of a recorded shop bag (18 s to 38 s): the point cloud (every third message), odometry, transforms, localizer fixes, field and tag scene topics, and the blurred detection image; 25.8 MB. The point cloud is the Odin camera driver's own output. Its folder also holds the rosbag2 `metadata.yaml`, a `README.md` with the details, and `foxglove-layout.json`. |
+| `odin-cloud-slam/odin-cloud-slam-20s.mcap` | The first 20 s of a recorded shop bag (0–20 s): the point cloud (every third message), odometry, transforms, localizer fixes, field and tag scene topics, and the blurred detection image; 25.9 MB. The point cloud is the Odin camera driver's own output. Its folder also holds the rosbag2 `metadata.yaml`, a `README.md` with the details, and `foxglove-layout.json`. |
 
 The files are stored in plain git (no LFS), marked `binary` in `.gitattributes`.
 

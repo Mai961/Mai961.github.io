@@ -317,6 +317,12 @@ main {
   font-size: 1rem;
 }
 
+.showcase .replay {
+  margin-top: -0.4em;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
 .clip {
   max-width: 960px;
   margin: 0 0 1.25rem;
