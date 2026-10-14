@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: media coming soon">
+  <title>Placeholder: media coming soon</title>
+  <defs>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M50 0H0V50" fill="none" stroke="#7d858f" stroke-opacity="0.16" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <path fill="#7d858f" fill-opacity="0.4" fill-rule="evenodd" d="M680 180h240v240h-240zM710 210v180h180v-180z"/>
+  <path fill="#7d858f" fill-opacity="0.4" d="M710 210h30v30h-30zM770 210h30v30h-30zM800 210h30v30h-30zM740 240h30v30h-30zM830 240h30v30h-30zM860 240h30v30h-30zM710 270h30v30h-30zM740 270h30v30h-30zM800 270h30v30h-30zM860 270h30v30h-30zM770 300h30v30h-30zM800 300h30v30h-30zM830 300h30v30h-30zM710 330h30v30h-30zM800 330h30v30h-30zM860 330h30v30h-30zM740 360h30v30h-30zM770 360h30v30h-30zM830 360h30v30h-30z"/>
+  <text x="800" y="530" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="60" letter-spacing="2" fill="#7d858f">media coming soon</text>
+</svg>

@@ -1,0 +1,512 @@
+:root {
+  color-scheme: light dark;
+  --bg: #fbfbf9;
+  --surface: #eef0f2;
+  --text: #1b1d21;
+  --muted: #545a63;
+  --rule: #d9dce1;
+  --accent: #0b5cad;
+  --accent-soft: #e7eff9;
+  --focus: #0b5cad;
+  --band: #16325c;
+  --band-text: #ffffff;
+  --band-text-soft: #dbe4f0;
+  --band-accent: #8fd3ff;
+  --band-line: rgba(255, 255, 255, 0.16);
+  --btn-bg: #0b5cad;
+  --btn-bg-hover: #084a8c;
+  --btn-text: #ffffff;
+  --btn-shadow: 0 1px 2px rgba(16, 24, 40, 0.18), 0 2px 8px rgba(11, 92, 173, 0.22);
+  --radius: 10px;
+  --gutter: 16px;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121418;
+    --surface: #1d2127;
+    --text: #e7e9ec;
+    --muted: #a5abb4;
+    --rule: #2e333b;
+    --accent: #80b9ff;
+    --accent-soft: #1b2a3d;
+    --focus: #80b9ff;
+    --band: #1e3f6e;
+    --band-line: rgba(255, 255, 255, 0.14);
+    --btn-bg: #2f6fbf;
+    --btn-bg-hover: #245a9c;
+    --btn-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.35);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  overflow-wrap: anywhere;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+h1::after {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 4px;
+  margin-top: 0.3em;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+h2 {
+  font-size: 1.375rem;
+  margin-top: 2rem;
+}
+
+h3 {
+  font-size: 1.0625rem;
+}
+
+p,
+ul {
+  margin: 0 0 1rem;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 68rem;
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+.prose {
+  max-width: 72ch;
+}
+
+.skip {
+  position: absolute;
+  left: var(--gutter);
+  top: -100px;
+  z-index: 10;
+  padding: 0.5rem 0.75rem;
+  background: var(--band-text);
+  color: var(--band);
+  font-weight: 600;
+  border-radius: var(--radius);
+}
+
+.skip:focus {
+  top: 0.5rem;
+}
+
+.skip:focus-visible {
+  outline-color: var(--band-accent);
+}
+
+/* Header and nav */
+
+.site-header {
+  background: var(--band);
+  color: var(--band-text);
+  border-bottom: 1px solid var(--band-line);
+}
+
+.site-header .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+  padding-block: 0.875rem;
+}
+
+.site-name {
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  color: var(--band-text);
+  text-decoration: none;
+}
+
+.site-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  color: var(--band-text-soft);
+  text-decoration: none;
+}
+
+.site-link:hover {
+  color: var(--band-text);
+  text-decoration: underline;
+  text-decoration-color: var(--band-accent);
+}
+
+.site-header a:focus-visible,
+.topics a:focus-visible {
+  outline-color: var(--band-accent);
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  flex: none;
+  fill: currentColor;
+}
+
+/* Topic nav: one link per section, sticky on wide screens */
+
+.topics {
+  background: var(--band);
+  border-bottom: 1px solid var(--band-line);
+  box-shadow: 0 2px 6px rgba(16, 24, 40, 0.18);
+}
+
+.topics ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  margin: 0;
+  padding: 0.625rem 0;
+  list-style: none;
+}
+
+.topics a {
+  color: var(--band-text-soft);
+  text-decoration: none;
+  display: inline-block;
+  padding-block: 0.25rem;
+  font-weight: 600;
+}
+
+.topics a:hover {
+  color: var(--band-text);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+
+.topics a[aria-current="page"] {
+  color: var(--band-text);
+  text-decoration: underline;
+  text-decoration-color: var(--band-accent);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.3em;
+}
+
+@media (min-width: 720px) {
+  .topics {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+
+  .topic {
+    scroll-margin-top: 4rem;
+  }
+}
+
+main {
+  padding-block: 2rem 3rem;
+}
+
+/* Placeholder-backed media: the real poster is the top layer, placeholder.svg sits below it. */
+
+.media {
+  display: block;
+  background-color: var(--surface);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* Intro */
+
+.tagline {
+  font-size: 1.3125rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.links a,
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.5em 0.95em;
+  border: 1.5px solid var(--accent);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--accent);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.links a:hover {
+  background: var(--accent-soft);
+}
+
+.pill {
+  border-color: var(--btn-bg);
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  box-shadow: var(--btn-shadow);
+}
+
+.pill:hover {
+  border-color: var(--btn-bg-hover);
+  background: var(--btn-bg-hover);
+  color: var(--btn-text);
+}
+
+.links a:focus-visible,
+.pill:focus-visible {
+  outline-offset: 3px;
+  border-radius: 999px;
+}
+
+/* Topics and showcases */
+
+.section-note {
+  margin-top: 2.5rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  font-style: italic;
+}
+
+.topic {
+  border-top: 2px solid var(--rule);
+  margin-top: 3rem;
+  padding-top: 2rem;
+}
+
+.topic h2 {
+  font-size: 1.75rem;
+  margin-top: 0;
+}
+
+.topic h2,
+.replay-entry h2 {
+  padding-left: 0.6rem;
+  border-left: 5px solid var(--accent);
+}
+
+.showcase + .showcase {
+  margin-top: 4.5rem;
+}
+
+.showcase h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.showcase p {
+  max-width: 70ch;
+  margin-bottom: 1.1em;
+}
+
+.showcase .lead {
+  font-weight: 650;
+  margin-bottom: 0.6em;
+}
+
+.showcase .note {
+  color: var(--muted);
+}
+
+.showcase .details {
+  margin-top: 1.75rem;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.showcase .replay {
+  margin-top: -0.4em;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.clip {
+  max-width: 960px;
+  margin: 0 0 1.25rem;
+}
+
+.clip .frame {
+  aspect-ratio: 16 / 9;
+}
+
+.clip video {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.clip figcaption {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  margin-top: 0.5rem;
+}
+
+.clip-heading {
+  margin: 1.75rem 0 0.6rem;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.clip-file {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.clip-note {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+/* Replay clips page */
+
+.replay-entry {
+  border-top: 2px solid var(--rule);
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+}
+
+.replay-entry h2 {
+  margin-top: 0;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.3rem 1rem;
+  max-width: 72ch;
+  margin: 0 0 1rem;
+}
+
+.facts dt {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.facts dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.back {
+  margin-top: 3rem;
+}
+
+/* Title rows: a heading with buttons beside it. After the heading rules above, so margin: 0 wins. */
+
+.title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.title-row h1,
+.title-row h2,
+.title-row h3 {
+  margin: 0;
+}
+
+.title-row h1 {
+  margin-bottom: 0.5rem;
+}
+
+/* Footer */
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.site-footer .wrap {
+  padding-block: 1.25rem 2rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --gutter: 24px;
+  }
+}

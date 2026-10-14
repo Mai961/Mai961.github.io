@@ -1,0 +1,4 @@
+/replay/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Expose-Headers: Accept-Ranges, Content-Range, Content-Length, Content-Type
+  Accept-Ranges: bytes
