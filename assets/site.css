@@ -410,6 +410,18 @@ main {
   height: 100%;
 }
 
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+
+.clip.figure-tall {
+  max-width: 720px;
+}
+
 .clip figcaption {
   color: var(--muted);
   font-size: 0.9375rem;
