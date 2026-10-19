@@ -17,6 +17,7 @@ cropped to the clip.
 | `match/match-20s.mcap` | 6.1 MB | bag `20260905-134217`, 66.8 s to 86.8 s; showcase repository, main: `state-estimation/replay/match-20s.mcap` |
 | `wholebody-shop/wholebody-cycle-shop.mcap` | 1.2 MB | bag `20260814-163002`, 59.49 s to 65.87 s (6.38 s); showcase repository, main: `control/wholebody-2026/replay/wholebody-cycle-shop.mcap` |
 | `udp-bridge/clock-sync-154s.mcap` | 18 KB | showcase repository, main: `udp-bridge/replay/clock-sync-154s.mcap` |
+| `sim-wholebody/sim-cycle.mcap` | 334 KB | the whole-body controller against the simulated robot, one cycle (6.35 s); showcase repository, main: `sim-io-layer/replay/sim-cycle.mcap`, with its `metadata.yaml` and layout |
 
 One more clip is hosted here that is not in the showcase repository:
 
@@ -39,6 +40,7 @@ The bucket keys match the paths under `replay/`:
 - `wholebody-shop/wholebody-cycle-shop.mcap`
 - `udp-bridge/clock-sync-154s.mcap`
 - `odin-cloud-slam/odin-cloud-slam-20s.mcap`
+- `sim-wholebody/sim-cycle.mcap`
 
 The viewer buttons on the site open each clip in a hosted viewer,
 https://replay-viewer-e62.pages.dev/, a deployment of Lichtblick (an open-source, MIT-licensed build

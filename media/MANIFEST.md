@@ -216,7 +216,26 @@ ffmpeg -ss 2 -i media/clips/arm-tracking-an-apriltag.mp4 -frames:v 1 -update 1 -
 - [x] poster
 - [ ] privacy checklist
 
-### 7. Auto-tuning routine
+### 7. Same controller, simulated or real
+
+- Section: `index.html#control-stack`
+- Clip: `media/clips/sim-vs-real.mp4`
+- Poster: `media/posters/sim-vs-real.jpg`
+- Target length: 10–25 s
+- Status: filled. The clip is 6.4 s, 1280×720, 0.5 MB; the poster is 1280×720.
+- Shows: the same whole-body cycle, simulated (left) and on the robot (right), side by side, with
+  the phase and the goal marker labelled.
+- How it was made: rendered in MuJoCo from the logged joint states of both cycles (a kinematic
+  replay; MuJoCo is not in the control loop). The poster is one rendered frame, saved as JPEG.
+- Privacy: a rendering, with no camera footage.
+- Privacy findings, for me to decide: no people, bumpers or screens; the only text is the phase,
+  SIM and REAL ROBOT, the goal name and the rendering note. Nothing was blurred.
+
+- [x] clip
+- [x] poster
+- [ ] privacy checklist
+
+### 8. Auto-tuning routine
 
 - Section: `index.html#auto-tuning`
 - Clip: `media/clips/auto-tuning-routine.mp4`
