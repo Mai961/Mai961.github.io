@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>回放片段</title>
+<meta name="description" content="回放片段：项目展示背后的 MCAP 录制数据，可下载并在 Foxglove Studio 中打开。">
+<meta name="color-scheme" content="light dark">
+<link rel="alternate" hreflang="en" href="https://mai961.github.io/replay/">
+<link rel="alternate" hreflang="zh-Hans" href="https://mai961.github.io/zh/replay/">
+<link rel="alternate" hreflang="de" href="https://mai961.github.io/de/replay/">
+<link rel="alternate" hreflang="x-default" href="https://mai961.github.io/replay/">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<!-- Icons: Primer Octicons 19.40.0 (mark-github), MIT License, Copyright (c) GitHub Inc. -->
+<!-- Foxglove logo &#169; Foxglove Technologies, used to mark the Foxglove-Studio-derived viewer (Lichtblick) -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">小麦</a>
+    <div class="site-tools">
+      <a class="site-link" href="https://github.com/Mai961/robotics-showcase"><svg class="icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/></svg><span>展示仓库</span></a>
+      <nav class="lang" aria-label="语言">
+        <ul>
+          <li><a href="../../replay/index.html" lang="en" hreflang="en" aria-label="English">EN</a></li>
+          <li><a href="index.html" lang="zh-Hans" hreflang="zh-Hans" aria-label="中文（简体）" aria-current="true">中文</a></li>
+          <li><a href="../../de/replay/index.html" lang="de" hreflang="de" aria-label="Deutsch">DE</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+<nav class="topics" aria-label="主题">
+  <div class="wrap">
+    <ul>
+      <li><a href="../index.html#vision">视觉</a></li>
+      <li><a href="../index.html#shoot-on-the-move">行进间射击</a></li>
+      <li><a href="../index.html#whole-body-control">全身控制</a></li>
+      <li><a href="../index.html#control-stack">控制栈</a></li>
+      <li><a href="../index.html#auto-tuning">自动调参</a></li>
+      <li><a href="../replay/" aria-current="page">回放片段</a></li>
+    </ul>
+  </div>
+</nav>
+<main id="main" class="wrap">
+  <section class="intro prose" aria-labelledby="title">
+    <h1 id="title">回放片段</h1>
+    <p>项目展示背后的 ROS&nbsp;2 bag 的简短 MCAP 录制。可下载后在自己的电脑上打开。比赛、全身控制和时钟同步片段及其 <code>metadata.yaml</code> 和布局文件，与展示仓库 main 分支中的文件逐字节一致。点云片段仅托管在此处以及查看器的 R2 镜像上。</p>
+    <p class="clip-note">查看器按钮会在 Lichtblick（Foxglove Studio 的开源构建版本）中连同面板布局打开片段；无需登录。</p>
+    <p><a href="../index.html">返回项目展示</a></p>
+  </section>
+  <section id="match" class="replay-entry" aria-labelledby="match-h">
+    <div class="title-row">
+      <h2 id="match-h">录制的比赛：定位器 + 场地 EKF</h2>
+      <a class="pill" href="https://replay-viewer-e62.pages.dev/?ds=remote-file&amp;ds.url=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fmatch%2Fmatch-20s.mcap&amp;layoutUrl=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fmatch%2Ffoxglove-layout.json" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 1280 1344.4323" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1275.2846,430.6826l-221.6322-127.9823c-5.8367-3.3704-13.0283-3.3707-18.8653-.0007l-272.1716,157.1378V145.5971c0-6.7392-3.5952-12.9665-9.4314-16.3364L531.5322,1.2779c-6.288-3.6307-14.1484.9072-14.1484,8.1682l-.0011,450.3913-272.145-157.1234c-5.8365-3.3697-13.0272-3.3698-18.8638-.0002L4.7171,430.6819c-6.2881,3.6303-6.2882,12.7064-.0002,16.3368l390.0495,225.1958L4.716,897.4109c-6.2879,3.6303-6.288,12.706-.0003,16.3366l221.6419,127.9757c5.8366,3.3701,13.0278,3.3702,18.8646.0004l272.1606-157.1312v314.284c0,6.7402,3.5962,12.9682,9.4337,16.3377l221.6518,127.9411c6.288,3.6295,14.1472-.9085,14.1472-8.1688v-450.3939l272.1583,157.1312c5.8367,3.3699,13.0279,3.3697,18.8646-.0003l221.644-127.9752c6.2878-3.6305,6.2877-12.7063-.0002-16.3366l-390.0503-225.1963,390.0522-225.1962c6.2877-3.6302,6.2881-12.7057.0006-16.3364ZM762.6155,743.0071l-122.6164,70.7926-122.6164-70.7926v-141.5846l122.6164-70.7926,122.6164,70.7926v141.5846Z"/></svg><span>在查看器中打开</span></a>
+    </div>
+    <p class="prose">一场比赛中的 20&nbsp;s：定位器的检测结果、带协方差的相机位姿和标签定位、场地 EKF 的输出及其用于预测的 VIO 里程计、场地和标签场景话题，以及派生的路径和定位显示话题。检测图像已做模糊处理。51 个话题，31,742 条消息。</p>
+    <dl class="facts">
+      <dt>文件</dt><dd><code>match-20s.mcap</code>，6.1&nbsp;MB</dd>
+      <dt>来源</dt><dd>bag <code>20260905-134217</code>，66.8&nbsp;s 至 86.8&nbsp;s</dd>
+      <dt>模块</dt><dd>展示仓库中的 <a href="https://github.com/Mai961/robotics-showcase/tree/main/state-estimation">state-estimation</a> 和 <a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a></dd>
+      <dt>布局</dt><dd><a href="../../replay/match/foxglove-layout.json">Foxglove 布局（JSON）</a></dd>
+    </dl>
+    <ul class="links">
+      <li><a href="../../replay/match/match-20s.mcap" download>下载回放（.mcap，6.1&nbsp;MB）</a></li>
+    </ul>
+  </section>
+  <section id="wholebody-shop" class="replay-entry" aria-labelledby="wholebody-shop-h">
+    <div class="title-row">
+      <h2 id="wholebody-shop-h">全身控制周期，车间测试</h2>
+      <a class="pill" href="https://replay-viewer-e62.pages.dev/?ds=remote-file&amp;ds.url=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fwholebody-shop%2Fwholebody-cycle-shop.mcap&amp;layoutUrl=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fwholebody-shop%2Ffoxglove-layout.json" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 1280 1344.4323" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1275.2846,430.6826l-221.6322-127.9823c-5.8367-3.3704-13.0283-3.3707-18.8653-.0007l-272.1716,157.1378V145.5971c0-6.7392-3.5952-12.9665-9.4314-16.3364L531.5322,1.2779c-6.288-3.6307-14.1484.9072-14.1484,8.1682l-.0011,450.3913-272.145-157.1234c-5.8365-3.3697-13.0272-3.3698-18.8638-.0002L4.7171,430.6819c-6.2881,3.6303-6.2882,12.7064-.0002,16.3368l390.0495,225.1958L4.716,897.4109c-6.2879,3.6303-6.288,12.706-.0003,16.3366l221.6419,127.9757c5.8366,3.3701,13.0278,3.3702,18.8646.0004l272.1606-157.1312v314.284c0,6.7402,3.5962,12.9682,9.4337,16.3377l221.6518,127.9411c6.288,3.6295,14.1472-.9085,14.1472-8.1688v-450.3939l272.1583,157.1312c5.8367,3.3699,13.0279,3.3697,18.8646-.0003l221.644-127.9752c6.2878-3.6305,6.2877-12.7063-.0002-16.3366l-390.0503-225.1963,390.0522-225.1962c6.2877-3.6302,6.2881-12.7057.0006-16.3364ZM762.6155,743.0071l-122.6164,70.7926-122.6164-70.7926v-141.5846l122.6164-70.7926,122.6164,70.7926v141.5846Z"/></svg><span>在查看器中打开</span></a>
+    </div>
+    <p class="prose">车间测试中朝目标 <code>rear_2</code> 的一次全身控制周期，接近路径为平滑曲线；在 TASK 阶段，机械臂从 2.9&nbsp;s 到 4.2&nbsp;s 位于目标上。包含关节参考值和测量值、操作员给定的目标、阶段状态和事件、底座参考值，以及经由完整坐标变换链显示在场地上的机械臂，另附模糊处理后的检测图像。不包含该节点的参数和调试话题，记录的路径已裁剪到片段范围。18 个话题，9,554 条消息。</p>
+    <dl class="facts">
+      <dt>文件</dt><dd><code>wholebody-cycle-shop.mcap</code>，1.2&nbsp;MB</dd>
+      <dt>来源</dt><dd>bag <code>20260814-163002</code>，59.49&nbsp;s 至 65.87&nbsp;s（6.38&nbsp;s）</dd>
+      <dt>模块</dt><dd>展示仓库中的 <a href="https://github.com/Mai961/robotics-showcase/tree/main/control/wholebody-2026">control/wholebody-2026</a></dd>
+      <dt>布局</dt><dd><a href="../../replay/wholebody-shop/foxglove-layout.json">Foxglove 布局（JSON）</a></dd>
+    </dl>
+    <ul class="links">
+      <li><a href="../../replay/wholebody-shop/wholebody-cycle-shop.mcap" download>下载回放（.mcap，1.2&nbsp;MB）</a></li>
+    </ul>
+  </section>
+  <section id="clock-sync" class="replay-entry" aria-labelledby="clock-sync-h">
+    <div class="title-row">
+      <h2 id="clock-sync-h">UDP 桥时钟同步</h2>
+      <a class="pill" href="https://replay-viewer-e62.pages.dev/?ds=remote-file&amp;ds.url=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fudp-bridge%2Fclock-sync-154s.mcap&amp;layoutUrl=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fudp-bridge%2Ffoxglove-layout.json" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 1280 1344.4323" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1275.2846,430.6826l-221.6322-127.9823c-5.8367-3.3704-13.0283-3.3707-18.8653-.0007l-272.1716,157.1378V145.5971c0-6.7392-3.5952-12.9665-9.4314-16.3364L531.5322,1.2779c-6.288-3.6307-14.1484.9072-14.1484,8.1682l-.0011,450.3913-272.145-157.1234c-5.8365-3.3697-13.0272-3.3698-18.8638-.0002L4.7171,430.6819c-6.2881,3.6303-6.2882,12.7064-.0002,16.3368l390.0495,225.1958L4.716,897.4109c-6.2879,3.6303-6.288,12.706-.0003,16.3366l221.6419,127.9757c5.8366,3.3701,13.0278,3.3702,18.8646.0004l272.1606-157.1312v314.284c0,6.7402,3.5962,12.9682,9.4337,16.3377l221.6518,127.9411c6.288,3.6295,14.1472-.9085,14.1472-8.1688v-450.3939l272.1583,157.1312c5.8367,3.3699,13.0279,3.3697,18.8646-.0003l221.644-127.9752c6.2878-3.6305,6.2877-12.7063-.0002-16.3366l-390.0503-225.1963,390.0522-225.1962c6.2877-3.6302,6.2881-12.7057.0006-16.3364ZM762.6155,743.0071l-122.6164,70.7926-122.6164-70.7926v-141.5846l122.6164-70.7926,122.6164,70.7926v141.5846Z"/></svg><span>在查看器中打开</span></a>
+    </div>
+    <p class="prose">桥接在整场比赛中的时钟估计：其时钟话题的全部 308 条消息，每条包含偏移、往返时间、时龄和有效标志。</p>
+    <dl class="facts">
+      <dt>文件</dt><dd><code>clock-sync-154s.mcap</code>，18&nbsp;KB</dd>
+      <dt>来源</dt><dd>bag <code>20260905-134217</code>，完整的 154&nbsp;s</dd>
+      <dt>模块</dt><dd>展示仓库中的 <a href="https://github.com/Mai961/robotics-showcase/tree/main/udp-bridge">udp-bridge</a></dd>
+      <dt>布局</dt><dd><a href="../../replay/udp-bridge/foxglove-layout.json">Foxglove 布局（JSON）</a></dd>
+    </dl>
+    <ul class="links">
+      <li><a href="../../replay/udp-bridge/clock-sync-154s.mcap" download>下载回放（.mcap，18&nbsp;KB）</a></li>
+    </ul>
+  </section>
+  <section id="odin-cloud-slam" class="replay-entry" aria-labelledby="odin-cloud-slam-h">
+    <div class="title-row">
+      <h2 id="odin-cloud-slam-h">Odin 相机 SLAM 点云</h2>
+      <a class="pill" href="https://replay-viewer-e62.pages.dev/?ds=remote-file&amp;ds.url=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fodin-cloud-slam%2Fodin-cloud-slam-20s.mcap&amp;layoutUrl=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fodin-cloud-slam%2Ffoxglove-layout.json" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 1280 1344.4323" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1275.2846,430.6826l-221.6322-127.9823c-5.8367-3.3704-13.0283-3.3707-18.8653-.0007l-272.1716,157.1378V145.5971c0-6.7392-3.5952-12.9665-9.4314-16.3364L531.5322,1.2779c-6.288-3.6307-14.1484.9072-14.1484,8.1682l-.0011,450.3913-272.145-157.1234c-5.8365-3.3697-13.0272-3.3698-18.8638-.0002L4.7171,430.6819c-6.2881,3.6303-6.2882,12.7064-.0002,16.3368l390.0495,225.1958L4.716,897.4109c-6.2879,3.6303-6.288,12.706-.0003,16.3366l221.6419,127.9757c5.8366,3.3701,13.0278,3.3702,18.8646.0004l272.1606-157.1312v314.284c0,6.7402,3.5962,12.9682,9.4337,16.3377l221.6518,127.9411c6.288,3.6295,14.1472-.9085,14.1472-8.1688v-450.3939l272.1583,157.1312c5.8367,3.3699,13.0279,3.3697,18.8646-.0003l221.644-127.9752c6.2878-3.6305,6.2877-12.7063-.0002-16.3366l-390.0503-225.1963,390.0522-225.1962c6.2877-3.6302,6.2881-12.7057.0006-16.3364ZM762.6155,743.0071l-122.6164,70.7926-122.6164-70.7926v-141.5846l122.6164-70.7926,122.6164,70.7926v141.5846Z"/></svg><span>在查看器中打开</span></a>
+    </div>
+    <p class="prose">一个车间录制 bag 的前 20&nbsp;s（0&#8211;20&nbsp;s）：点云（每三条消息取一条）、里程计、坐标变换、定位器的定位结果、场地和标签场景话题，以及模糊处理后的检测图像；记录的路径已裁剪到片段时间窗口。4,519 条消息。点云是 Odin 相机驱动自身的输出，不是我的工作。</p>
+    <dl class="facts">
+      <dt>文件</dt><dd><code>odin-cloud-slam-20s.mcap</code>，25.6&nbsp;MB</dd>
+      <dt>来源</dt><dd>bag <code>20260801-151119</code>，0.0&nbsp;s 至 20.0&nbsp;s</dd>
+      <dt>模块</dt><dd>仅托管在此处；详情见其 <a href="../../replay/odin-cloud-slam/README.md">README</a>（英文）</dd>
+      <dt>布局</dt><dd><a href="../../replay/odin-cloud-slam/foxglove-layout.json">Foxglove 布局（JSON）</a></dd>
+    </dl>
+    <ul class="links">
+      <li><a href="../../replay/odin-cloud-slam/odin-cloud-slam-20s.mcap" download>下载回放（.mcap，25.6&nbsp;MB）</a></li>
+    </ul>
+  </section>
+  <p class="back"><a href="../index.html">返回项目展示</a></p>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Zile Liao</p>
+  </div>
+</footer>
+</body>
+</html>

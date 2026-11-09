@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>项目展示</title>
+<meta name="description" content="小麦，机器人软件开发，弗莱堡：我开发的一台竞赛机器人的项目展示，以短片呈现。">
+<meta name="color-scheme" content="light dark">
+<link rel="alternate" hreflang="en" href="https://mai961.github.io/">
+<link rel="alternate" hreflang="zh-Hans" href="https://mai961.github.io/zh/">
+<link rel="alternate" hreflang="de" href="https://mai961.github.io/de/">
+<link rel="alternate" hreflang="x-default" href="https://mai961.github.io/">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<!-- Icons: Primer Octicons 19.40.0 (repo, mark-github, mail), MIT License, Copyright (c) GitHub Inc. -->
+<!-- Foxglove logo &#169; Foxglove Technologies, used to mark the Foxglove-Studio-derived viewer (Lichtblick) -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="#main">小麦</a>
+    <div class="site-tools">
+      <a class="site-link" href="https://github.com/Mai961/robotics-showcase"><svg class="icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/></svg><span>展示仓库</span></a>
+      <nav class="lang" aria-label="语言">
+        <ul>
+          <li><a href="../index.html" lang="en" hreflang="en" aria-label="English">EN</a></li>
+          <li><a href="index.html" lang="zh-Hans" hreflang="zh-Hans" aria-label="中文（简体）" aria-current="true">中文</a></li>
+          <li><a href="../de/index.html" lang="de" hreflang="de" aria-label="Deutsch">DE</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+<nav class="topics" aria-label="主题">
+  <div class="wrap">
+    <ul>
+      <li><a href="#vision">视觉</a></li>
+      <li><a href="#shoot-on-the-move">行进间射击</a></li>
+      <li><a href="#whole-body-control">全身控制</a></li>
+      <li><a href="#control-stack">控制栈</a></li>
+      <li><a href="#auto-tuning">自动调参</a></li>
+      <li><a href="replay/">回放片段</a></li>
+    </ul>
+  </div>
+</nav>
+<main id="main" class="wrap">
+  <section class="intro prose" aria-labelledby="title">
+    <h1 id="title">项目展示</h1>
+    <p class="tagline">小麦 &#8212; 机器人软件开发，弗莱堡。</p>
+    <p class="source-note">算法源代码不公开；录制数据和分析是公开的。完整代码可应要求提供。</p>
+    <p>以下项目来自我开发的一台竞赛机器人。</p>
+    <p>机器人代码不开源：展示仓库收录了我本人工作的简短注释摘录，经过简化，用于说明各部分的工作原理。</p>
+    <ul class="links" aria-label="链接与联系方式">
+      <li><a href="https://github.com/Mai961/robotics-showcase"><svg class="icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"/></svg><span>展示仓库</span></a></li>
+      <li><a href="https://github.com/Mai961"><svg class="icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/></svg><span>GitHub 主页</span></a></li>
+      <li><a href="mailto:michael96mai@gmail.com"><svg class="icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V5.809L8.38 9.397a.75.75 0 0 1-.76 0L1.5 5.809v6.442Zm13-8.181v-.32a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25v.32L8 7.88Z"/></svg><span>michael96mai@gmail.com</span></a></li>
+    </ul>
+  </section>
+  <section id="vision" class="topic" aria-labelledby="vision-h">
+    <h2 id="vision-h">视觉：AprilTag 定位器 + 场地 EKF</h2>
+    <article class="showcase">
+      <div class="title-row">
+        <h3>一场录制比赛的回放</h3>
+        <a class="pill" href="https://replay-viewer-e62.pages.dev/?ds=remote-file&amp;ds.url=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fmatch%2Fmatch-20s.mcap&amp;layoutUrl=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fmatch%2Ffoxglove-layout.json" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 1280 1344.4323" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1275.2846,430.6826l-221.6322-127.9823c-5.8367-3.3704-13.0283-3.3707-18.8653-.0007l-272.1716,157.1378V145.5971c0-6.7392-3.5952-12.9665-9.4314-16.3364L531.5322,1.2779c-6.288-3.6307-14.1484.9072-14.1484,8.1682l-.0011,450.3913-272.145-157.1234c-5.8365-3.3697-13.0272-3.3698-18.8638-.0002L4.7171,430.6819c-6.2881,3.6303-6.2882,12.7064-.0002,16.3368l390.0495,225.1958L4.716,897.4109c-6.2879,3.6303-6.288,12.706-.0003,16.3366l221.6419,127.9757c5.8366,3.3701,13.0278,3.3702,18.8646.0004l272.1606-157.1312v314.284c0,6.7402,3.5962,12.9682,9.4337,16.3377l221.6518,127.9411c6.288,3.6295,14.1472-.9085,14.1472-8.1688v-450.3939l272.1583,157.1312c5.8367,3.3699,13.0279,3.3697,18.8646-.0003l221.644-127.9752c6.2878-3.6305,6.2877-12.7063-.0002-16.3366l-390.0503-225.1963,390.0522-225.1962c6.2877-3.6302,6.2881-12.7057.0006-16.3364ZM762.6155,743.0071l-122.6164,70.7926-122.6164-70.7926v-141.5846l122.6164-70.7926,122.6164,70.7926v141.5846Z"/></svg><span>在查看器中打开</span></a>
+      </div>
+      <figure class="clip">
+        <div class="media frame" style="background-image: url(../media/posters/vision-replay-match.jpg), url(../media/posters/placeholder.svg)">
+          <video controls muted loop playsinline preload="none" poster="../media/posters/vision-replay-match.jpg" aria-labelledby="cap-vision-replay-match">
+            <source src="../media/clips/vision-replay-match.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption><span id="cap-vision-replay-match">片段：录制比赛中的 20&nbsp;s，定位器的调试图像与估计的场地位姿及每次标签定位并排显示。</span><span class="clip-file"><a href="../media/clips/vision-replay-match.mp4">打开 MP4 文件</a> &#183; <a href="../replay/match/match-20s.mcap" download>下载回放（.mcap，6.1&nbsp;MB）</a></span></figcaption>
+      </figure>
+      <p class="lead">场地 EKF 将定位器给出的标签定位与相机的视觉惯性里程计（VIO）融合。</p>
+      <p>EKF 以约 400&nbsp;Hz 的频率基于 VIO 里程计做预测，并用每次标签定位进行校正。每次定位按定位器计算出的协方差加权。</p>
+      <p class="note">我先用 Python 编写了 EKF，随后将其移植到 C++ 以降低 CPU 负载。</p>
+      <p class="details">详情：<a href="https://github.com/Mai961/robotics-showcase/tree/main/state-estimation">state-estimation</a>、<a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a></p>
+      <p class="replay">分析：<a href="https://github.com/Mai961/robotics-showcase/tree/main/state-estimation"><code>python state-estimation/replay/analyze_field_ekf.py</code></a> &#8594; 20&nbsp;s 内 130 次标签更新，频率 400&nbsp;Hz；记录的新息中位数 1.0&nbsp;cm。后验残差中位数 0.3&nbsp;cm，130 次中有 7 次超出 95&nbsp;% 线（这不是一致性检验：残差会被拉向该次定位）。</p>
+      <p class="replay">分析：<a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp"><code>python perception-sqpnp/replay/analyze_localizer.py</code></a> &#8594; 183 帧，110 次合并多标签求解；所选标签的重投影误差中位数 0.035&nbsp;px（日志记录值）；由记录的协方差得到的 &#963;x 中位数 7.5&nbsp;mm。</p>
+    </article>
+    <article class="showcase">
+      <div class="title-row">
+        <h3>场地上的点云</h3>
+        <a class="pill" href="https://replay-viewer-e62.pages.dev/?ds=remote-file&amp;ds.url=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fodin-cloud-slam%2Fodin-cloud-slam-20s.mcap&amp;layoutUrl=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fodin-cloud-slam%2Ffoxglove-layout.json" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 1280 1344.4323" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1275.2846,430.6826l-221.6322-127.9823c-5.8367-3.3704-13.0283-3.3707-18.8653-.0007l-272.1716,157.1378V145.5971c0-6.7392-3.5952-12.9665-9.4314-16.3364L531.5322,1.2779c-6.288-3.6307-14.1484.9072-14.1484,8.1682l-.0011,450.3913-272.145-157.1234c-5.8365-3.3697-13.0272-3.3698-18.8638-.0002L4.7171,430.6819c-6.2881,3.6303-6.2882,12.7064-.0002,16.3368l390.0495,225.1958L4.716,897.4109c-6.2879,3.6303-6.288,12.706-.0003,16.3366l221.6419,127.9757c5.8366,3.3701,13.0278,3.3702,18.8646.0004l272.1606-157.1312v314.284c0,6.7402,3.5962,12.9682,9.4337,16.3377l221.6518,127.9411c6.288,3.6295,14.1472-.9085,14.1472-8.1688v-450.3939l272.1583,157.1312c5.8367,3.3699,13.0279,3.3697,18.8646-.0003l221.644-127.9752c6.2878-3.6305,6.2877-12.7063-.0002-16.3366l-390.0503-225.1963,390.0522-225.1962c6.2877-3.6302,6.2881-12.7057.0006-16.3364ZM762.6155,743.0071l-122.6164,70.7926-122.6164-70.7926v-141.5846l122.6164-70.7926,122.6164,70.7926v141.5846Z"/></svg><span>在查看器中打开</span></a>
+      </div>
+      <figure class="clip">
+        <div class="media frame" style="background-image: url(../media/posters/vision-pointcloud-localizer.jpg), url(../media/posters/placeholder.svg)">
+          <video controls muted loop playsinline preload="none" poster="../media/posters/vision-pointcloud-localizer.jpg" aria-labelledby="cap-vision-pointcloud-localizer">
+            <source src="../media/clips/vision-pointcloud-localizer.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption><span id="cap-vision-pointcloud-localizer">片段：相机驱动输出的 SLAM 点云叠加在场地布局上，并显示定位器的标签定位，取自一次录制的车间测试。</span><span class="clip-file"><a href="../media/clips/vision-pointcloud-localizer.mp4">打开 MP4 文件</a> &#183; <a href="../replay/odin-cloud-slam/odin-cloud-slam-20s.mcap" download>下载点云回放（.mcap，25.6&nbsp;MB）</a></span></figcaption>
+      </figure>
+      <p class="lead">AprilTag 定位器将一帧相机图像转换为相机在场地上的位姿，并给出 6x6 协方差。</p>
+      <p>如果几何构型不可观，就不输出位姿，而不是编造一个协方差。</p>
+      <p class="note">点云是相机驱动自身的输出；定位器以一位队友的移植版本为起点，其中的合并多标签求解和协方差由我完成。</p>
+      <p class="details">详情：<a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a></p>
+    </article>
+    <p class="section-note">查看器按钮会在 Lichtblick（Foxglove Studio 的开源构建版本）中连同面板布局打开片段；无需登录。</p>
+  </section>
+  <section id="shoot-on-the-move" class="topic" aria-labelledby="shoot-on-the-move-h">
+    <h2 id="shoot-on-the-move-h">行进间射击</h2>
+    <article class="showcase">
+      <figure class="clip">
+        <div class="media frame" style="background-image: url(../media/posters/shoot-on-the-move.jpg), url(../media/posters/placeholder.svg)">
+          <video controls muted loop playsinline preload="none" poster="../media/posters/shoot-on-the-move.jpg" aria-labelledby="cap-shoot-on-the-move">
+            <source src="../media/clips/shoot-on-the-move.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption><span id="cap-shoot-on-the-move">片段：竞赛机器人在行驶中射击。</span><span class="clip-file"><a href="../media/clips/shoot-on-the-move.mp4">打开 MP4 文件</a></span></figcaption>
+      </figure>
+      <figure class="clip figure">
+        <img src="../media/figures/turret-compensation.png" width="960" height="720" loading="lazy" alt="散点图：记录的补偿角与记录的横向速度的关系。&#8722;2&nbsp;m/s 时约 +34 度，穿过零点下降到 +1.9&nbsp;m/s 时约 &#8722;40 度，高速一端标出了九个饱和的数据行。">
+        <figcaption>记录的补偿角与横向速度的关系（驾驶站日志；与视频不是同一次运行）。</figcaption>
+      </figure>
+      <p class="lead">一个在机器人行驶时持续瞄准的转塔，并针对机器人速度做射击补偿。</p>
+      <p>从运动中的机器人射出的球会保留机器人的速度。补偿会向前预测，并把速度分解为朝向目标的分量和横穿目标方向的分量。</p>
+      <p class="note">转塔的瞄准级联控制及其射击补偿由我编写，队友也有贡献。</p>
+      <p class="details">详情：<a href="https://github.com/Mai961/robotics-showcase/tree/main/control/turret-2026">control/turret-2026</a></p>
+      <p class="replay">分析：<a href="https://github.com/Mai961/robotics-showcase/tree/main/control/turret-2026"><code>python control/turret-2026/replay/analyze_turret.py</code></a> &#8594; 以最高 3.5&nbsp;m/s 行驶 30&nbsp;s，其中补偿开启 17&nbsp;s：&#8722;2.0 至 +1.9&nbsp;m/s 的横向速度产生了 &#8722;40&#176; 至 +34&#176; 的补偿角；补偿期间跟踪误差 RMS 5.2&#176;。</p>
+    </article>
+  </section>
+  <section id="whole-body-control" class="topic" aria-labelledby="whole-body-control-h">
+    <h2 id="whole-body-control-h">全身控制</h2>
+    <article class="showcase">
+      <div class="title-row">
+        <h3>机械臂全身控制</h3>
+        <a class="pill" href="https://replay-viewer-e62.pages.dev/?ds=remote-file&amp;ds.url=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fwholebody-shop%2Fwholebody-cycle-shop.mcap&amp;layoutUrl=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fwholebody-shop%2Ffoxglove-layout.json" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 1280 1344.4323" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1275.2846,430.6826l-221.6322-127.9823c-5.8367-3.3704-13.0283-3.3707-18.8653-.0007l-272.1716,157.1378V145.5971c0-6.7392-3.5952-12.9665-9.4314-16.3364L531.5322,1.2779c-6.288-3.6307-14.1484.9072-14.1484,8.1682l-.0011,450.3913-272.145-157.1234c-5.8365-3.3697-13.0272-3.3698-18.8638-.0002L4.7171,430.6819c-6.2881,3.6303-6.2882,12.7064-.0002,16.3368l390.0495,225.1958L4.716,897.4109c-6.2879,3.6303-6.288,12.706-.0003,16.3366l221.6419,127.9757c5.8366,3.3701,13.0278,3.3702,18.8646.0004l272.1606-157.1312v314.284c0,6.7402,3.5962,12.9682,9.4337,16.3377l221.6518,127.9411c6.288,3.6295,14.1472-.9085,14.1472-8.1688v-450.3939l272.1583,157.1312c5.8367,3.3699,13.0279,3.3697,18.8646-.0003l221.644-127.9752c6.2878-3.6305,6.2877-12.7063-.0002-16.3366l-390.0503-225.1963,390.0522-225.1962c6.2877-3.6302,6.2881-12.7057.0006-16.3364ZM762.6155,743.0071l-122.6164,70.7926-122.6164-70.7926v-141.5846l122.6164-70.7926,122.6164,70.7926v141.5846Z"/></svg><span>在查看器中打开</span></a>
+      </div>
+      <figure class="clip">
+        <div class="media frame" style="background-image: url(../media/posters/arm-placing-objects.jpg), url(../media/posters/placeholder.svg)">
+          <video controls muted loop playsinline preload="none" poster="../media/posters/arm-placing-objects.jpg" aria-labelledby="cap-arm-placing-objects">
+            <source src="../media/clips/arm-placing-objects.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption><span id="cap-arm-placing-objects">片段：机器人行驶到预备位姿，随后机械臂到达目标。</span><span class="clip-file"><a href="../media/clips/arm-placing-objects.mp4">打开 MP4 文件</a> &#183; <a href="../replay/wholebody-shop/wholebody-cycle-shop.mcap" download>下载回放（.mcap，1.2&nbsp;MB）</a></span></figcaption>
+      </figure>
+      <h4 class="clip-heading">在查看器中回放</h4>
+      <figure class="clip">
+        <div class="media frame" style="background-image: url(../media/posters/wholebody-layout.jpg), url(../media/posters/placeholder.svg)">
+          <video controls muted loop playsinline preload="none" poster="../media/posters/wholebody-layout.jpg" aria-labelledby="cap-wholebody-layout">
+            <source src="../media/clips/wholebody-layout.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption><span id="cap-wholebody-layout">片段：在查看器中回放的全身控制周期：关节参考值与测量值对比、阶段事件、机械臂以及场地上的机器人。</span><span class="clip-file"><a href="../media/clips/wholebody-layout.mp4">打开 MP4 文件</a></span></figcaption>
+      </figure>
+      <p class="lead">协处理器上的求解器决定整台机器人如何运动。</p>
+      <p>一个阶段状态机运行 DRIVE、APPROACH、TASK 和 RETRACT 四个阶段。进入 TASK 时，目标被转换到求解器的坐标系中并冻结，因此它保持在场地上的同一点。</p>
+      <p class="note">目标冻结以及由 QP 控制底盘运动都仅在仿真中实现。</p>
+      <p class="details">详情：<a href="https://github.com/Mai961/robotics-showcase/tree/main/control/wholebody-2026">control/wholebody-2026</a></p>
+    </article>
+    <article class="showcase">
+      <h3>基于 AprilTag 定位到达场地固定目标</h3>
+      <figure class="clip">
+        <div class="media frame" style="background-image: url(../media/posters/arm-tracking-an-apriltag.jpg), url(../media/posters/placeholder.svg)">
+          <video controls muted loop playsinline preload="none" poster="../media/posters/arm-tracking-an-apriltag.jpg" aria-labelledby="cap-arm-tracking-an-apriltag">
+            <source src="../media/clips/arm-tracking-an-apriltag.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption><span id="cap-arm-tracking-an-apriltag">片段：机械臂跟随举在一根杆子末端的 AprilTag。</span><span class="clip-file"><a href="../media/clips/arm-tracking-an-apriltag.mp4">打开 MP4 文件</a></span></figcaption>
+      </figure>
+      <p class="lead">AprilTag 定位告诉机器人自己所处的位置，因此机械臂的目标可以固定在场地上。</p>
+      <p>机械臂的目标是固定在场地上的位姿，而全身求解器在机器人自身的坐标系中工作。进入 TASK 之前，APPROACH 要求场地位姿是最新的。</p>
+      <p class="note">展示仓库中没有收录这一演示模式的代码摘录。</p>
+      <p class="details">详情：<a href="https://github.com/Mai961/robotics-showcase/tree/main/control/wholebody-2026">control/wholebody-2026</a>、<a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a>、<a href="https://github.com/Mai961/robotics-showcase/tree/main/state-estimation">state-estimation</a></p>
+    </article>
+  </section>
+  <section id="control-stack" class="topic" aria-labelledby="control-stack-h">
+    <h2 id="control-stack-h">控制栈与基础设施</h2>
+    <article class="showcase">
+      <div class="title-row">
+        <h3>同一控制器，仿真或实机</h3>
+        <a class="pill" href="https://replay-viewer-e62.pages.dev/?ds=remote-file&amp;ds.url=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fsim-wholebody%2Fsim-cycle.mcap&amp;layoutUrl=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fsim-wholebody%2Ffoxglove-layout.json" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 1280 1344.4323" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1275.2846,430.6826l-221.6322-127.9823c-5.8367-3.3704-13.0283-3.3707-18.8653-.0007l-272.1716,157.1378V145.5971c0-6.7392-3.5952-12.9665-9.4314-16.3364L531.5322,1.2779c-6.288-3.6307-14.1484.9072-14.1484,8.1682l-.0011,450.3913-272.145-157.1234c-5.8365-3.3697-13.0272-3.3698-18.8638-.0002L4.7171,430.6819c-6.2881,3.6303-6.2882,12.7064-.0002,16.3368l390.0495,225.1958L4.716,897.4109c-6.2879,3.6303-6.288,12.706-.0003,16.3366l221.6419,127.9757c5.8366,3.3701,13.0278,3.3702,18.8646.0004l272.1606-157.1312v314.284c0,6.7402,3.5962,12.9682,9.4337,16.3377l221.6518,127.9411c6.288,3.6295,14.1472-.9085,14.1472-8.1688v-450.3939l272.1583,157.1312c5.8367,3.3699,13.0279,3.3697,18.8646-.0003l221.644-127.9752c6.2878-3.6305,6.2877-12.7063-.0002-16.3366l-390.0503-225.1963,390.0522-225.1962c6.2877-3.6302,6.2881-12.7057.0006-16.3364ZM762.6155,743.0071l-122.6164,70.7926-122.6164-70.7926v-141.5846l122.6164-70.7926,122.6164,70.7926v141.5846Z"/></svg><span>在查看器中打开仿真</span></a>
+      </div>
+      <figure class="clip">
+        <div class="media frame" style="background-image: url(../media/posters/sim-vs-real.jpg), url(../media/posters/placeholder.svg)">
+          <video controls muted loop playsinline preload="none" poster="../media/posters/sim-vs-real.jpg" aria-labelledby="cap-sim-vs-real">
+            <source src="../media/clips/sim-vs-real.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption><span id="cap-sim-vs-real">片段：同一个周期，左侧为仿真，右侧为实机，由记录的关节状态在 MuJoCo 中渲染；MuJoCo 不在控制回路中。</span><span class="clip-file"><a href="../media/clips/sim-vs-real.mp4">打开 MP4 文件</a> &#183; <a href="../replay/sim-wholebody/sim-cycle.mcap" download>下载回放（.mcap，334&nbsp;KB）</a></span></figcaption>
+      </figure>
+      <p class="lead">IO 层是一个带两个后端的接口：通过 CAN 连接的 TalonFX 电机控制器，以及一个运动学的 WPILib 仿真。</p>
+      <p>全身控制器和阶段状态机无需改动即可对接仿真机器人，经由回环接口上的同一个 UDP 桥通信。替换的是后端，而不是控制器。</p>
+      <p class="note">仿真中的起点平移了 1&nbsp;m，因为当前的目标集合移动了这个目标；仿真的被控对象是运动学模型。</p>
+      <p class="details">详情：<a href="https://github.com/Mai961/robotics-showcase/tree/main/sim-io-layer">sim-io-layer</a></p>
+      <p class="replay">分析：<a href="https://github.com/Mai961/robotics-showcase/tree/main/sim-io-layer"><code>python sim-io-layer/replay/analyze_sim_vs_real.py</code></a> &#8594; 在 TASK 阶段，测量的关节值与实机周期的 RMS 偏差为 0.056&nbsp;rad（肩关节）、0.017&nbsp;m（伸缩臂）和 0.041&nbsp;rad（腕关节）；从锁定到行驶：仿真 2.36&nbsp;s，实机 2.38&nbsp;s。</p>
+    </article>
+    <article class="showcase">
+      <div class="title-row">
+        <h3>协处理器 &#8596; 控制器桥接</h3>
+        <a class="pill" href="https://replay-viewer-e62.pages.dev/?ds=remote-file&amp;ds.url=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fudp-bridge%2Fclock-sync-154s.mcap&amp;layoutUrl=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fudp-bridge%2Ffoxglove-layout.json" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 1280 1344.4323" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1275.2846,430.6826l-221.6322-127.9823c-5.8367-3.3704-13.0283-3.3707-18.8653-.0007l-272.1716,157.1378V145.5971c0-6.7392-3.5952-12.9665-9.4314-16.3364L531.5322,1.2779c-6.288-3.6307-14.1484.9072-14.1484,8.1682l-.0011,450.3913-272.145-157.1234c-5.8365-3.3697-13.0272-3.3698-18.8638-.0002L4.7171,430.6819c-6.2881,3.6303-6.2882,12.7064-.0002,16.3368l390.0495,225.1958L4.716,897.4109c-6.2879,3.6303-6.288,12.706-.0003,16.3366l221.6419,127.9757c5.8366,3.3701,13.0278,3.3702,18.8646.0004l272.1606-157.1312v314.284c0,6.7402,3.5962,12.9682,9.4337,16.3377l221.6518,127.9411c6.288,3.6295,14.1472-.9085,14.1472-8.1688v-450.3939l272.1583,157.1312c5.8367,3.3699,13.0279,3.3697,18.8646-.0003l221.644-127.9752c6.2878-3.6305,6.2877-12.7063-.0002-16.3366l-390.0503-225.1963,390.0522-225.1962c6.2877-3.6302,6.2881-12.7057.0006-16.3364ZM762.6155,743.0071l-122.6164,70.7926-122.6164-70.7926v-141.5846l122.6164-70.7926,122.6164,70.7926v141.5846Z"/></svg><span>在查看器中打开</span></a>
+      </div>
+      <figure class="clip figure figure-tall">
+        <img src="../media/figures/clock-sync.png" width="1200" height="1260" loading="lazy" alt="154&nbsp;s 内的四幅图：两个时钟之间约 2.84&nbsp;s 的偏移，向下漂移 18&nbsp;ms；第二个偏移与零相差不超过 40 微秒；往返时间低于 0.6&nbsp;ms；以及所选样本的时龄，升至约 8&nbsp;s 后回落。">
+        <figcaption>154&nbsp;s 内记录的时钟估计：两个时钟之间的偏移、一个接近零的偏移、往返时间以及所选样本的时龄。<span class="clip-file"><a href="../replay/udp-bridge/clock-sync-154s.mcap" download>下载回放（.mcap，18&nbsp;KB）</a></span></figcaption>
+      </figure>
+      <p class="lead">Linux 协处理器与机器人控制器之间采用传输时带类型哈希的类型化消息、固定长度的位姿消息和 NTP 式时钟同步，因此位姿和指令的传递在控制器一侧无需中间件。</p>
+      <p class="note">该日志只包含时钟话题，因此无法给出各话题的消息频率。</p>
+      <p class="details">详情：<a href="https://github.com/Mai961/robotics-showcase/tree/main/udp-bridge">udp-bridge</a></p>
+      <p class="replay">分析：<a href="https://github.com/Mai961/robotics-showcase/tree/main/udp-bridge"><code>python udp-bridge/replay/analyze_clock.py</code></a> &#8594; 154&nbsp;s 内 154 个时钟样本中 154 个有效；往返时间中位数 0.34&nbsp;ms；153&nbsp;s 内偏移漂移 18&nbsp;ms。</p>
+    </article>
+    <article class="showcase">
+      <h3>底盘控制</h3>
+      <figure class="clip figure">
+        <img src="../media/figures/chassis-path.png" width="1080" height="810" loading="lazy" alt="两条跟随路径的场地图：记录的目标位姿落在参考路径上，测量位姿在其旁边，在转弯处偏离最大。">
+        <figcaption>记录的路径跟随：参考路径、跟随器的目标位姿和测量位姿。</figcaption>
+      </figure>
+      <p class="lead">在 swerve 模块上采用带前馈的级联速度环和航向环：这是转塔和全身控制器所依托的底座，通过同一个 IO 层驱动。</p>
+      <p class="note">这次运行没有视频。</p>
+      <p class="details">详情：<a href="https://github.com/Mai961/robotics-showcase/tree/main/control/chassis">control/chassis</a></p>
+      <p class="replay">分析：<a href="https://github.com/Mai961/robotics-showcase/tree/main/control/chassis"><code>python control/chassis/replay/analyze_chassis.py</code></a> &#8594; 6.2&nbsp;s 的自主路径跟随：位置误差 RMS 0.23&nbsp;m（最大 0.48&nbsp;m），航向误差 RMS 7.3&#176;，速度最高 3.9&nbsp;m/s。</p>
+    </article>
+  </section>
+  <section id="auto-tuning" class="topic" aria-labelledby="auto-tuning-h">
+    <h2 id="auto-tuning-h">自动调参</h2>
+    <article class="showcase">
+      <figure class="clip">
+        <div class="media frame" style="background-image: url(../media/posters/auto-tuning-routine.jpg), url(../media/posters/placeholder.svg)">
+          <video controls muted loop playsinline preload="none" poster="../media/posters/auto-tuning-routine.jpg" aria-labelledby="cap-auto-tuning-routine">
+            <source src="../media/clips/auto-tuning-routine.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption><span id="cap-auto-tuning-routine">片段：自动调参程序驱动机器人的机械臂运动。</span><span class="clip-file"><a href="../media/clips/auto-tuning-routine.mp4">打开 MP4 文件</a></span></figcaption>
+      </figure>
+      <p class="lead">一个针对机械臂关节的 PID 调参台架，由编程智能体在硬性限制内引导。</p>
+      <p>智能体决定下一步扫描哪个增益、扫描范围以及何时停止。确定性的扫描本身保留在强制执行这些限制的代码中。</p>
+      <p class="note">我编写了运行实验的 ROS&nbsp;2 节点，以及编程智能体所遵循的流程。</p>
+      <p class="details">详情：<a href="https://github.com/Mai961/robotics-showcase/tree/main/llm-tuning-agent">llm-tuning-agent</a></p>
+      <p class="replay">分析：<a href="https://github.com/Mai961/robotics-showcase/tree/main/llm-tuning-agent"><code>python llm-tuning-agent/replay/analyze_tuning.py</code></a> &#8594; 一次台架测试共 32 次实验（其中 17 次为搜索），无中止：调节时间 1.04&nbsp;s &#8594; 0.76&nbsp;s，稳态误差 0.109 &#8594; 0.007&nbsp;rad；超调从 0.012 上升到 0.019&nbsp;rad。</p>
+    </article>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Zile Liao</p>
+  </div>
+</footer>
+</body>
+</html>

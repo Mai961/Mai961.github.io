@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Replay-Clips</title>
+<meta name="description" content="Replay-Clips: die MCAP-Aufzeichnungen hinter der Projektübersicht, zum Herunterladen und Öffnen in Foxglove Studio.">
+<meta name="color-scheme" content="light dark">
+<link rel="alternate" hreflang="en" href="https://mai961.github.io/replay/">
+<link rel="alternate" hreflang="zh-Hans" href="https://mai961.github.io/zh/replay/">
+<link rel="alternate" hreflang="de" href="https://mai961.github.io/de/replay/">
+<link rel="alternate" hreflang="x-default" href="https://mai961.github.io/replay/">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<!-- Icons: Primer Octicons 19.40.0 (mark-github), MIT License, Copyright (c) GitHub Inc. -->
+<!-- Foxglove logo &#169; Foxglove Technologies, used to mark the Foxglove-Studio-derived viewer (Lichtblick) -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">Mai</a>
+    <div class="site-tools">
+      <a class="site-link" href="https://github.com/Mai961/robotics-showcase"><svg class="icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/></svg><span>Showcase-Repo</span></a>
+      <nav class="lang" aria-label="Sprache">
+        <ul>
+          <li><a href="../../replay/index.html" lang="en" hreflang="en" aria-label="English">EN</a></li>
+          <li><a href="../../zh/replay/index.html" lang="zh-Hans" hreflang="zh-Hans" aria-label="中文（简体）">中文</a></li>
+          <li><a href="index.html" lang="de" hreflang="de" aria-label="Deutsch" aria-current="true">DE</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+<nav class="topics" aria-label="Themen">
+  <div class="wrap">
+    <ul>
+      <li><a href="../index.html#vision">Vision</a></li>
+      <li><a href="../index.html#shoot-on-the-move">Schießen aus der Fahrt</a></li>
+      <li><a href="../index.html#whole-body-control">Ganzkörperregelung</a></li>
+      <li><a href="../index.html#control-stack">Regelungsstack</a></li>
+      <li><a href="../index.html#auto-tuning">Auto-Tuning</a></li>
+      <li><a href="../replay/" aria-current="page">Replay-Clips</a></li>
+    </ul>
+  </div>
+</nav>
+<main id="main" class="wrap">
+  <section class="intro prose" aria-labelledby="title">
+    <h1 id="title">Replay-Clips</h1>
+    <p>Kurze MCAP-Aufzeichnungen aus Bags von ROS&nbsp;2, die der Projektübersicht zugrunde liegen. Zum Öffnen auf dem eigenen Rechner einfach herunterladen. Die Clips zu Match, Ganzkörperregelung und Uhrensynchronisation sind samt <code>metadata.yaml</code> und Layout-Dateien byte-identische Kopien aus dem main-Branch des Showcase-Repositorys. Der Punktwolken-Clip liegt nur hier und auf dem R2-Mirror des Viewers.</p>
+    <p class="clip-note">Die Viewer-Schaltflächen öffnen den Clip mit seinem Panel-Layout in Lichtblick, einem Open-Source-Build von Foxglove Studio; ohne Anmeldung.</p>
+    <p><a href="../index.html">Zurück zur Projektübersicht</a></p>
+  </section>
+  <section id="match" class="replay-entry" aria-labelledby="match-h">
+    <div class="title-row">
+      <h2 id="match-h">Aufgezeichnetes Match: Lokalisierer + Feld-EKF</h2>
+      <a class="pill" href="https://replay-viewer-e62.pages.dev/?ds=remote-file&amp;ds.url=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fmatch%2Fmatch-20s.mcap&amp;layoutUrl=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fmatch%2Ffoxglove-layout.json" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 1280 1344.4323" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1275.2846,430.6826l-221.6322-127.9823c-5.8367-3.3704-13.0283-3.3707-18.8653-.0007l-272.1716,157.1378V145.5971c0-6.7392-3.5952-12.9665-9.4314-16.3364L531.5322,1.2779c-6.288-3.6307-14.1484.9072-14.1484,8.1682l-.0011,450.3913-272.145-157.1234c-5.8365-3.3697-13.0272-3.3698-18.8638-.0002L4.7171,430.6819c-6.2881,3.6303-6.2882,12.7064-.0002,16.3368l390.0495,225.1958L4.716,897.4109c-6.2879,3.6303-6.288,12.706-.0003,16.3366l221.6419,127.9757c5.8366,3.3701,13.0278,3.3702,18.8646.0004l272.1606-157.1312v314.284c0,6.7402,3.5962,12.9682,9.4337,16.3377l221.6518,127.9411c6.288,3.6295,14.1472-.9085,14.1472-8.1688v-450.3939l272.1583,157.1312c5.8367,3.3699,13.0279,3.3697,18.8646-.0003l221.644-127.9752c6.2878-3.6305,6.2877-12.7063-.0002-16.3366l-390.0503-225.1963,390.0522-225.1962c6.2877-3.6302,6.2881-12.7057.0006-16.3364ZM762.6155,743.0071l-122.6164,70.7926-122.6164-70.7926v-141.5846l122.6164-70.7926,122.6164,70.7926v141.5846Z"/></svg><span>Im Viewer öffnen</span></a>
+    </div>
+    <p class="prose">20&nbsp;s eines Matches: die Detektionen des Lokalisierers, Kameraposen mit ihrer Kovarianz und die Tag-Messungen, die Ausgabe des Feld-EKF und die VIO-Odometrie, aus der er prädiziert, die Szenen-Topics für Feld und Tags sowie abgeleitete Anzeige-Topics für Pfad und Messungen. Das Detektionsbild ist weichgezeichnet. 51 Topics, 31.742 Nachrichten.</p>
+    <dl class="facts">
+      <dt>Datei</dt><dd><code>match-20s.mcap</code>, 6,1&nbsp;MB</dd>
+      <dt>Quelle</dt><dd>Bag <code>20260905-134217</code>, 66,8&nbsp;s bis 86,8&nbsp;s</dd>
+      <dt>Modul</dt><dd><a href="https://github.com/Mai961/robotics-showcase/tree/main/state-estimation">state-estimation</a> und <a href="https://github.com/Mai961/robotics-showcase/tree/main/perception-sqpnp">perception-sqpnp</a> im Showcase-Repository</dd>
+      <dt>Layout</dt><dd><a href="../../replay/match/foxglove-layout.json">Foxglove-Layout (JSON)</a></dd>
+    </dl>
+    <ul class="links">
+      <li><a href="../../replay/match/match-20s.mcap" download>Replay herunterladen (.mcap, 6,1&nbsp;MB)</a></li>
+    </ul>
+  </section>
+  <section id="wholebody-shop" class="replay-entry" aria-labelledby="wholebody-shop-h">
+    <div class="title-row">
+      <h2 id="wholebody-shop-h">Ganzkörperzyklus, Werkstatttest</h2>
+      <a class="pill" href="https://replay-viewer-e62.pages.dev/?ds=remote-file&amp;ds.url=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fwholebody-shop%2Fwholebody-cycle-shop.mcap&amp;layoutUrl=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fwholebody-shop%2Ffoxglove-layout.json" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 1280 1344.4323" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1275.2846,430.6826l-221.6322-127.9823c-5.8367-3.3704-13.0283-3.3707-18.8653-.0007l-272.1716,157.1378V145.5971c0-6.7392-3.5952-12.9665-9.4314-16.3364L531.5322,1.2779c-6.288-3.6307-14.1484.9072-14.1484,8.1682l-.0011,450.3913-272.145-157.1234c-5.8365-3.3697-13.0272-3.3698-18.8638-.0002L4.7171,430.6819c-6.2881,3.6303-6.2882,12.7064-.0002,16.3368l390.0495,225.1958L4.716,897.4109c-6.2879,3.6303-6.288,12.706-.0003,16.3366l221.6419,127.9757c5.8366,3.3701,13.0278,3.3702,18.8646.0004l272.1606-157.1312v314.284c0,6.7402,3.5962,12.9682,9.4337,16.3377l221.6518,127.9411c6.288,3.6295,14.1472-.9085,14.1472-8.1688v-450.3939l272.1583,157.1312c5.8367,3.3699,13.0279,3.3697,18.8646-.0003l221.644-127.9752c6.2878-3.6305,6.2877-12.7063-.0002-16.3366l-390.0503-225.1963,390.0522-225.1962c6.2877-3.6302,6.2881-12.7057.0006-16.3364ZM762.6155,743.0071l-122.6164,70.7926-122.6164-70.7926v-141.5846l122.6164-70.7926,122.6164,70.7926v141.5846Z"/></svg><span>Im Viewer öffnen</span></a>
+    </div>
+    <p class="prose">Ein Ganzkörperzyklus in einem Werkstatttest zum Ziel <code>rear_2</code>, mit einer glatten, gekrümmten Anfahrt; in TASK ist der Arm von 2,9&nbsp;s bis 4,2&nbsp;s am Ziel. Gelenk-Sollwerte und Messwerte, das Ziel des Bedieners, Phasenstatus und -ereignisse, der Sollwert der Basis und der Arm auf dem Feld über die vollständige Transformationskette, dazu das weichgezeichnete Detektionsbild. Die Parameter- und Debug-Topics des Nodes sind nicht enthalten, und der aufgezeichnete Pfad ist auf den Clip zugeschnitten. 18 Topics, 9.554 Nachrichten.</p>
+    <dl class="facts">
+      <dt>Datei</dt><dd><code>wholebody-cycle-shop.mcap</code>, 1,2&nbsp;MB</dd>
+      <dt>Quelle</dt><dd>Bag <code>20260814-163002</code>, 59,49&nbsp;s bis 65,87&nbsp;s (6,38&nbsp;s)</dd>
+      <dt>Modul</dt><dd><a href="https://github.com/Mai961/robotics-showcase/tree/main/control/wholebody-2026">control/wholebody-2026</a> im Showcase-Repository</dd>
+      <dt>Layout</dt><dd><a href="../../replay/wholebody-shop/foxglove-layout.json">Foxglove-Layout (JSON)</a></dd>
+    </dl>
+    <ul class="links">
+      <li><a href="../../replay/wholebody-shop/wholebody-cycle-shop.mcap" download>Replay herunterladen (.mcap, 1,2&nbsp;MB)</a></li>
+    </ul>
+  </section>
+  <section id="clock-sync" class="replay-entry" aria-labelledby="clock-sync-h">
+    <div class="title-row">
+      <h2 id="clock-sync-h">Uhrensynchronisation der UDP-Bridge</h2>
+      <a class="pill" href="https://replay-viewer-e62.pages.dev/?ds=remote-file&amp;ds.url=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fudp-bridge%2Fclock-sync-154s.mcap&amp;layoutUrl=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fudp-bridge%2Ffoxglove-layout.json" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 1280 1344.4323" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1275.2846,430.6826l-221.6322-127.9823c-5.8367-3.3704-13.0283-3.3707-18.8653-.0007l-272.1716,157.1378V145.5971c0-6.7392-3.5952-12.9665-9.4314-16.3364L531.5322,1.2779c-6.288-3.6307-14.1484.9072-14.1484,8.1682l-.0011,450.3913-272.145-157.1234c-5.8365-3.3697-13.0272-3.3698-18.8638-.0002L4.7171,430.6819c-6.2881,3.6303-6.2882,12.7064-.0002,16.3368l390.0495,225.1958L4.716,897.4109c-6.2879,3.6303-6.288,12.706-.0003,16.3366l221.6419,127.9757c5.8366,3.3701,13.0278,3.3702,18.8646.0004l272.1606-157.1312v314.284c0,6.7402,3.5962,12.9682,9.4337,16.3377l221.6518,127.9411c6.288,3.6295,14.1472-.9085,14.1472-8.1688v-450.3939l272.1583,157.1312c5.8367,3.3699,13.0279,3.3697,18.8646-.0003l221.644-127.9752c6.2878-3.6305,6.2877-12.7063-.0002-16.3366l-390.0503-225.1963,390.0522-225.1962c6.2877-3.6302,6.2881-12.7057.0006-16.3364ZM762.6155,743.0071l-122.6164,70.7926-122.6164-70.7926v-141.5846l122.6164-70.7926,122.6164,70.7926v141.5846Z"/></svg><span>Im Viewer öffnen</span></a>
+    </div>
+    <p class="prose">Die Uhrschätzung der Bridge über ein ganzes Match: alle 308 Nachrichten ihres Uhr-Topics, jeweils mit Offset, Umlaufzeit, Alter und Gültigkeits-Flag.</p>
+    <dl class="facts">
+      <dt>Datei</dt><dd><code>clock-sync-154s.mcap</code>, 18&nbsp;KB</dd>
+      <dt>Quelle</dt><dd>Bag <code>20260905-134217</code>, die vollen 154&nbsp;s</dd>
+      <dt>Modul</dt><dd><a href="https://github.com/Mai961/robotics-showcase/tree/main/udp-bridge">udp-bridge</a> im Showcase-Repository</dd>
+      <dt>Layout</dt><dd><a href="../../replay/udp-bridge/foxglove-layout.json">Foxglove-Layout (JSON)</a></dd>
+    </dl>
+    <ul class="links">
+      <li><a href="../../replay/udp-bridge/clock-sync-154s.mcap" download>Replay herunterladen (.mcap, 18&nbsp;KB)</a></li>
+    </ul>
+  </section>
+  <section id="odin-cloud-slam" class="replay-entry" aria-labelledby="odin-cloud-slam-h">
+    <div class="title-row">
+      <h2 id="odin-cloud-slam-h">SLAM-Punktwolke der Odin-Kamera</h2>
+      <a class="pill" href="https://replay-viewer-e62.pages.dev/?ds=remote-file&amp;ds.url=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fodin-cloud-slam%2Fodin-cloud-slam-20s.mcap&amp;layoutUrl=https%3A%2F%2Fpub-0f92a4b175d3420290d73d6c2242fb57.r2.dev%2Fodin-cloud-slam%2Ffoxglove-layout.json" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 1280 1344.4323" width="16" height="16" aria-hidden="true" focusable="false"><path d="M1275.2846,430.6826l-221.6322-127.9823c-5.8367-3.3704-13.0283-3.3707-18.8653-.0007l-272.1716,157.1378V145.5971c0-6.7392-3.5952-12.9665-9.4314-16.3364L531.5322,1.2779c-6.288-3.6307-14.1484.9072-14.1484,8.1682l-.0011,450.3913-272.145-157.1234c-5.8365-3.3697-13.0272-3.3698-18.8638-.0002L4.7171,430.6819c-6.2881,3.6303-6.2882,12.7064-.0002,16.3368l390.0495,225.1958L4.716,897.4109c-6.2879,3.6303-6.288,12.706-.0003,16.3366l221.6419,127.9757c5.8366,3.3701,13.0278,3.3702,18.8646.0004l272.1606-157.1312v314.284c0,6.7402,3.5962,12.9682,9.4337,16.3377l221.6518,127.9411c6.288,3.6295,14.1472-.9085,14.1472-8.1688v-450.3939l272.1583,157.1312c5.8367,3.3699,13.0279,3.3697,18.8646-.0003l221.644-127.9752c6.2878-3.6305,6.2877-12.7063-.0002-16.3366l-390.0503-225.1963,390.0522-225.1962c6.2877-3.6302,6.2881-12.7057.0006-16.3364ZM762.6155,743.0071l-122.6164,70.7926-122.6164-70.7926v-141.5846l122.6164-70.7926,122.6164,70.7926v141.5846Z"/></svg><span>Im Viewer öffnen</span></a>
+    </div>
+    <p class="prose">Die ersten 20&nbsp;s eines in der Werkstatt aufgezeichneten Bags (0&#8211;20&nbsp;s): die Punktwolke (jede dritte Nachricht), Odometrie, Transformationen, Messungen des Lokalisierers, Szenen-Topics für Feld und Tags sowie das weichgezeichnete Detektionsbild; der aufgezeichnete Pfad ist auf das Clip-Fenster zugeschnitten. 4.519 Nachrichten. Die Punktwolke ist die eigene Ausgabe des Odin-Kameratreibers, nicht meine Arbeit.</p>
+    <dl class="facts">
+      <dt>Datei</dt><dd><code>odin-cloud-slam-20s.mcap</code>, 25,6&nbsp;MB</dd>
+      <dt>Quelle</dt><dd>Bag <code>20260801-151119</code>, 0,0&nbsp;s bis 20,0&nbsp;s</dd>
+      <dt>Modul</dt><dd>nur hier gehostet; Details in der zugehörigen <a href="../../replay/odin-cloud-slam/README.md">README</a> (englisch)</dd>
+      <dt>Layout</dt><dd><a href="../../replay/odin-cloud-slam/foxglove-layout.json">Foxglove-Layout (JSON)</a></dd>
+    </dl>
+    <ul class="links">
+      <li><a href="../../replay/odin-cloud-slam/odin-cloud-slam-20s.mcap" download>Replay herunterladen (.mcap, 25,6&nbsp;MB)</a></li>
+    </ul>
+  </section>
+  <p class="back"><a href="../index.html">Zurück zur Projektübersicht</a></p>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Zile Liao</p>
+  </div>
+</footer>
+</body>
+</html>
