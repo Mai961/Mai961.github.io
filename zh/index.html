@@ -39,7 +39,7 @@
       <li><a href="#vision">视觉</a></li>
       <li><a href="#shoot-on-the-move">行进间射击</a></li>
       <li><a href="#whole-body-control">全身控制</a></li>
-      <li><a href="#control-stack">控制栈</a></li>
+      <li><a href="#control-stack">控制系统</a></li>
       <li><a href="#auto-tuning">自动调参</a></li>
       <li><a href="replay/">回放片段</a></li>
     </ul>
@@ -116,7 +116,7 @@
         <figcaption>记录的补偿角与横向速度的关系（驾驶站日志；与视频不是同一次运行）。</figcaption>
       </figure>
       <p class="lead">一个在机器人行驶时持续瞄准的转塔，并针对机器人速度做射击补偿。</p>
-      <p>从运动中的机器人射出的球会保留机器人的速度。补偿会向前预测，并把速度分解为朝向目标的分量和横穿目标方向的分量。</p>
+      <p>从运动中的机器人射出的球会保留机器人的速度。补偿会考虑出球时刻机器人自身的速度。</p>
       <p class="note">转塔的瞄准级联控制及其射击补偿由我编写，队友也有贡献。</p>
       <p class="details">详情：<a href="https://github.com/Mai961/robotics-showcase/tree/main/control/turret-2026">control/turret-2026</a></p>
       <p class="replay">分析：<a href="https://github.com/Mai961/robotics-showcase/tree/main/control/turret-2026"><code>python control/turret-2026/replay/analyze_turret.py</code></a> &#8594; 以最高 3.5&nbsp;m/s 行驶 30&nbsp;s，其中补偿开启 17&nbsp;s：&#8722;2.0 至 +1.9&nbsp;m/s 的横向速度产生了 &#8722;40&#176; 至 +34&#176; 的补偿角；补偿期间跟踪误差 RMS 5.2&#176;。</p>
@@ -168,7 +168,7 @@
     </article>
   </section>
   <section id="control-stack" class="topic" aria-labelledby="control-stack-h">
-    <h2 id="control-stack-h">控制栈与基础设施</h2>
+    <h2 id="control-stack-h">控制系统与基础设施</h2>
     <article class="showcase">
       <div class="title-row">
         <h3>同一控制器，仿真或实机</h3>
@@ -186,7 +186,7 @@
       <p>全身控制器和阶段状态机无需改动即可对接仿真机器人，经由回环接口上的同一个 UDP 桥通信。替换的是后端，而不是控制器。</p>
       <p class="note">仿真中的起点平移了 1&nbsp;m，因为当前的目标集合移动了这个目标；仿真的被控对象是运动学模型。</p>
       <p class="details">详情：<a href="https://github.com/Mai961/robotics-showcase/tree/main/sim-io-layer">sim-io-layer</a></p>
-      <p class="replay">分析：<a href="https://github.com/Mai961/robotics-showcase/tree/main/sim-io-layer"><code>python sim-io-layer/replay/analyze_sim_vs_real.py</code></a> &#8594; 在 TASK 阶段，测量的关节值与实机周期的 RMS 偏差为 0.056&nbsp;rad（肩关节）、0.017&nbsp;m（伸缩臂）和 0.041&nbsp;rad（腕关节）；从锁定到行驶：仿真 2.36&nbsp;s，实机 2.38&nbsp;s。</p>
+      <p class="replay">分析：<a href="https://github.com/Mai961/robotics-showcase/tree/main/sim-io-layer"><code>python sim-io-layer/replay/analyze_sim_vs_real.py</code></a> &#8594; 在 TASK 阶段，测量的关节值与实机周期的 RMS 偏差为 0.056&nbsp;rad（肩关节）、0.017&nbsp;m（伸缩臂）和 0.041&nbsp;rad（腕关节）；从锁定目标到回到 DRIVE：仿真 2.36&nbsp;s，实机 2.38&nbsp;s。</p>
     </article>
     <article class="showcase">
       <div class="title-row">
@@ -208,7 +208,7 @@
         <img src="../media/figures/chassis-path.png" width="1080" height="810" loading="lazy" alt="两条跟随路径的场地图：记录的目标位姿落在参考路径上，测量位姿在其旁边，在转弯处偏离最大。">
         <figcaption>记录的路径跟随：参考路径、跟随器的目标位姿和测量位姿。</figcaption>
       </figure>
-      <p class="lead">在 swerve 模块上采用带前馈的级联速度环和航向环：这是转塔和全身控制器所依托的底座，通过同一个 IO 层驱动。</p>
+      <p class="lead">在舵轮（swerve）模块上采用带前馈的级联速度环和航向环：这是转塔和全身控制器所依托的底座，通过同一个 IO 层驱动。</p>
       <p class="note">这次运行没有视频。</p>
       <p class="details">详情：<a href="https://github.com/Mai961/robotics-showcase/tree/main/control/chassis">control/chassis</a></p>
       <p class="replay">分析：<a href="https://github.com/Mai961/robotics-showcase/tree/main/control/chassis"><code>python control/chassis/replay/analyze_chassis.py</code></a> &#8594; 6.2&nbsp;s 的自主路径跟随：位置误差 RMS 0.23&nbsp;m（最大 0.48&nbsp;m），航向误差 RMS 7.3&#176;，速度最高 3.9&nbsp;m/s。</p>

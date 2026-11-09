@@ -39,7 +39,7 @@
       <li><a href="#vision">Vision</a></li>
       <li><a href="#shoot-on-the-move">Schießen aus der Fahrt</a></li>
       <li><a href="#whole-body-control">Ganzkörperregelung</a></li>
-      <li><a href="#control-stack">Regelungsstack</a></li>
+      <li><a href="#control-stack">Regelung</a></li>
       <li><a href="#auto-tuning">Auto-Tuning</a></li>
       <li><a href="replay/">Replay-Clips</a></li>
     </ul>
@@ -116,7 +116,7 @@
         <figcaption>Geloggter Kompensationswinkel über der Quergeschwindigkeit (Driver-Station-Log; nicht derselbe Lauf wie im Video).</figcaption>
       </figure>
       <p class="lead">Ein Drehturm, der während der Fahrt weiter zielt, mit einer Schusskompensation für die Geschwindigkeit des Roboters.</p>
-      <p>Ein Ball, der von einem fahrenden Roboter abgefeuert wird, behält dessen Geschwindigkeit. Die Kompensation rechnet vorausschauend und zerlegt die Geschwindigkeit in den Anteil zum Ziel hin und den Anteil quer dazu.</p>
+      <p>Ein Ball, der von einem fahrenden Roboter abgefeuert wird, behält dessen Geschwindigkeit. Die Kompensation berücksichtigt die Eigengeschwindigkeit des Roboters im Moment des Abwurfs.</p>
       <p class="note">Ich habe die Zielkaskade des Drehturms und seine Schusskompensation geschrieben, mit Beiträgen von Teamkollegen.</p>
       <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/control/turret-2026">control/turret-2026</a></p>
       <p class="replay">Analyse: <a href="https://github.com/Mai961/robotics-showcase/tree/main/control/turret-2026"><code>python control/turret-2026/replay/analyze_turret.py</code></a> &#8594; 30&nbsp;s Fahrt mit bis zu 3,5&nbsp;m/s, davon 17&nbsp;s mit aktiver Kompensation: Quergeschwindigkeiten von &#8722;2,0 bis +1,9&nbsp;m/s ergaben Kompensationswinkel von &#8722;40&#176; bis +34&#176;; Folgefehler RMS 5,2&#176; während der Kompensation.</p>
@@ -168,7 +168,7 @@
     </article>
   </section>
   <section id="control-stack" class="topic" aria-labelledby="control-stack-h">
-    <h2 id="control-stack-h">Regelungsstack &amp; Infrastruktur</h2>
+    <h2 id="control-stack-h">Regelung &amp; Infrastruktur</h2>
     <article class="showcase">
       <div class="title-row">
         <h3>Derselbe Regler, simuliert oder real</h3>
@@ -186,7 +186,7 @@
       <p>Ganzkörperregler und Phasenautomat laufen unverändert gegen den simulierten Roboter, über dieselbe UDP-Bridge auf Loopback. Ausgetauscht wird das Backend, nicht der Regler.</p>
       <p class="note">Der simulierte Start ist um 1&nbsp;m verschoben, weil der aktuelle Zielsatz dieses Ziel verschoben hat; die simulierte Regelstrecke ist rein kinematisch.</p>
       <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/sim-io-layer">sim-io-layer</a></p>
-      <p class="replay">Analyse: <a href="https://github.com/Mai961/robotics-showcase/tree/main/sim-io-layer"><code>python sim-io-layer/replay/analyze_sim_vs_real.py</code></a> &#8594; Die gemessenen Gelenkwerte weichen über TASK um 0,056&nbsp;rad (Schulter), 0,017&nbsp;m (Teleskop) und 0,041&nbsp;rad (Handgelenk) RMS vom realen Zyklus ab; vom Latch bis zur Fahrt 2,36&nbsp;s simuliert gegenüber 2,38&nbsp;s real.</p>
+      <p class="replay">Analyse: <a href="https://github.com/Mai961/robotics-showcase/tree/main/sim-io-layer"><code>python sim-io-layer/replay/analyze_sim_vs_real.py</code></a> &#8594; Die gemessenen Gelenkwerte weichen über TASK um 0,056&nbsp;rad (Schulter), 0,017&nbsp;m (Teleskop) und 0,041&nbsp;rad (Handgelenk) RMS vom realen Zyklus ab; von der Zielübernahme bis zurück in DRIVE 2,36&nbsp;s simuliert gegenüber 2,38&nbsp;s real.</p>
     </article>
     <article class="showcase">
       <div class="title-row">

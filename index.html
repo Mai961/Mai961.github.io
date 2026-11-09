@@ -116,7 +116,7 @@
         <figcaption>Logged compensation angle against lateral speed (driver-station log; not the same run as the video).</figcaption>
       </figure>
       <p class="lead">A turret that keeps aiming while the robot drives, with shot compensation for the robot&#8217;s velocity.</p>
-      <p>A ball fired from a moving robot keeps the robot&#8217;s velocity. The compensation looks ahead and splits the velocity into the part toward the target and the part across it.</p>
+      <p>A ball fired from a moving robot keeps the robot&#8217;s velocity. The compensation accounts for the robot&#8217;s own velocity at the moment of release.</p>
       <p class="note">I wrote the turret&#8217;s aiming cascade and its shot compensation, with contributions from teammates.</p>
       <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/control/turret-2026">control/turret-2026</a></p>
       <p class="replay">Analysis: <a href="https://github.com/Mai961/robotics-showcase/tree/main/control/turret-2026"><code>python control/turret-2026/replay/analyze_turret.py</code></a> &#8594; 30&nbsp;s while driving up to 3.5&nbsp;m/s, with the compensation on for 17&nbsp;s: lateral speed &#8722;2.0 to +1.9&nbsp;m/s produced compensation angles of &#8722;40&#176; to +34&#176;; tracking RMS 5.2&#176; while compensating.</p>
@@ -186,7 +186,7 @@
       <p>The whole-body controller and phase machine run unchanged against the simulated robot, over the same UDP bridge on loopback. What is swapped is the backend, not the controller.</p>
       <p class="note">The simulated start is shifted 1&nbsp;m because the current goal set moved this goal; the simulated plant is kinematic.</p>
       <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/sim-io-layer">sim-io-layer</a></p>
-      <p class="replay">Analysis: <a href="https://github.com/Mai961/robotics-showcase/tree/main/sim-io-layer"><code>python sim-io-layer/replay/analyze_sim_vs_real.py</code></a> &#8594; measured joints differ from the real cycle by 0.056&nbsp;rad (shoulder), 0.017&nbsp;m (telescope) and 0.041&nbsp;rad (wrist) RMS over TASK; latch to drive 2.36&nbsp;s simulated vs 2.38&nbsp;s real.</p>
+      <p class="replay">Analysis: <a href="https://github.com/Mai961/robotics-showcase/tree/main/sim-io-layer"><code>python sim-io-layer/replay/analyze_sim_vs_real.py</code></a> &#8594; measured joints differ from the real cycle by 0.056&nbsp;rad (shoulder), 0.017&nbsp;m (telescope) and 0.041&nbsp;rad (wrist) RMS over TASK; from goal latch back to DRIVE, 2.36&nbsp;s simulated vs 2.38&nbsp;s real.</p>
     </article>
     <article class="showcase">
       <div class="title-row">
