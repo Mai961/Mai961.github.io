@@ -21,6 +21,7 @@
   --gutter: 16px;
   --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --font-zh: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Noto Sans CJK SC", "Source Han Sans SC", "Microsoft YaHei", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -194,6 +195,57 @@ ul {
   color: var(--band-text);
   text-decoration: underline;
   text-decoration-color: var(--band-accent);
+}
+
+/* Language switcher, beside the showcase-repo link */
+
+.site-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1.25rem;
+}
+
+.lang ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lang li + li::before {
+  content: "\00b7";
+  content: "\00b7" / "";
+  margin-inline: 0.4em;
+  color: var(--band-text-soft);
+}
+
+.lang a {
+  display: inline-block;
+  padding: 0.125rem 0.125rem;
+  color: var(--band-text-soft);
+  text-decoration: none;
+}
+
+.lang a:hover {
+  color: var(--band-text);
+  text-decoration: underline;
+  text-decoration-color: var(--band-accent);
+}
+
+.lang a[aria-current="true"] {
+  color: var(--band-text);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--band-accent);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.3em;
+}
+
+.lang a:lang(zh-Hans) {
+  font-family: var(--font-zh);
 }
 
 .site-header a:focus-visible,
@@ -521,4 +573,29 @@ main {
   :root {
     --gutter: 24px;
   }
+}
+
+/* Chinese pages: a CJK-capable font stack, roomier lines, no synthetic italics or negative tracking on Han glyphs */
+
+html:lang(zh-Hans) {
+  --font: var(--font-zh);
+}
+
+body:lang(zh-Hans) {
+  line-height: 1.75;
+}
+
+:lang(zh-Hans) h1 {
+  letter-spacing: 0;
+}
+
+:lang(zh-Hans) .section-note,
+:lang(zh-Hans) .clip-note {
+  font-style: normal;
+}
+
+/* German pages: long compounds hyphenate in the large heading instead of breaking anywhere */
+
+:lang(de) h1 {
+  hyphens: auto;
 }

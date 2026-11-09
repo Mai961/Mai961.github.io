@@ -6,6 +6,10 @@
 <title>Project Showcase</title>
 <meta name="description" content="Zile Liao, robotics software, Freiburg: a project showcase from a competition robot I develop, in short clips.">
 <meta name="color-scheme" content="light dark">
+<link rel="alternate" hreflang="en" href="https://mai961.github.io/">
+<link rel="alternate" hreflang="zh-Hans" href="https://mai961.github.io/zh/">
+<link rel="alternate" hreflang="de" href="https://mai961.github.io/de/">
+<link rel="alternate" hreflang="x-default" href="https://mai961.github.io/">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="assets/site.css">
 <script src="assets/site.js" defer></script>
@@ -17,7 +21,16 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="#main">Mai</a>
-    <a class="site-link" href="https://github.com/Mai961/robotics-showcase"><svg class="icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/></svg><span>Showcase repo</span></a>
+    <div class="site-tools">
+      <a class="site-link" href="https://github.com/Mai961/robotics-showcase"><svg class="icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/></svg><span>Showcase repo</span></a>
+      <nav class="lang" aria-label="Language">
+        <ul>
+          <li><a href="index.html" lang="en" hreflang="en" aria-label="English" aria-current="true">EN</a></li>
+          <li><a href="zh/index.html" lang="zh-Hans" hreflang="zh-Hans" aria-label="中文（简体）">中文</a></li>
+          <li><a href="de/index.html" lang="de" hreflang="de" aria-label="Deutsch">DE</a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>
 <nav class="topics" aria-label="Topics">
@@ -103,7 +116,7 @@
         <figcaption>Logged compensation angle against lateral speed (driver-station log; not the same run as the video).</figcaption>
       </figure>
       <p class="lead">A turret that keeps aiming while the robot drives, with shot compensation for the robot&#8217;s velocity.</p>
-      <p>A ball fired from a moving robot keeps the robot&#8217;s velocity. The compensation looks ahead and splits the velocity into the part toward the target and the part across it.</p>
+      <p>A ball fired from a moving robot keeps the robot&#8217;s velocity. The compensation accounts for the robot&#8217;s own velocity at the moment of release.</p>
       <p class="note">I wrote the turret&#8217;s aiming cascade and its shot compensation, with contributions from teammates.</p>
       <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/control/turret-2026">control/turret-2026</a></p>
       <p class="replay">Analysis: <a href="https://github.com/Mai961/robotics-showcase/tree/main/control/turret-2026"><code>python control/turret-2026/replay/analyze_turret.py</code></a> &#8594; 30&nbsp;s while driving up to 3.5&nbsp;m/s, with the compensation on for 17&nbsp;s: lateral speed &#8722;2.0 to +1.9&nbsp;m/s produced compensation angles of &#8722;40&#176; to +34&#176;; tracking RMS 5.2&#176; while compensating.</p>
@@ -173,7 +186,7 @@
       <p>The whole-body controller and phase machine run unchanged against the simulated robot, over the same UDP bridge on loopback. What is swapped is the backend, not the controller.</p>
       <p class="note">The simulated start is shifted 1&nbsp;m because the current goal set moved this goal; the simulated plant is kinematic.</p>
       <p class="details">Details: <a href="https://github.com/Mai961/robotics-showcase/tree/main/sim-io-layer">sim-io-layer</a></p>
-      <p class="replay">Analysis: <a href="https://github.com/Mai961/robotics-showcase/tree/main/sim-io-layer"><code>python sim-io-layer/replay/analyze_sim_vs_real.py</code></a> &#8594; measured joints differ from the real cycle by 0.056&nbsp;rad (shoulder), 0.017&nbsp;m (telescope) and 0.041&nbsp;rad (wrist) RMS over TASK; latch to drive 2.36&nbsp;s simulated vs 2.38&nbsp;s real.</p>
+      <p class="replay">Analysis: <a href="https://github.com/Mai961/robotics-showcase/tree/main/sim-io-layer"><code>python sim-io-layer/replay/analyze_sim_vs_real.py</code></a> &#8594; measured joints differ from the real cycle by 0.056&nbsp;rad (shoulder), 0.017&nbsp;m (telescope) and 0.041&nbsp;rad (wrist) RMS over TASK; from goal latch back to DRIVE, 2.36&nbsp;s simulated vs 2.38&nbsp;s real.</p>
     </article>
     <article class="showcase">
       <div class="title-row">
